@@ -1,1291 +1,967 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Free Vedic Numerology Calculator – Moolank, Bhagyank, Mahadasha & Antardasha | Anka Ganit</title>
-<meta name="description" content="Free Vedic Numerology Calculator — instantly find your Moolank (birth number), Bhagyank (destiny number), Mahadasha, Antardasha & sacred Vedic grid. Based on authentic Jyotish Ankaśāstra. No sign-up needed.">
-<meta name="keywords" content="free vedic numerology calculator, vedic numerology, moolank calculator, bhagyank calculator, mahadasha calculator, antardasha calculator, numerology by date of birth, jyotish numerology, vedic birth number, destiny number calculator, life path number vedic, numerology chart free, online numerology calculator india, ankashastra, numerology reading free">
-<meta name="author" content="Himangshu — Ākāśa Gaṇita">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://vedic-numerology.himangshu.com/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Free Vedic Numerology Calculator – Moolank, Bhagyank & Mahadasha">
-<meta property="og:description" content="Enter your date of birth and discover your complete Vedic numerology chart — Moolank, Bhagyank, 100-year Mahadasha cycle, Antardasha and Vedic sacred grid. Completely free.">
-<meta property="og:url" content="https://vedic-numerology.himangshu.com/">
-<meta property="og:site_name" content="Ākāśa Gaṇita — Vedic Numerology Calculator">
-<meta property="og:locale" content="en_IN">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Free Vedic Numerology Calculator – Moolank, Bhagyank & Mahadasha">
-<meta name="twitter:description" content="Discover your Moolank, Bhagyank, Mahadasha & full Vedic numerology chart for free. Powered by authentic Jyotish Ankaśāstra.">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Vedic Numerology Calculator","alternateName":"Ākāśa Gaṇita","description":"Free online Vedic Numerology Calculator to find your Moolank (birth number), Bhagyank (destiny number), Mahadasha, Antardasha planetary periods and sacred Vedic grid.","url":"https://vedic-numerology.himangshu.com/","applicationCategory":"LifestyleApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Himangshu"},"keywords":"vedic numerology, free numerology calculator, moolank, bhagyank, mahadasha, antardasha, jyotish"}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-<style>
-:root{
-  --ink:#0c0a06;--ink2:#181410;--ink3:#221e16;
-  --surface:rgba(18,14,8,0.82);
-  --border:rgba(185,138,52,0.2);--border-hi:rgba(220,170,70,0.5);
-  --gold-a:#F6DC8E;--gold-b:#CA9430;--gold-c:#8C6018;
-  --cream:#EFE7D6;--cream-dim:#B5A888;--muted:#686050;
-  --fd:'Cinzel',serif;--fb:'Crimson Pro',serif;--fm:'JetBrains Mono',monospace;
-  --r:1rem;--r2:1.6rem;
-  --sh:0 24px 56px -16px rgba(0,0,0,0.85);
-}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{min-height:100svh;background:var(--ink);font-family:var(--fb);color:var(--cream);overflow-x:hidden;font-size:16px;line-height:1.65}
-.bg-layer{position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 90% 55% at 12% 8%,rgba(185,138,52,0.08) 0%,transparent 60%),radial-gradient(ellipse 55% 90% at 88% 82%,rgba(130,75,15,0.07) 0%,transparent 60%),radial-gradient(ellipse 130% 70% at 50% 50%,#110e08 0%,#050402 100%)}
-.stars{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:radial-gradient(1.5px 1.5px at 11% 21%,rgba(245,220,155,0.4) 0%,transparent 100%),radial-gradient(1px 1px at 79% 7%,rgba(245,220,155,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 43% 64%,rgba(245,220,155,0.25) 0%,transparent 100%),radial-gradient(2px 2px at 92% 41%,rgba(245,220,155,0.3) 0%,transparent 100%),radial-gradient(1px 1px at 34% 87%,rgba(245,220,155,0.2) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 63% 29%,rgba(245,220,155,0.22) 0%,transparent 100%),radial-gradient(1px 1px at 6% 54%,rgba(245,220,155,0.28) 0%,transparent 100%),radial-gradient(1px 1px at 57% 78%,rgba(245,220,155,0.18) 0%,transparent 100%)}
-::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--ink)}::-webkit-scrollbar-thumb{background:var(--gold-c);border-radius:2px}
-.app{position:relative;z-index:2;max-width:1060px;margin:0 auto;padding:2rem 1.25rem 6rem}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Synastry — Numerology Love Matchmaking and Lucky Colours</title>
+    <meta name="description" content="Discover your numerological compatibility with Synastry. Get your root number, destiny number, compound name vibration, lucky colours, and dress code oracle based on ancient sacred numerology.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..500&display=swap" rel="stylesheet">
 
-/* HEADER */
-.header{text-align:center;padding:3.5rem 0 2.5rem}
-.eyebrow{font-family:var(--fm);font-size:0.62rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold-b);margin-bottom:1rem;display:flex;align-items:center;justify-content:center;gap:0.8rem}
-.eyebrow::before,.eyebrow::after{content:'';width:48px;height:1px;background:linear-gradient(90deg,transparent,var(--gold-c))}
-.eyebrow::after{background:linear-gradient(90deg,var(--gold-c),transparent)}
-.header h1{font-family:var(--fd);font-size:clamp(2.4rem,6.5vw,4.2rem);font-weight:700;letter-spacing:0.05em;background:linear-gradient(155deg,var(--gold-a) 0%,var(--gold-b) 48%,#9A6A18 100%);-webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.12;margin-bottom:0.6rem}
-.header-sub{font-family:var(--fb);font-size:1.05rem;font-style:italic;color:var(--cream-dim);letter-spacing:0.04em}
-.seo-tagline{font-family:var(--fm);font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:0.7rem}
+    <style>
+        :root {
+            --ink: #1a1108;
+            --parchment: #f5f0e8;
+            --warm-white: #fdfaf4;
+            --gold: #b8853a;
+            --gold-light: #d4a85a;
+            --gold-dim: #e8d5b0;
+            --terracotta: #c4633a;
+            --blush: #e8c4b0;
+            --muted: #7a6a5a;
+            --faint: #e8e0d4;
+            --card: #ffffff;
+            --shadow: 0 2px 20px rgba(26,17,8,0.06);
+            --shadow-deep: 0 8px 40px rgba(26,17,8,0.10);
+            --radius: 1.4rem;
+            --radius-sm: 0.8rem;
+            --danger: #c0392b;
+            --danger-bg: #fff5f5;
+            --danger-border: #f5c6c6;
+        }
 
-/* INPUT CARD */
-.input-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:1.5rem 1.75rem;backdrop-filter:blur(20px);box-shadow:var(--sh),inset 0 1px 0 rgba(255,255,255,0.035);margin-bottom:1.25rem}
-.input-row{display:flex;gap:0.75rem;align-items:flex-end;flex-wrap:wrap}
-.field-group{display:flex;flex-direction:column;gap:0.35rem;flex:1;min-width:180px}
-.field-label{font-family:var(--fm);font-size:0.58rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-b)}
-.field-input{background:rgba(0,0,0,0.55);border:1px solid var(--border);border-radius:var(--r);padding:0.7rem 1rem;color:var(--cream);font-family:var(--fb);font-size:1rem;width:100%;transition:border-color .25s,box-shadow .25s;-webkit-appearance:none;color-scheme:dark}
-.field-input:focus{outline:none;border-color:var(--gold-b);box-shadow:0 0 0 3px rgba(200,148,48,0.14)}
-.field-input::-webkit-calendar-picker-indicator{filter:invert(.7) sepia(1) saturate(2) hue-rotate(10deg);cursor:pointer}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;padding:0.6rem 1.1rem;border:none;border-radius:var(--r);font-family:var(--fm);font-size:0.62rem;font-weight:500;letter-spacing:1.2px;text-transform:uppercase;cursor:pointer;transition:all .22s ease;white-space:nowrap;height:42px}
-.btn svg{width:12px;height:12px;flex-shrink:0}
-.btn-calc{background:transparent;color:var(--gold-a);border:1px solid var(--border-hi);position:relative;overflow:hidden}
-.btn-calc::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,148,48,.14),rgba(200,148,48,.06));opacity:0;transition:opacity .22s}
-.btn-calc:hover{border-color:var(--gold-a);color:#fff;transform:translateY(-2px);box-shadow:0 0 16px rgba(200,148,48,.22)}
-.btn-calc:hover::before{opacity:1}
-.btn-calc:active{transform:translateY(0)}
-.btn-wa{background:linear-gradient(135deg,#1a7a46,#25D366);color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.22)}
-.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.4)}
-.btn-pdf{background:transparent;color:var(--cream-dim);border:1px solid rgba(255,255,255,.1)}
-.btn-pdf:hover{border-color:rgba(255,255,255,.28);color:var(--cream);transform:translateY(-2px)}
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            background: var(--parchment);
+            font-family: 'DM Sans', sans-serif;
+            color: var(--ink);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-/* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-bottom:1.25rem}
-@media(max-width:700px){.stats-row{grid-template-columns:repeat(2,1fr)}}
-.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:1.6rem 1rem 1.4rem;text-align:center;backdrop-filter:blur(12px);transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden;cursor:default}
-.stat-card::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% -10%,rgba(200,148,48,.1) 0%,transparent 65%);opacity:0;transition:opacity .3s}
-.stat-card:hover{border-color:var(--border-hi);transform:translateY(-5px);box-shadow:0 24px 48px -12px rgba(0,0,0,.7)}
-.stat-card:hover::after{opacity:1}
-.stat-label{font-family:var(--fm);font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-b);margin-bottom:0.6rem}
-.stat-num{font-family:var(--fd);font-size:3.8rem;font-weight:700;line-height:1;background:linear-gradient(145deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:0.4rem}
-.stat-planet{font-family:var(--fb);font-size:1rem;font-style:italic;color:var(--cream-dim);letter-spacing:0.02em}
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
 
-/* PROMO */
-.promo-banner{position:relative;overflow:hidden;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:1.25rem;padding:1.75rem 2rem;background:rgba(10,8,4,.9);border:1px solid rgba(200,148,48,.32);border-radius:var(--r2);backdrop-filter:blur(16px);box-shadow:inset 0 0 0 1px rgba(200,148,48,.07),var(--sh)}
-.promo-sweep{position:absolute;top:0;left:-60%;width:40%;height:100%;background:linear-gradient(105deg,transparent 30%,rgba(200,148,48,.07) 50%,transparent 70%);animation:sweep 5s ease-in-out infinite;pointer-events:none}
-@keyframes sweep{0%{left:-60%}65%{left:130%}100%{left:130%}}
-.promo-banner::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 0%,var(--gold-b) 38%,var(--gold-a) 62%,transparent 100%);opacity:.55}
-.promo-left{flex:1;min-width:180px}
-.promo-eyebrow{font-family:var(--fm);font-size:0.57rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold-b);margin-bottom:0.35rem}
-.promo-title{font-family:var(--fd);font-size:1.3rem;font-weight:700;background:linear-gradient(130deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:0.45rem;line-height:1.2}
-.promo-desc{font-size:0.9rem;color:var(--cream-dim);line-height:1.6;max-width:460px;margin-bottom:0.9rem}
-.promo-feats{display:flex;flex-wrap:wrap;gap:0.45rem}
-.promo-feat{font-family:var(--fm);font-size:0.6rem;letter-spacing:.5px;padding:3px 10px;border-radius:20px;background:rgba(200,148,48,.08);border:1px solid rgba(200,148,48,.2);color:var(--cream-dim)}
-.promo-right{display:flex;flex-direction:column;align-items:center;gap:0.7rem;min-width:140px}
-.promo-price{text-align:center;line-height:1}
-.promo-amt{font-family:var(--fd);font-size:2.4rem;font-weight:700;background:linear-gradient(135deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;background-clip:text;color:transparent}
-.promo-per{display:block;font-family:var(--fm);font-size:0.58rem;letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-top:3px}
-.promo-cta{display:inline-flex;align-items:center;gap:6px;padding:0.72rem 1.6rem;background:linear-gradient(135deg,var(--gold-c),var(--gold-b));border:none;border-radius:3rem;font-family:var(--fm);font-size:0.67rem;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--ink);cursor:pointer;transition:all .22s;box-shadow:0 4px 20px rgba(200,148,48,.35);white-space:nowrap}
-.promo-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 28px rgba(200,148,48,.5);filter:brightness(1.08)}
-.promo-note{font-family:var(--fm);font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted)}
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem 4rem;
+        }
 
-/* TABS */
-.tabs-wrap{position:sticky;top:0;z-index:10;padding:0.5rem 0;background:linear-gradient(to bottom,rgba(12,10,6,1) 75%,transparent);margin-bottom:1.4rem}
-.tabs{display:flex;gap:2px;background:rgba(0,0,0,.55);border:1px solid var(--border);border-radius:3rem;padding:4px;backdrop-filter:blur(16px);overflow-x:auto;scrollbar-width:none}
-.tabs::-webkit-scrollbar{display:none}
-.tab{flex:1;min-width:max-content;background:transparent;border:none;padding:0.7rem 1.3rem;border-radius:2.5rem;font-family:var(--fm);font-size:0.68rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);cursor:pointer;transition:all .22s}
-.tab svg{width:12px;height:12px;margin-right:5px;vertical-align:middle}
-.tab.active{background:rgba(200,148,48,.18);color:var(--gold-a);box-shadow:0 2px 8px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05)}
-.tab:hover:not(.active){color:var(--cream-dim)}
-.tab-pane{display:none;animation:fadein .28s ease}
-.tab-pane.active{display:block}
-@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        header { text-align: center; margin-bottom: 3.5rem; }
 
-/* SECTION CARD */
-.section-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:2rem;backdrop-filter:blur(12px);box-shadow:var(--sh)}
-.section-title{font-family:var(--fd);font-size:0.78rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold-b);margin-bottom:1.4rem;display:flex;align-items:center;gap:0.6rem}
-.section-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.65rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 1.2rem;
+        }
+        .eyebrow::before, .eyebrow::after {
+            content: '';
+            display: block;
+            width: 2rem;
+            height: 1px;
+            background: var(--gold-light);
+        }
 
-/* VEDIC GRID TAB */
-.grid-layout{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
-@media(max-width:640px){.grid-layout{grid-template-columns:1fr}}
-.vedic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;background:rgba(200,148,48,.14);border:1px solid rgba(200,148,48,.25);border-radius:1.4rem;overflow:hidden;width:288px;flex-shrink:0}
-@media(max-width:640px){.vedic-grid{width:100%}}
-.grid-cell{background:var(--ink2);aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;transition:background .25s;cursor:default;position:relative}
-.grid-cell:hover{background:rgba(200,148,48,.1)}
-.cell-pos{font-family:var(--fd);font-size:2.2rem;font-weight:700;line-height:1;color:rgba(200,148,48,.22);transition:color .25s}
-.cell-pos.filled{color:var(--gold-b)}
-.cell-dots{font-family:var(--fm);font-size:0.68rem;letter-spacing:2.5px;color:var(--gold-a);min-height:16px;line-height:1}
-.grid-info h3{font-family:var(--fd);font-size:0.95rem;font-weight:600;color:var(--gold-b);letter-spacing:.05em;margin-bottom:1.1rem}
-.breakdown-item{display:flex;justify-content:space-between;align-items:center;padding:0.5rem 0;border-bottom:1px solid rgba(200,148,48,.07)}
-.breakdown-item:last-child{border-bottom:none}
-.breakdown-key{color:var(--cream-dim);font-size:0.88rem}
-.breakdown-val{font-family:var(--fm);font-size:0.8rem;color:var(--gold-a);background:rgba(200,148,48,.1);padding:3px 10px;border-radius:6px;white-space:nowrap}
-.grid-note{margin-top:1.4rem;padding:0.9rem 1.1rem;background:rgba(200,148,48,.05);border-left:2px solid var(--gold-c);border-radius:0 8px 8px 0;font-size:0.85rem;color:var(--cream-dim);line-height:1.55;font-style:italic}
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(3.5rem, 9vw, 5.5rem);
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            line-height: 1;
+            margin-bottom: 0.8rem;
+        }
+        h1 em { font-style: italic; color: var(--gold); }
 
-/* TABLES */
-.table-wrap{overflow-x:auto;border-radius:var(--r)}
-table{width:100%;border-collapse:collapse}
-thead tr{border-bottom:1px solid var(--border)}
-th{padding:0.85rem 1.1rem;font-family:var(--fm);font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold-b);text-align:left;font-weight:400;white-space:nowrap}
-td{padding:0.8rem 1.1rem;font-size:0.95rem;border-bottom:1px solid rgba(200,148,48,.06);color:var(--cream-dim);white-space:nowrap}
-td:first-child{color:var(--cream);font-weight:500;font-size:1rem}
-tr.hi td{background:rgba(200,148,48,.11);color:var(--cream)}
-tr.hi td:first-child{color:var(--gold-a)}
-tr:hover:not(.hi) td{background:rgba(200,148,48,.04)}
-.badge-now{display:inline-block;background:rgba(200,148,48,.22);border:1px solid var(--gold-c);border-radius:20px;padding:2px 9px;font-family:var(--fm);font-size:0.58rem;color:var(--gold-a);letter-spacing:1px;vertical-align:middle;margin-left:5px}
+        .header-sub {
+            font-size: 0.82rem;
+            color: var(--muted);
+            letter-spacing: 0.02em;
+            font-weight: 300;
+        }
 
-/* ═══════════════════════════════════════════════════
-   20-YEAR VIEW — FIVE GRID DESIGN
-   ═══════════════════════════════════════════════════ */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
 
-.twenty-header{
-  display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;
-  margin-bottom:1.75rem;
-  padding-bottom:1.25rem;
-  border-bottom:1px solid var(--border);
-}
-.twenty-range{
-  font-family:var(--fd);font-size:1.15rem;font-weight:600;
-  background:linear-gradient(135deg,var(--gold-a),var(--gold-b));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-  margin-right:auto;letter-spacing:0.04em;
-}
-.twenty-nav-btn{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:0.5rem 1rem;
-  background:rgba(0,0,0,.45);border:1px solid var(--border);
-  border-radius:2rem;
-  font-family:var(--fm);font-size:0.6rem;letter-spacing:1px;
-  color:var(--cream-dim);cursor:pointer;transition:all .2s;text-transform:uppercase;white-space:nowrap;
-}
-.twenty-nav-btn:hover{border-color:var(--border-hi);color:var(--gold-a);background:rgba(200,148,48,.06)}
-.twenty-nav-btn.accent{
-  background:rgba(200,148,48,.12);border-color:var(--gold-c);color:var(--gold-a);
-}
-.twenty-nav-btn.accent:hover{background:rgba(200,148,48,.2)}
+        .partner-card {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.8rem 1.6rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(184,133,58,0.12);
+            position: relative;
+            overflow: hidden;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .partner-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), var(--terracotta));
+        }
+        .partner-card:hover { box-shadow: var(--shadow-deep); transform: translateY(-2px); }
 
-/* Five grid strip */
-.five-grid-strip{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:0.85rem;
-  margin-bottom:1.75rem;
-}
-@media(max-width:680px){.five-grid-strip{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:420px){.five-grid-strip{grid-template-columns:repeat(2,1fr)}}
+        .card-glyph {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: var(--gold-dim);
+            line-height: 1;
+            margin-bottom: 1rem;
+            user-select: none;
+        }
 
-.fg-card{
-  background:rgba(8,6,3,.8);
-  border:1px solid var(--border);
-  border-radius:1.2rem;
-  padding:0.85rem 0.7rem 1rem;
-  cursor:pointer;
-  transition:all .22s cubic-bezier(.2,.9,.3,1.1);
-  display:flex;flex-direction:column;align-items:center;gap:0.5rem;
-  position:relative;overflow:hidden;
-}
-.fg-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  opacity:0;transition:opacity .2s;
-  background:linear-gradient(90deg,transparent,var(--gold-c),transparent);
-}
-.fg-card:hover{
-  border-color:var(--border-hi);transform:translateY(-4px);
-  box-shadow:0 16px 32px -8px rgba(0,0,0,.8);background:rgba(18,14,8,.9);
-}
-.fg-card:hover::before{opacity:1}
-.fg-card.is-sel{
-  border-color:var(--gold-b);
-  background:rgba(200,148,48,.08);
-  box-shadow:0 0 0 1px rgba(200,148,48,.2),0 20px 40px -8px rgba(0,0,0,.85);
-  transform:translateY(-5px) scale(1.02);
-}
-.fg-card.is-sel::before{opacity:1;background:linear-gradient(90deg,transparent,var(--gold-a),transparent)}
-.fg-card.is-now{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.04)}
-.fg-card.is-now::before{opacity:1;background:linear-gradient(90deg,transparent,#4ade80,transparent)}
-.fg-card.is-past{opacity:0.72}
+        .partner-name-label {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 1.4rem;
+            min-height: 1.6rem;
+        }
 
-/* Year label */
-.fgc-year-row{
-  display:flex;align-items:center;justify-content:center;gap:5px;
-  font-family:var(--fd);font-size:0.95rem;font-weight:600;
-  color:var(--cream-dim);transition:color .2s;
-}
-.fg-card:hover .fgc-year-row,.fg-card.is-sel .fgc-year-row{color:var(--gold-a)}
-.fg-card.is-now .fgc-year-row{color:#4ade80}
-.now-pulse{
-  width:5px;height:5px;border-radius:50%;background:#4ade80;
-  animation:npulse 2s ease-in-out infinite;
-}
-@keyframes npulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.8);opacity:.6}}
+        .field-group { margin-bottom: 1.2rem; }
+        .field-group label {
+            display: block;
+            font-size: 0.62rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--gold);
+            margin-bottom: 0.45rem;
+        }
+        .field-group input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--faint);
+            padding: 0.5rem 0;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.92rem;
+            color: var(--ink);
+            transition: border-color 0.2s;
+            -webkit-appearance: none;
+        }
+        .field-group input::placeholder { color: #bbb; }
+        .field-group input:focus { outline: none; border-bottom-color: var(--gold); }
 
-/* Mini 3x3 vedic grid inside card */
-.fgc-vgrid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:2px;width:100%;
-  background:rgba(200,148,48,.1);
-  border-radius:8px;overflow:hidden;
-}
-.fgc-cell{
-  background:var(--ink2);
-  aspect-ratio:1;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:1px;position:relative;
-}
-.fg-card.is-sel .fgc-cell{background:var(--ink3)}
-.fgc-cell.cm{background:rgba(194,74,30,.18)}
-.fgc-cell.ca{background:rgba(26,130,100,.18)}
-.fgc-cell.cb{background:rgba(200,148,48,.2)}
-.fgc-n{
-  font-family:var(--fd);font-size:0.7rem;font-weight:700;line-height:1;
-  color:rgba(200,148,48,.2);transition:color .2s;
-}
-.fgc-n.lit{color:var(--gold-b)}
-.fgc-cell.cm .fgc-n.lit{color:#f97316}
-.fgc-cell.ca .fgc-n.lit{color:#34d399}
-.fgc-cell.cb .fgc-n.lit{color:var(--gold-a)}
-.fgc-d{font-family:var(--fm);font-size:0.4rem;color:var(--gold-a);letter-spacing:1px;min-height:6px;line-height:1}
-.fgc-mdot{position:absolute;top:1px;right:1px;width:4px;height:4px;border-radius:50%}
-.fgc-mdot.dm{background:rgba(249,115,22,.8)}
-.fgc-mdot.da{background:rgba(52,211,153,.8)}
-.fgc-mdot.db{background:rgba(200,148,48,.8)}
+        .stats-pill {
+            background: var(--parchment);
+            border-radius: 0.6rem;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.72rem;
+            color: var(--muted);
+            margin-top: 1rem;
+            letter-spacing: 0.02em;
+            border: 1px solid var(--faint);
+        }
+        .stats-pill strong { color: var(--ink); }
 
-/* planet pills below mini grid */
-.fgc-planets{
-  display:flex;flex-wrap:wrap;gap:3px;justify-content:center;
-  width:100%;
-}
-.fgc-pill{
-  font-family:var(--fm);font-size:0.48rem;letter-spacing:.3px;
-  padding:2px 6px;border-radius:20px;white-space:nowrap;
-}
-.fgc-pill.mp{background:rgba(194,74,30,.18);color:#f97316;border:1px solid rgba(194,74,30,.25)}
-.fgc-pill.ap{background:rgba(26,130,100,.18);color:#34d399;border:1px solid rgba(26,130,100,.25)}
+        .lucky-row { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.7rem; align-items: center; }
+        .lucky-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: var(--warm-white);
+            border: 1px solid var(--faint);
+            border-radius: 30px;
+            padding: 2px 9px;
+            font-size: 0.63rem;
+            color: var(--muted);
+        }
+        .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
-/* year label below pills  */
-.fgc-tag{
-  font-family:var(--fm);font-size:0.44rem;letter-spacing:1.5px;
-  text-transform:uppercase;color:var(--muted);
-}
+        /* Enemy warning */
+        .enemy-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #fff0f0;
+            border: 1px solid #f5c6c6;
+            border-radius: 30px;
+            padding: 3px 10px;
+            font-size: 0.63rem;
+            color: var(--danger);
+            margin-top: 0.5rem;
+        }
 
-/* ── DETAIL PANEL ───────────────────────── */
-.twenty-detail{
-  background:rgba(6,5,3,.9);
-  border:1px solid rgba(200,148,48,.35);
-  border-radius:1.6rem;
-  overflow:hidden;
-  box-shadow:var(--sh);
-  animation:fadein .28s ease;
-  position:relative;
-}
-.twenty-detail::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:1px;
-  background:linear-gradient(90deg,transparent,var(--gold-b) 38%,var(--gold-a) 62%,transparent);
-  opacity:.5;
-}
-.td-inner{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
-@media(max-width:620px){.td-inner{grid-template-columns:1fr}}
+        /* COMPAT BANNER */
+        .compat-banner {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 2rem 2rem 1.8rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(184,133,58,0.12);
+            position: relative;
+            overflow: hidden;
+        }
+        .compat-banner::after {
+            content: '☽ ✦ ☽';
+            font-family: 'Cormorant Garamond', serif;
+            position: absolute;
+            bottom: 0.5rem; right: 1rem;
+            font-size: 0.75rem;
+            color: var(--gold-dim);
+            letter-spacing: 4px;
+        }
+        .compat-score {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(4rem, 12vw, 6rem);
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            letter-spacing: -0.03em;
+        }
+        .compat-score.low-score { color: var(--danger); }
+        .heart-row { font-size: 1rem; letter-spacing: 6px; color: var(--blush); margin: 0.5rem 0 0.8rem; }
+        .compat-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            color: var(--muted);
+            background: var(--parchment);
+            padding: 0.3rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid var(--faint);
+            font-style: italic;
+        }
 
-/* Left side */
-.td-left{
-  padding:1.75rem 1.75rem 1.75rem 2rem;
-  border-right:1px solid var(--border);
-}
-@media(max-width:620px){.td-left{border-right:none;border-bottom:1px solid var(--border)}}
-.td-year-hero{
-  display:flex;align-items:flex-end;gap:10px;margin-bottom:1.4rem;flex-wrap:wrap;
-}
-.td-year-num{
-  font-family:var(--fd);font-size:4rem;font-weight:700;line-height:1;
-  background:linear-gradient(145deg,var(--gold-a),var(--gold-b));
-  -webkit-background-clip:text;background-clip:text;color:transparent;
-}
-.td-now-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.28);
-  border-radius:2rem;padding:4px 10px;
-  font-family:var(--fm);font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;color:#4ade80;
-  align-self:flex-end;margin-bottom:0.6rem;
-}
-.td-past-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(200,148,48,.08);border:1px solid rgba(200,148,48,.18);
-  border-radius:2rem;padding:4px 10px;
-  font-family:var(--fm);font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);
-  align-self:flex-end;margin-bottom:0.6rem;
-}
-.td-future-badge{
-  display:inline-flex;align-items:center;gap:5px;
-  background:rgba(100,149,237,.08);border:1px solid rgba(100,149,237,.2);
-  border-radius:2rem;padding:4px 10px;
-  font-family:var(--fm);font-size:0.54rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(147,197,253,.75);
-  align-self:flex-end;margin-bottom:0.6rem;
-}
-.td-planets{display:flex;flex-direction:column;gap:0.85rem;margin-bottom:1.25rem}
-.td-planet{
-  display:flex;align-items:center;gap:0.85rem;
-  padding:0.75rem 1rem;
-  background:rgba(200,148,48,.04);
-  border:1px solid rgba(200,148,48,.08);
-  border-radius:0.85rem;
-}
-.td-orb{
-  width:44px;height:44px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:1.2rem;flex-shrink:0;
-}
-.td-orb.mo{background:radial-gradient(circle at 35% 35%,rgba(220,100,50,.35),rgba(150,50,20,.15));border:1px solid rgba(194,74,30,.4);box-shadow:0 0 14px rgba(194,74,30,.15)}
-.td-orb.ao{background:radial-gradient(circle at 35% 35%,rgba(50,180,120,.25),rgba(20,90,60,.12));border:1px solid rgba(26,130,100,.38);box-shadow:0 0 14px rgba(26,130,100,.12)}
-.td-pinfo{display:flex;flex-direction:column;gap:2px}
-.td-ptype{font-family:var(--fm);font-size:0.52rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
-.td-pname{font-family:var(--fb);font-size:1.1rem;font-style:italic;color:var(--cream);font-weight:600}
-.td-pnum{font-family:var(--fd);font-size:0.7rem;color:var(--gold-b);background:rgba(200,148,48,.1);padding:2px 7px;border-radius:4px;display:inline-block;width:fit-content}
-.td-calc{
-  padding:0.75rem 0.9rem;
-  background:rgba(200,148,48,.04);border:1px solid rgba(200,148,48,.08);
-  border-radius:0.75rem;
-  font-family:var(--fm);font-size:0.58rem;color:var(--muted);letter-spacing:.5px;line-height:1.9;
-}
-.td-calc span{color:var(--gold-b)}
+        /* Enemy warning inside compat */
+        .enemy-warning {
+            display: none;
+            margin-top: 1rem;
+            background: var(--danger-bg);
+            border: 1px solid var(--danger-border);
+            border-radius: var(--radius-sm);
+            padding: 0.8rem 1rem;
+            font-size: 0.74rem;
+            color: var(--danger);
+            line-height: 1.5;
+        }
 
-/* Right side */
-.td-right{
-  padding:1.75rem;
-  display:flex;flex-direction:column;gap:1rem;
-}
-.td-grid-label{
-  font-family:var(--fm);font-size:0.57rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-b);margin-bottom:0.25rem;
-}
-.td-vgrid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:4px;
-  background:rgba(200,148,48,.14);
-  border:1px solid rgba(200,148,48,.22);
-  border-radius:1.1rem;overflow:hidden;
-}
-.td-cell{
-  background:var(--ink2);aspect-ratio:1;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;position:relative;transition:background .2s;
-}
-.td-cell.tcm{background:rgba(194,74,30,.14)}
-.td-cell.tca{background:rgba(26,130,100,.14)}
-.td-cell.tcb{background:rgba(200,148,48,.18)}
-.td-cnum{font-family:var(--fd);font-size:1.6rem;font-weight:700;line-height:1;color:rgba(200,148,48,.2)}
-.td-cnum.lit{color:var(--gold-a);text-shadow:0 0 14px rgba(200,148,48,.4)}
-.td-cdots{font-family:var(--fd);font-size:0.55rem;font-weight:600;color:var(--gold-a);letter-spacing:2px;min-height:10px;text-shadow:0 0 6px rgba(200,148,48,.3)}
-.td-ctag{position:absolute;top:3px;right:3px;font-family:var(--fm);font-size:0.38rem;letter-spacing:.3px;text-transform:uppercase;padding:1px 3px;border-radius:2px}
-.td-ctag.mt{background:rgba(194,74,30,.22);color:rgba(249,115,22,.9)}
-.td-ctag.at{background:rgba(26,130,100,.22);color:rgba(52,211,153,.9)}
-.td-ctag.bt{background:rgba(200,148,48,.22);color:rgba(200,148,48,.9)}
+        /* INSIGHT STRIP */
+        .insight-strip {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
+        }
+        .insight-tile {
+            background: var(--card);
+            border-radius: var(--radius-sm);
+            padding: 1rem 0.9rem;
+            border: 1px solid var(--faint);
+            box-shadow: var(--shadow);
+        }
+        .tile-label { font-size: 0.58rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gold); font-weight: 500; margin-bottom: 0.4rem; }
+        .tile-value { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
+        .tile-value.enemy-flag { color: var(--danger); font-size: 0.78rem; }
 
-.td-legend{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2px}
-.tdl{display:flex;align-items:center;gap:4px;font-family:var(--fm);font-size:0.55rem;letter-spacing:.3px;color:var(--muted);text-transform:uppercase}
-.tdl-dot{width:7px;height:7px;border-radius:2px}
+        /* SECTION HEADER */
+        .section-head {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: var(--gold);
+            margin-bottom: 0.9rem;
+        }
+        .section-head::after { content: ''; flex: 1; height: 1px; background: var(--faint); }
 
-/* Influence bars */
-.td-influence{padding:0.75rem 0.9rem;background:rgba(200,148,48,.04);border:1px solid rgba(200,148,48,.08);border-radius:0.75rem}
-.tdi-label{font-family:var(--fm);font-size:0.53rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:0.5rem}
-.tdi-bars{display:flex;flex-direction:column;gap:0.35rem}
-.tdi-row{display:flex;align-items:center;gap:0.6rem}
-.tdi-name{font-family:var(--fm);font-size:0.56rem;color:var(--cream-dim);width:58px;flex-shrink:0;text-align:right}
-.tdi-track{flex:1;height:4px;background:rgba(255,255,255,.05);border-radius:2px;overflow:hidden}
-.tdi-fill{height:100%;border-radius:2px;transition:width .5s ease}
-.tdi-fill.fm{background:linear-gradient(90deg,rgba(194,74,30,.55),rgba(249,115,22,.8))}
-.tdi-fill.fa{background:linear-gradient(90deg,rgba(26,130,100,.55),rgba(52,211,153,.8))}
-.tdi-fill.fb{background:linear-gradient(90deg,rgba(200,148,48,.45),rgba(246,220,142,.75))}
-.tdi-cnt{font-family:var(--fm);font-size:0.5rem;color:var(--muted);width:18px}
+        /* COMPOUND SECTION */
+        .compound-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.2rem;
+            border: 1px solid rgba(184,133,58,0.12);
+            box-shadow: var(--shadow);
+        }
+        .compound-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .compound-tile {
+            background: var(--parchment);
+            border-radius: var(--radius-sm);
+            padding: 1rem;
+            border: 1px solid var(--faint);
+        }
+        .compound-tile.negative {
+            background: var(--danger-bg);
+            border-color: var(--danger-border);
+        }
+        .compound-person { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; color: var(--gold); margin-bottom: 0.3rem; }
+        .compound-person.negative-num { color: var(--danger); }
+        .compound-body { font-size: 0.76rem; color: var(--muted); line-height: 1.6; }
+        .compound-body.negative-text { color: #8b3030; }
 
-/* Year nav row below panel */
-.twenty-yr-nav{
-  display:flex;align-items:center;justify-content:space-between;
-  margin-top:1.25rem;flex-wrap:wrap;gap:0.75rem;
-}
-.tyn-btns{display:flex;gap:6px}
-.tyn-hint{font-family:var(--fm);font-size:0.55rem;letter-spacing:1px;color:var(--muted);text-transform:uppercase;text-align:center}
+        /* Name correction notice */
+        .name-correction-notice {
+            display: none;
+            margin-top: 0.8rem;
+            background: #fff8f0;
+            border: 1px solid #f5d9b8;
+            border-left: 3px solid var(--terracotta);
+            border-radius: var(--radius-sm);
+            padding: 0.7rem 1rem;
+            font-size: 0.73rem;
+            color: #7a4a1a;
+            line-height: 1.5;
+        }
 
-/* Pratyantar teaser */
-.prat-teaser{
-  margin-top:1.5rem;display:flex;align-items:center;justify-content:space-between;
-  gap:1rem;flex-wrap:wrap;padding:1rem 1.4rem;
-  background:rgba(194,74,30,.06);border:1px solid rgba(194,74,30,.2);border-radius:var(--r);
-}
-.prat-text{font-size:0.88rem;color:var(--cream-dim)}
-.prat-text strong{color:var(--cream)}
-.badge-soon{font-family:var(--fm);font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:rgba(194,74,30,.18);border:1px solid rgba(194,74,30,.38);color:#F5976C;white-space:nowrap}
-.btn-notify{padding:6px 16px;background:linear-gradient(135deg,#9a3a12,#C44A1E);border:none;border-radius:20px;font-family:var(--fm);font-size:0.62rem;letter-spacing:1.5px;text-transform:uppercase;color:#fff;cursor:pointer;transition:all .2s}
-.btn-notify:hover{transform:translateY(-1px);filter:brightness(1.1)}
+        /* SUGGESTION BANNER */
+        .suggestion-banner {
+            background: linear-gradient(135deg, #fffbf5, #fff7ee);
+            border-radius: var(--radius);
+            padding: 1.2rem 1.4rem;
+            margin-bottom: 1.2rem;
+            border-left: 3px solid var(--gold);
+            border-top: 1px solid var(--gold-dim);
+            border-right: 1px solid var(--faint);
+            border-bottom: 1px solid var(--faint);
+            display: none;
+        }
+        .suggestion-body { font-size: 0.8rem; color: var(--muted); line-height: 1.6; }
 
-/* ARTICLE */
-.article-wrap{margin-top:4rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r2);padding:2.5rem;backdrop-filter:blur(12px)}
-.article-wrap h2{font-family:var(--fd);font-size:1.55rem;background:linear-gradient(135deg,var(--gold-a),var(--gold-b));-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:1.4rem}
-.article-wrap h3{font-family:var(--fd);font-size:0.95rem;color:var(--gold-b);margin:1.5rem 0 0.55rem;letter-spacing:.05em;font-weight:600}
-.article-wrap p{font-size:1rem;color:var(--cream-dim);margin-bottom:.8rem;line-height:1.75}
-.quote-block{margin-top:2rem;border-left:2px solid var(--gold-b);padding:.75rem 1.2rem;font-style:italic;color:var(--cream-dim);font-size:1rem}
-.footer{margin-top:4rem;text-align:center;padding-top:2rem;border-top:1px solid var(--border)}
-.footer-name{font-family:var(--fd);font-size:1.05rem;color:var(--gold-b);margin-bottom:.3rem}
-.footer-sub{font-size:0.72rem;color:var(--muted);font-style:italic}
-.toast{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%) translateY(120px);background:rgba(18,14,8,.96);border:1px solid var(--border-hi);border-radius:3rem;padding:0.7rem 1.6rem;font-family:var(--fm);font-size:0.72rem;letter-spacing:1px;color:var(--gold-a);backdrop-filter:blur(12px);transition:transform .35s cubic-bezier(.2,.9,.3,1.1);z-index:100;white-space:nowrap}
-.toast.show{transform:translateX(-50%) translateY(0)}
-</style>
+        /* DRESS ORACLE */
+        .dress-section {
+            background: var(--card);
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(184,133,58,0.12);
+            box-shadow: var(--shadow);
+        }
+        .dress-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+        .dress-tile { background: var(--parchment); border-radius: var(--radius-sm); padding: 1rem; text-align: center; border: 1px solid var(--faint); }
+        .dress-person-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 600; color: var(--ink); margin-bottom: 0.7rem; }
+        .swatch-row { display: flex; justify-content: center; gap: 0.5rem; margin-bottom: 0.7rem; flex-wrap: wrap; }
+        .swatch { width: 28px; height: 28px; border-radius: 50%; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 1px 4px rgba(0,0,0,0.12); }
+        .dress-tip { font-size: 0.74rem; color: var(--muted); line-height: 1.4; font-style: italic; }
+
+        .occasion-row { border-top: 1px solid var(--faint); padding-top: 1rem; display: flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+        .occasion-label-text { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); white-space: nowrap; }
+        .occ-btns { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+        .occ-btn {
+            background: var(--parchment);
+            border: 1px solid var(--faint);
+            border-radius: 30px;
+            padding: 0.3rem 0.9rem;
+            font-size: 0.68rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--muted);
+            cursor: pointer;
+            transition: all 0.2s;
+            width: auto;
+            margin: 0;
+        }
+        .occ-btn.active, .occ-btn:hover { background: var(--gold); color: #fff; border-color: var(--gold); }
+
+        /* CTA */
+        .cta-btn {
+            width: 100%;
+            background: var(--ink);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 1rem 2rem;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.88rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: background 0.25s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+        }
+        .cta-btn:hover { background: #3a2c1e; transform: translateY(-1px); }
+        .cta-btn .icon { font-size: 1rem; }
+
+        footer { text-align: center; margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid var(--faint); }
+        .footer-sig { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-style: italic; color: var(--gold); margin-bottom: 0.4rem; }
+        .footer-note { font-size: 0.63rem; color: #bbb; letter-spacing: 0.5px; line-height: 1.6; }
+
+        @media (max-width: 680px) {
+            .page-wrapper { padding: 2rem 1rem 3rem; }
+            .partners-grid, .compound-row, .dress-grid { grid-template-columns: 1fr; }
+            .insight-strip { grid-template-columns: 1fr 1fr; }
+            h1 { font-size: 3rem; }
+        }
+        @media (max-width: 400px) { .insight-strip { grid-template-columns: 1fr 1fr; } }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        .partner-card, .compat-banner, .insight-tile, .compound-section, .dress-section { animation: fadeIn 0.4s ease both; }
+        .partner-card:nth-child(1) { animation-delay: 0.05s; }
+        .partner-card:nth-child(2) { animation-delay: 0.10s; }
+        .compat-banner { animation-delay: 0.15s; }
+    </style>
 </head>
 <body>
-<div class="bg-layer"></div>
-<div class="stars"></div>
-<div class="app">
+<div class="page-wrapper">
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="eyebrow">ᳰ Ākāśa Gaṇita ᳰ</div>
-    <h1>Free Vedic Numerology Calculator</h1>
-    <p class="header-sub">Moolank · Bhagyank · Mahadasha · Antardasha · Vedic Grid</p>
-    <p class="seo-tagline">Free Online Vedic Numerology by Date of Birth — Authentic Jyotish Ankaśāstra</p>
-  </header>
+    <header>
+        <div class="eyebrow">numerology · soul sync · compound oracle</div>
+        <h1>Match<em>mak</em>ing</h1>
+        <p class="header-sub">root number · destiny · compound name vibrations · aura colours</p>
+    </header>
 
-  <!-- INPUT -->
-  <div class="input-card">
-    <div class="input-row">
-      <div class="field-group">
-        <label class="field-label" for="dobInput">Birth Date</label>
-        <input class="field-input" type="date" id="dobInput" value="1994-09-17">
-      </div>
-      <button class="btn btn-calc" id="calcBtn">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm1 10H7V7h2v4zm0-6H7V3h2v2z"/></svg>
-        Calculate
-      </button>
-      <button class="btn btn-wa" id="waBtn">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.557 4.122 1.533 5.858L.054 23.447a.5.5 0 0 0 .611.61l5.72-1.502A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.953 9.953 0 0 1-5.204-1.458l-.374-.22-3.394.891.905-3.301-.241-.381A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Share
-      </button>
-      <button class="btn btn-pdf" id="pdfBtn">
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6L9 1z"/><path d="M9 1v5h5M5 10h6M5 12.5h4"/></svg>
-        PDF
-      </button>
-    </div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats-row">
-    <div class="stat-card"><div class="stat-label">Moolank</div><div class="stat-num" id="sRoot">—</div><div class="stat-planet" id="sRootName"></div></div>
-    <div class="stat-card"><div class="stat-label">Bhagyank</div><div class="stat-num" id="sDest">—</div><div class="stat-planet" id="sDestName"></div></div>
-    <div class="stat-card"><div class="stat-label">Mahadasha</div><div class="stat-num" id="sMaha">—</div><div class="stat-planet" id="sMahaName"></div></div>
-    <div class="stat-card"><div class="stat-label">Antardasha</div><div class="stat-num" id="sAntar">—</div><div class="stat-planet" id="sAntarName"></div></div>
-  </div>
-
-  <!-- PROMO -->
-  <div class="promo-banner">
-    <div class="promo-sweep"></div>
-    <div class="promo-left">
-      <div class="promo-eyebrow">✦ Pro Upgrade</div>
-      <div class="promo-title">Unlock Dasha Pratyantar</div>
-      <div class="promo-desc">Go beyond yearly Antardasha — see week-level sub-periods, month-by-month planetary rulers, and a full 3-level dasha tree for every year in your chart.</div>
-      <div class="promo-feats">
-        <span class="promo-feat">⬡ Pratyantar periods</span>
-        <span class="promo-feat">⬡ Monthly breakdown</span>
-        <span class="promo-feat">⬡ 3-level dasha tree</span>
-        <span class="promo-feat">⬡ PDF export</span>
-      </div>
-    </div>
-    <div class="promo-right">
-      <div class="promo-price"><span class="promo-amt">₹599</span><span class="promo-per">/ one-time</span></div>
-      <button class="promo-cta" onclick="showToast('Early access opening soon — you\'re on the list ✦')">
-        Get Early Access
-        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-      </button>
-      <div class="promo-note">Early bird · Limited seats</div>
-    </div>
-  </div>
-
-  <!-- TABS -->
-  <div class="tabs-wrap">
-    <div class="tabs" role="tablist">
-      <button class="tab active" data-tab="grid" role="tab">
-        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="10" y="1" width="5" height="5" rx="1"/><rect x="1" y="10" width="5" height="5" rx="1"/><rect x="10" y="10" width="5" height="5" rx="1"/></svg>
-        Vedic Grid
-      </button>
-      <button class="tab" data-tab="maha" role="tab">
-        <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 4v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
-        Mahadasha
-      </button>
-      <button class="tab" data-tab="antar" role="tab">
-        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 1v3M11 1v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M1 7h14" stroke="currentColor" stroke-width="1"/></svg>
-        Yearly Antardasha
-      </button>
-      <button class="tab" data-tab="twenty" role="tab">
-        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zM9 2h5v5H9zM2 9h5v5H2zM9 9h5v5H9z" opacity=".5"/></svg>
-        5-Year View
-      </button>
-    </div>
-  </div>
-
-  <!-- TAB: GRID -->
-  <div id="tab-grid" class="tab-pane active">
-    <div class="section-card">
-      <div class="section-title">Sacred Vedic Grid</div>
-      <div class="grid-layout">
-        <div class="vedic-grid" id="vedicGrid"></div>
-        <div class="grid-info">
-          <h3>Placement Breakdown</h3>
-          <div id="breakdownGrid"></div>
-          <div class="grid-note">Fixed positions: 3·1·9 (celestial row) · 6·7·5 (earthly row) · 2·8·4 (ancestral row). Repeated digits amplify that planet's energy; absent numbers indicate areas requiring conscious effort.</div>
+    <div class="partners-grid">
+        <div class="partner-card">
+            <div class="card-glyph">I</div>
+            <div class="partner-name-label" id="p1NameLabel">First Soul</div>
+            <div class="field-group">
+                <label>First Name</label>
+                <input type="text" id="name1" placeholder="e.g. Rohan" value="Rohan" autocomplete="name">
+            </div>
+            <div class="field-group">
+                <label>Date of Birth</label>
+                <input type="date" id="dob1" value="1992-07-14">
+            </div>
+            <div class="stats-pill" id="p1Stats">root — &nbsp;|&nbsp; destiny — &nbsp;|&nbsp; name —</div>
+            <div class="lucky-row" id="p1Lucky"></div>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB: MAHA -->
-  <div id="tab-maha" class="tab-pane">
-    <div class="section-card">
-      <div class="section-title">100-Year Mahadasha Cycle</div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start</th><th>End</th><th>Duration</th></tr></thead>
-          <tbody id="mahaBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB: ANTAR -->
-  <div id="tab-antar" class="tab-pane">
-    <div class="section-card">
-      <div class="section-title">Yearly Antardasha (100 Years)</div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Year</th><th>Yr%100</th><th>Moolank</th><th>Month</th><th>Day#</th><th>Sum → Root</th><th>Antardasha</th></tr></thead>
-          <tbody id="antarBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- TAB: 20-YEAR (5-grid view) -->
-  <div id="tab-twenty" class="tab-pane">
-    <div class="section-card">
-      <div class="section-title">5-Year Holographic View</div>
-
-      <div class="twenty-header">
-        <div class="twenty-range" id="twentyRange">— — — —</div>
-        <button class="twenty-nav-btn" id="prev5Btn">← Prev 5</button>
-        <button class="twenty-nav-btn accent" id="jumpNowBtn">◉ Today</button>
-        <button class="twenty-nav-btn" id="next5Btn">Next 5 →</button>
-      </div>
-
-      <!-- Five mini grids -->
-      <div class="five-grid-strip" id="fiveGridStrip"></div>
-
-      <!-- Detail panel -->
-      <div class="twenty-detail" id="twentyDetail">
-        <div class="td-inner">
-          <div class="td-left" id="tdLeft"></div>
-          <div class="td-right" id="tdRight"></div>
+        <div class="partner-card">
+            <div class="card-glyph">II</div>
+            <div class="partner-name-label" id="p2NameLabel">Second Soul</div>
+            <div class="field-group">
+                <label>First Name</label>
+                <input type="text" id="name2" placeholder="e.g. Rima" value="Rima" autocomplete="name">
+            </div>
+            <div class="field-group">
+                <label>Date of Birth</label>
+                <input type="date" id="dob2" value="1995-05-22">
+            </div>
+            <div class="stats-pill" id="p2Stats">root — &nbsp;|&nbsp; destiny — &nbsp;|&nbsp; name —</div>
+            <div class="lucky-row" id="p2Lucky"></div>
         </div>
-      </div>
-
-      <!-- Year-by-year nav -->
-      <div class="twenty-yr-nav">
-        <div class="tyn-btns">
-          <button class="twenty-nav-btn" id="prevYrBtn">← Prev year</button>
-          <button class="twenty-nav-btn" id="nextYrBtn">Next year →</button>
-        </div>
-        <div class="tyn-hint">Click any grid above · or use arrows to step year by year</div>
-      </div>
-
-      <!-- Pratyantar teaser -->
-      <div class="prat-teaser">
-        <div class="prat-text"><strong>Dasha Pratyantar</strong> — Sub-sub periods for week-level precision within each Antardasha.</div>
-        <div style="display:flex;align-items:center;gap:.6rem">
-          <span class="badge-soon">Coming Soon</span>
-          <button class="btn-notify" onclick="showToast('You\'ll be notified when Pratyantar launches!')">Notify Me</button>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- ARTICLE -->
-  <article class="article-wrap">
-    <h2>Free Vedic Numerology Calculator — Complete Guide</h2>
-    <p>This <strong>free Vedic Numerology calculator</strong> uses your exact date of birth to reveal your complete cosmic blueprint. Based on authentic Jyotish Ankaśāstra, it maps each digit to a Jyotish planet and tracks major planetary periods spanning your entire life — no sign-up required.</p>
-    <h3>What is Vedic Numerology (Ankaśāstra)?</h3>
-    <p>Vedic numerology — Ankaśāstra — is the ancient Indian science of numbers rooted in Jyotish astrology. Unlike Western numerology, every digit corresponds to one of nine Jyotish planets and influences your personality, destiny, and life cycles.</p>
-    <h3>Moolank Calculator — Your Birth Number</h3>
-    <p>Your <strong>Moolank</strong> (birth number or root number) is derived by reducing your birth day to a single digit (1–9). Each planet governs a number: Sun (1), Moon (2), Jupiter (3), Rahu (4), Mercury (5), Venus (6), Ketu (7), Saturn (8), Mars (9). Use our free Moolank calculator above to find yours instantly.</p>
-    <h3>Bhagyank Calculator — Your Destiny Number</h3>
-    <p>The <strong>Bhagyank</strong> (destiny number or life path number) is found by summing all digits of your complete birth date and reducing to a single digit. It governs your career, destiny, and spiritual direction. Our free Bhagyank calculator shows this alongside detailed Jyotish interpretation.</p>
-    <h3>Mahadasha — The 100-Year Vedic Planetary Cycle</h3>
-    <p>The <strong>Mahadasha</strong> is a major planetary period in Vedic numerology. The cycle starts from your Moolank, moves through planets 1–9, with each planet ruling for years equal to its number (Sun = 1 year, Moon = 2 years … Mars = 9 years). Our free Mahadasha calculator shows your complete 100-year cycle.</p>
-    <h3>Antardasha — Yearly Sub-Periods</h3>
-    <p>Each calendar year carries an <strong>Antardasha</strong> sub-ruler computed from your birth year, Moolank, birth month, and the weekday of that year's birthday — all reduced to a single digit. This reveals the planetary influence governing each year of your life.</p>
-    <h3>The Sacred Vedic Numerology Grid</h3>
-    <p>The 3×3 Vedic grid uses fixed positions: 3-1-9 (divine/celestial row), 6-7-5 (material/earthly row), 2-8-4 (ancestral row). Digits from your birth date are placed in their respective positions. Repeated digits intensify that planet's vibration; absent numbers indicate areas requiring conscious development.</p>
-    <h3>How to Use This Free Vedic Numerology Calculator</h3>
-    <p>Simply enter your date of birth in the calculator above and click Calculate. You'll instantly get your Moolank, Bhagyank, current Mahadasha, current Antardasha, your sacred Vedic grid, and a 5-year holographic planetary view — completely free.</p>
-    <div class="quote-block">"Yathā pinde tathā brahmāṇḍe" — As in the microcosm, so in the macrocosm. Your numbers mirror the universe.</div>
-  </article>
+    <div class="compat-banner">
+        <div class="heart-row" id="heartRating">♡ ♡ ♡</div>
+        <div class="compat-score" id="compatPercent">--%</div>
+        <div class="compat-tag" id="matchMsg">enter both partners to reveal alignment</div>
+        <div class="enemy-warning" id="enemyWarning"></div>
+    </div>
 
-  <footer class="footer">
-    <div class="footer-name">✦ Designed by Himangshu</div>
-    <div class="footer-sub">Ākāśa Gaṇita — Free Vedic Numerology Calculator · Authentic Jyotish Ankaśāstra</div>
-  </footer>
+    <div class="insight-strip">
+        <div class="insight-tile">
+            <div class="tile-label">Root Numbers</div>
+            <div class="tile-value" id="rootPair">—</div>
+        </div>
+        <div class="insight-tile">
+            <div class="tile-label">Destiny</div>
+            <div class="tile-value" id="destinyPair">—</div>
+        </div>
+        <div class="insight-tile">
+            <div class="tile-label">Name Number</div>
+            <div class="tile-value" id="namePair">—</div>
+        </div>
+        <div class="insight-tile">
+            <div class="tile-label">Aura Sync</div>
+            <div class="tile-value" id="auraSync" style="font-size:0.78rem;">—</div>
+        </div>
+    </div>
+
+    <div class="compound-section">
+        <div class="section-head">✦ Compound Name Vibration</div>
+        <div class="compound-row">
+            <div class="compound-tile" id="compoundTile1">
+                <div class="compound-person" id="compoundNum1">—</div>
+                <div class="compound-body" id="compoundDesc1">—</div>
+                <div class="name-correction-notice" id="nameCorrect1">⚠️ This compound number carries challenging vibrations. A <strong>name correction by a qualified numerologist</strong> is recommended to align your energy for greater harmony and success.</div>
+            </div>
+            <div class="compound-tile" id="compoundTile2">
+                <div class="compound-person" id="compoundNum2">—</div>
+                <div class="compound-body" id="compoundDesc2">—</div>
+                <div class="name-correction-notice" id="nameCorrect2">⚠️ This compound number carries challenging vibrations. A <strong>name correction by a qualified numerologist</strong> is recommended to align your energy for greater harmony and success.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="suggestion-banner" id="suggestionBox">
+        <div class="section-head">✧ Name Guidance</div>
+        <div class="suggestion-body" id="suggestionText"></div>
+    </div>
+
+    <div class="dress-section">
+        <div class="section-head">☽ Dress Code Oracle</div>
+        <div class="dress-grid">
+            <div class="dress-tile">
+                <div class="dress-person-name" id="dressPerson1">—</div>
+                <div class="swatch-row" id="dressColors1"></div>
+                <div class="dress-tip" id="dressTip1">enter details above</div>
+            </div>
+            <div class="dress-tile">
+                <div class="dress-person-name" id="dressPerson2">—</div>
+                <div class="swatch-row" id="dressColors2"></div>
+                <div class="dress-tip" id="dressTip2">enter details above</div>
+            </div>
+        </div>
+        <div class="occasion-row">
+            <span class="occasion-label-text">Occasion:</span>
+            <div class="occ-btns">
+                <button class="occ-btn" data-occasion="date">❤️ Date</button>
+                <button class="occ-btn" data-occasion="meeting">🤝 Meeting</button>
+                <button class="occ-btn" data-occasion="party">🎉 Celebration</button>
+                <button class="occ-btn active" data-occasion="daily">✨ Daily</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="cta-btn" id="syncBtn">
+        <span class="icon">✦</span> Reveal Alignment & Compound Fate
+    </button>
+
+    <footer>
+        <div class="footer-sig">synastry</div>
+        <div class="footer-note">
+            root number · destiny · compound range 10–80 · exact meanings from sacred numerology text<br>
+            for entertainment &amp; spiritual guidance only
+        </div>
+    </footer>
+
 </div>
-<div class="toast" id="toast"></div>
 
 <script>
-// ── CORE ENGINE ──────────────────────────────────────────
-const P={1:{n:"Sun",s:"☉"},2:{n:"Moon",s:"☽"},3:{n:"Jupiter",s:"♃"},4:{n:"Rahu",s:"☊"},5:{n:"Mercury",s:"☿"},6:{n:"Venus",s:"♀"},7:{n:"Ketu",s:"☋"},8:{n:"Saturn",s:"♄"},9:{n:"Mars",s:"♂"}};
-const LAYOUT=[3,1,9,6,7,5,2,8,4];
-const DOW_MAP={0:1,1:2,2:9,3:5,4:3,5:6,6:8};
-
-const reduce=n=>{let x=Math.abs(+n);while(x>9){let s=0;while(x){s+=x%10;x=Math.floor(x/10);}x=s;}return x;};
-const rootFromDay=d=>reduce([...String(d)].reduce((a,c)=>a+ +c,0));
-const bhagyank=(d,m,y)=>reduce([...String(d),...String(m),...String(y)].reduce((a,c)=>a+ +c,0));
-const dowNum=dt=>DOW_MAP[dt.getDay()];
-
-const getFreq=(dob,root,dest)=>{
-  const d=dob.getDate(),m=dob.getMonth()+1,y=dob.getFullYear();
-  const nums=[...String(d).split('').map(Number),...String(m).split('').map(Number),...String(y).slice(-2).split('').map(Number),root,dest].filter(v=>v>=1&&v<=9);
-  const f=new Array(10).fill(0);nums.forEach(v=>f[v]++);return f;
-};
-
-const genMahaSeq=(root,dob)=>{
-  const order=[];for(let i=root;i<=9;i++)order.push(i);for(let i=1;i<root;i++)order.push(i);
-  let seq=[],cur=new Date(dob),total=0,idx=0;
-  while(total<100){const num=order[idx%order.length];const dur=Math.min(num,100-total);const start=new Date(cur),end=new Date(cur);end.setFullYear(end.getFullYear()+dur);seq.push({num,dur,start,end});cur=end;total+=dur;idx++;}
-  return seq;
-};
-
-const getMahaForYear=(yr,root,dob)=>{
-  const order=[];for(let i=root;i<=9;i++)order.push(i);for(let i=1;i<root;i++)order.push(i);
-  let cur=new Date(dob);
-  for(let i=0;i<200;i++){const num=order[i%order.length],dur=num;const next=new Date(cur);next.setFullYear(next.getFullYear()+dur);if(yr>=cur.getFullYear()&&yr<next.getFullYear())return num;cur=next;}return 1;
-};
-
-const getAntarForYear=(yr,dob,root)=>{
-  const m=dob.getMonth()+1;
-  let bd=new Date(yr,dob.getMonth(),dob.getDate());
-  if(bd.getMonth()!==dob.getMonth())bd=new Date(yr,1,28);
-  const dow=dowNum(bd),yy=yr%100,raw=yy+root+m+dow,red=reduce(raw);
-  return{yy,m,dow,raw,red};
-};
-
-// ── STATE ────────────────────────────────────────────────
-let DOB,ROOT,DEST,MAHAS;
-let centerYear=null; // middle year of the 5-card window
-let selYear=null;
-
-// ── UTILS ────────────────────────────────────────────────
-function buildYrData(y){
-  const baseFreq=getFreq(DOB,ROOT,DEST);
-  const mNum=getMahaForYear(y,ROOT,DOB);
-  const antar=getAntarForYear(y,DOB,ROOT);
-  const yf=[...baseFreq];
-  if(mNum>=1)yf[mNum]++;
-  if(antar.red>=1)yf[antar.red]++;
-  return{y,mNum,antar,yf};
-}
-
-// ── RENDER: MAIN STATS ───────────────────────────────────
-function renderStats(){
-  const today=new Date(),todayY=today.getFullYear();
-  const mahaNum=getMahaForYear(todayY,ROOT,DOB);
-  const antar=getAntarForYear(todayY,DOB,ROOT);
-  document.getElementById('sRoot').textContent=ROOT;
-  document.getElementById('sRootName').textContent=`${P[ROOT].s} ${P[ROOT].n}`;
-  document.getElementById('sDest').textContent=DEST;
-  document.getElementById('sDestName').textContent=`${P[DEST].s} ${P[DEST].n}`;
-  document.getElementById('sMaha').textContent=mahaNum;
-  document.getElementById('sMahaName').textContent=`${P[mahaNum].s} ${P[mahaNum].n}`;
-  document.getElementById('sAntar').textContent=antar.red;
-  document.getElementById('sAntarName').textContent=`${P[antar.red].s} ${P[antar.red].n}`;
-}
-
-// ── RENDER: VEDIC GRID TAB ───────────────────────────────
-function renderVedicGrid(){
-  const freq=getFreq(DOB,ROOT,DEST);
-  const grid=document.getElementById('vedicGrid');
-  grid.innerHTML='';
-  LAYOUT.forEach(pos=>{
-    const cnt=freq[pos]||0;
-    const cell=document.createElement('div');
-    cell.className='grid-cell';
-    cell.innerHTML=`<div class="cell-pos ${cnt>0?'filled':''}">${pos}</div><div class="cell-dots">${cnt>0?String(pos).repeat(cnt):''}</div>`;
-    grid.appendChild(cell);
-  });
-  const d=DOB.getDate(),m=DOB.getMonth()+1,y=DOB.getFullYear();
-  document.getElementById('breakdownGrid').innerHTML=[
-    ['Day',`${d}`,`→ digits: ${[...String(d)].join(' + ')}`],
-    ['Month',`${m}`,`→ digits: ${[...String(m)].join(' + ')}`],
-    ['Year (last 2)',String(y).slice(-2),`→ digits: ${[...String(y).slice(-2)].join(' + ')}`],
-    ['Moolank',ROOT,`${P[ROOT].s} ${P[ROOT].n}`],
-    ['Bhagyank',DEST,`${P[DEST].s} ${P[DEST].n}`],
-  ].map(([k,v,note])=>`<div class="breakdown-item"><span class="breakdown-key">${k} <small style="opacity:.6">${note}</small></span><span class="breakdown-val">${v}</span></div>`).join('');
-}
-
-// ── RENDER: MAHADASHA TABLE ──────────────────────────────
-function renderMahaDasha(){
-  const today=new Date();
-  document.getElementById('mahaBody').innerHTML=MAHAS.map((m,i)=>{
-    const active=today>=m.start&&today<m.end;
-    return`<tr class="${active?'hi':''}"><td>${i+1}</td><td>${P[m.num].s} ${P[m.num].n}${active?'<span class="badge-now">NOW</span>':''}</td><td>${m.num}</td><td>${m.start.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td><td>${m.end.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td><td>${m.dur} yr</td></tr>`;
-  }).join('');
-}
-
-// ── RENDER: ANTARDASHA TABLE ─────────────────────────────
-function renderAntarDasha(){
-  const todayY=new Date().getFullYear();
-  let rows='';
-  for(let i=0;i<100;i++){
-    const y=DOB.getFullYear()+i,a=getAntarForYear(y,DOB,ROOT),active=y===todayY;
-    rows+=`<tr class="${active?'hi':''}"><td>${y}${active?'<span class="badge-now">NOW</span>':''}</td><td>${a.yy}</td><td>${ROOT}</td><td>${a.m}</td><td>${a.dow}</td><td>${a.raw} → ${a.red}</td><td>${P[a.red].s} ${P[a.red].n}</td></tr>`;
-  }
-  document.getElementById('antarBody').innerHTML=rows;
-}
-
-// ── RENDER: 5-GRID STRIP ─────────────────────────────────
-function getWindowYears(){
-  // centerYear is the middle card; window = [c-2, c-1, c, c+1, c+2]
-  return[centerYear-2,centerYear-1,centerYear,centerYear+1,centerYear+2];
-}
-
-function renderMiniGrid(yd){
-  return LAYOUT.map(pos=>{
-    const cnt=yd.yf[pos]||0;
-    const isMaha=pos===yd.mNum,isAntar=pos===yd.antar.red,isBoth=isMaha&&isAntar;
-    const cellCls=isBoth?'fgc-cell cb':isMaha?'fgc-cell cm':isAntar?'fgc-cell ca':'fgc-cell';
-    const dot=isBoth?'<div class="fgc-mdot db"></div>':isMaha?'<div class="fgc-mdot dm"></div>':isAntar?'<div class="fgc-mdot da"></div>':'';
-    return`<div class="${cellCls}">${dot}<div class="fgc-n ${cnt>0?'lit':''}">${pos}</div><div class="fgc-d">${cnt>0?'·'.repeat(cnt):''}</div></div>`;
-  }).join('');
-}
-
-function renderFiveGridStrip(){
-  const years=getWindowYears();
-  const todayY=new Date().getFullYear();
-  document.getElementById('twentyRange').textContent=`${years[0]} — ${years[4]}`;
-
-  const strip=document.getElementById('fiveGridStrip');
-  strip.innerHTML='';
-
-  years.forEach(y=>{
-    const yd=buildYrData(y);
-    const isNow=y===todayY,isSel=y===selYear,isPast=y<todayY;
-    const card=document.createElement('div');
-    let cls='fg-card';
-    if(isSel)cls+=' is-sel';
-    if(isNow)cls+=' is-now';
-    if(isPast&&!isNow)cls+=' is-past';
-    card.className=cls;
-    card.innerHTML=`
-      <div class="fgc-year-row">
-        ${isNow?`<span class="now-pulse"></span>`:''}
-        ${y}
-      </div>
-      <div class="fgc-vgrid">${renderMiniGrid(yd)}</div>
-      <div class="fgc-planets">
-        <div class="fgc-pill mp">${P[yd.mNum].s} ${P[yd.mNum].n.slice(0,4)}</div>
-        <div class="fgc-pill ap">${P[yd.antar.red].s} ${P[yd.antar.red].n.slice(0,4)}</div>
-      </div>
-      <div class="fgc-tag">${isPast&&!isNow?'past':isNow?'now':'future'}</div>`;
-    card.onclick=()=>{selYear=y;renderFiveGridStrip();renderDetailPanel();};
-    strip.appendChild(card);
-  });
-}
-
-// ── RENDER: DETAIL PANEL ─────────────────────────────────
-function renderDetailPanel(){
-  const todayY=new Date().getFullYear();
-  const yd=buildYrData(selYear);
-  const{mNum,antar,yf}=yd;
-  const isNow=selYear===todayY,isPast=selYear<todayY;
-
-  // Left: year hero + planets + calc
-  let badge='';
-  if(isNow) badge=`<div class="td-now-badge"><span class="now-pulse"></span>Current Year</div>`;
-  else if(isPast) badge=`<div class="td-past-badge">Past</div>`;
-  else badge=`<div class="td-future-badge">Future</div>`;
-
-  document.getElementById('tdLeft').innerHTML=`
-    <div class="td-year-hero">
-      <div class="td-year-num">${selYear}</div>
-      ${badge}
-    </div>
-    <div class="td-planets">
-      <div class="td-planet">
-        <div class="td-orb mo">${P[mNum].s}</div>
-        <div class="td-pinfo">
-          <span class="td-ptype">Mahadasha</span>
-          <span class="td-pname">${P[mNum].n}</span>
-          <span class="td-pnum">${mNum}</span>
-        </div>
-      </div>
-      <div class="td-planet">
-        <div class="td-orb ao">${P[antar.red].s}</div>
-        <div class="td-pinfo">
-          <span class="td-ptype">Antardasha</span>
-          <span class="td-pname">${P[antar.red].n}</span>
-          <span class="td-pnum">${antar.red}</span>
-        </div>
-      </div>
-    </div>
-    <div class="td-calc">
-      Year % 100: <span>${antar.yy}</span> &nbsp;+&nbsp;
-      Moolank: <span>${ROOT}</span> &nbsp;+&nbsp;
-      Month: <span>${antar.m}</span> &nbsp;+&nbsp;
-      Weekday: <span>${antar.dow}</span>
-      &nbsp;=&nbsp; <span>${antar.raw}</span> → <span>${antar.red}</span>
-    </div>`;
-
-  // Right: big vedic grid + legend + influence bars
-  const bigCells=LAYOUT.map(pos=>{
-    const cnt=yf[pos]||0;
-    const isMaha=pos===mNum,isAntar=pos===antar.red,isBoth=isMaha&&isAntar;
-    const cls=isBoth?'td-cell tcb':isMaha?'td-cell tcm':isAntar?'td-cell tca':'td-cell';
-    const tag=isBoth?'<div class="td-ctag bt">M+A</div>':isMaha?'<div class="td-ctag mt">M</div>':isAntar?'<div class="td-ctag at">A</div>':'';
-    return`<div class="${cls}">${tag}<div class="td-cnum ${cnt>0?'lit':''}">${pos}</div><div class="td-cdots">${cnt>0?String(pos).repeat(cnt):''}</div></div>`;
-  }).join('');
-
-  const barData=LAYOUT.map(d=>({d,cnt:yf[d]||0,isMaha:d===mNum,isAntar:d===antar.red}))
-    .filter(x=>x.cnt>0).sort((a,b)=>b.cnt-a.cnt).slice(0,5);
-  const maxCnt=Math.max(...barData.map(x=>x.cnt),1);
-  const bars=barData.map(x=>{
-    const cls=x.isMaha&&x.isAntar?'fb':x.isMaha?'fm':x.isAntar?'fa':'fb';
-    return`<div class="tdi-row">
-      <span class="tdi-name">${P[x.d].s} ${P[x.d].n.slice(0,4)}</span>
-      <div class="tdi-track"><div class="tdi-fill ${cls}" style="width:${Math.round(x.cnt/maxCnt*100)}%"></div></div>
-      <span class="tdi-cnt">×${x.cnt}</span>
-    </div>`;
-  }).join('');
-
-  document.getElementById('tdRight').innerHTML=`
-    <div class="td-grid-label">Vedic Grid — ${selYear}</div>
-    <div class="td-vgrid">${bigCells}</div>
-    <div class="td-legend">
-      <div class="tdl"><div class="tdl-dot" style="background:rgba(194,74,30,.65)"></div>Mahadasha</div>
-      <div class="tdl"><div class="tdl-dot" style="background:rgba(26,130,100,.65)"></div>Antardasha</div>
-      <div class="tdl"><div class="tdl-dot" style="background:rgba(200,148,48,.65)"></div>Both</div>
-    </div>
-    ${bars?`<div class="td-influence"><div class="tdi-label">Planetary influence</div><div class="tdi-bars">${bars}</div></div>`:''}`;
-}
-
-// ── RENDER: FULL 5-YEAR VIEW ─────────────────────────────
-function renderFiveView(){
-  renderFiveGridStrip();
-  renderDetailPanel();
-}
-
-// ── RENDER ALL ───────────────────────────────────────────
-function render(){
-  if(!DOB)return;
-  renderStats();
-  renderVedicGrid();
-  renderMahaDasha();
-  renderAntarDasha();
-  renderFiveView();
-}
-
-// ── INIT ─────────────────────────────────────────────────
-function init(dateStr){
-  const d=new Date(dateStr);if(isNaN(d))return;
-  DOB=d;ROOT=rootFromDay(d.getDate());
-  DEST=bhagyank(d.getDate(),d.getMonth()+1,d.getFullYear());
-  MAHAS=genMahaSeq(ROOT,DOB);
-  const todayY=new Date().getFullYear();
-  centerYear=todayY;
-  selYear=todayY;
-  render();
-}
-
-// ── EVENTS: INPUT ────────────────────────────────────────
-document.getElementById('calcBtn').onclick=()=>{
-  const v=document.getElementById('dobInput').value;
-  if(v){init(v);showToast('Chart generated ✦');}
-};
-document.getElementById('dobInput').addEventListener('change',e=>init(e.target.value));
-
-// ── EVENTS: TABS ─────────────────────────────────────────
-document.querySelectorAll('.tab').forEach(btn=>{
-  btn.addEventListener('click',()=>{
-    document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
-    document.querySelectorAll('.tab-pane').forEach(p=>p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
-  });
-});
-['maha','antar'].forEach(id=>{
-  document.querySelector(`[data-tab="${id}"]`).addEventListener('click',()=>{
-    setTimeout(()=>{const row=document.querySelector(`#tab-${id} .hi`);if(row)row.scrollIntoView({behavior:'smooth',block:'center'});},80);
-  });
-});
-
-// ── EVENTS: 5-YEAR NAV ───────────────────────────────────
-document.getElementById('prev5Btn').onclick=()=>{
-  centerYear-=5;
-  // keep selYear inside window if possible, else set to new center
-  const years=getWindowYears();
-  if(!years.includes(selYear))selYear=centerYear;
-  renderFiveView();
-};
-document.getElementById('next5Btn').onclick=()=>{
-  centerYear+=5;
-  const years=getWindowYears();
-  if(!years.includes(selYear))selYear=centerYear;
-  renderFiveView();
-};
-document.getElementById('jumpNowBtn').onclick=()=>{
-  centerYear=new Date().getFullYear();
-  selYear=centerYear;
-  renderFiveView();
-};
-document.getElementById('prevYrBtn').onclick=()=>{
-  selYear--;
-  // shift window if needed
-  if(selYear<centerYear-2)centerYear=selYear+2;
-  renderFiveView();
-};
-document.getElementById('nextYrBtn').onclick=()=>{
-  selYear++;
-  if(selYear>centerYear+2)centerYear=selYear-2;
-  renderFiveView();
-};
-
-// ── SHARE ────────────────────────────────────────────────
-document.getElementById('waBtn').onclick=()=>{
-  if(!DOB)return;
-  const todayY=new Date().getFullYear();
-  const mNum=getMahaForYear(todayY,ROOT,DOB);
-  const an=getAntarForYear(todayY,DOB,ROOT);
-  const msg=encodeURIComponent(
-    `🪷 Ākāśa Gaṇita — Free Vedic Numerology Calculator\n📅 DOB: ${DOB.toDateString()}\n`+
-    `🌟 Moolank: ${ROOT} (${P[ROOT].s} ${P[ROOT].n})\n`+
-    `🌍 Bhagyank: ${DEST} (${P[DEST].s} ${P[DEST].n})\n`+
-    `⚡ Mahadasha: ${P[mNum].s} ${P[mNum].n}\n`+
-    `🌙 Antardasha: ${P[an.red].s} ${P[an.red].n}\n`+
-    `✨ Calculate free at: vedic-numerology.himangshu.com`
-  );
-  window.open(`https://wa.me/?text=${msg}`,'_blank');
-};
-
-// ── PDF EXPORT (real .pdf via jsPDF + html2canvas) ───────
-document.getElementById('pdfBtn').onclick = async () => {
-  if (!DOB) { showToast('Generate a chart first ✦'); return; }
-  showToast('Building PDF — please wait…');
-
-  const todayY = new Date().getFullYear();
-  const mNum   = getMahaForYear(todayY, ROOT, DOB);
-  const an     = getAntarForYear(todayY, DOB, ROOT);
-  const freq   = getFreq(DOB, ROOT, DEST);
-
-  /* ── build a self-contained off-screen print document ── */
-  const printWin = window.open('', '_blank', 'width=900,height=1,left=-9999,top=-9999');
-  if (!printWin) { showToast('Allow pop-ups to export PDF'); return; }
-
-  // ── helper: grid HTML ──
-  const gridRows = [LAYOUT.slice(0,3), LAYOUT.slice(3,6), LAYOUT.slice(6,9)]
-    .map(row => '<tr>' + row.map(pos => {
-      const cnt = freq[pos] || 0;
-      return `<td class="gc ${cnt>0?'glit':''}"><div class="gn">${pos}</div><div class="gd">${cnt>0?String(pos).repeat(cnt):''}</div></td>`;
-    }).join('') + '</tr>').join('');
-
-  // ── helper: mahadasha rows ──
-  const mahaRows = MAHAS.map((m, i) => {
-    const active = new Date() >= m.start && new Date() < m.end;
-    return `<tr class="${active?'hi':''}">
-      <td>${i+1}</td>
-      <td>${P[m.num].s} ${P[m.num].n}${active?' <span class="now">NOW</span>':''}</td>
-      <td>${m.num}</td>
-      <td>${m.start.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td>
-      <td>${m.end.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td>
-      <td>${m.dur} yr</td>
-    </tr>`;
-  }).join('');
-
-  // ── helper: antardasha rows (100 years) ──
-  let antarRows = '';
-  for (let i = 0; i < 100; i++) {
-    const y = DOB.getFullYear() + i;
-    const a = getAntarForYear(y, DOB, ROOT);
-    const active = y === todayY;
-    antarRows += `<tr class="${active?'hi':''}">
-      <td>${y}${active?' <span class="now">NOW</span>':''}</td>
-      <td>${a.yy}</td><td>${ROOT}</td><td>${a.m}</td><td>${a.dow}</td>
-      <td>${a.raw} → ${a.red}</td>
-      <td>${P[a.red].s} ${P[a.red].n}</td>
-    </tr>`;
-  }
-
-  // ── helper: 5-year grids ──
-  const fiveYears = [todayY-2, todayY-1, todayY, todayY+1, todayY+2];
-  const fiveGridsHtml = fiveYears.map(y => {
-    const yd = buildYrData(y);
-    const isNow = y === todayY;
-    const cells = LAYOUT.map(pos => {
-      const cnt = yd.yf[pos]||0;
-      const isMaha = pos===yd.mNum, isAntar = pos===yd.antar.red, isBoth = isMaha&&isAntar;
-      const cls = isBoth?'gc5 gb':isMaha?'gc5 gm':isAntar?'gc5 ga':'gc5';
-      return `<td class="${cls} ${cnt>0?'glit':''}"><div class="gn5">${pos}</div><div class="gd5">${cnt>0?String(pos).repeat(cnt):''}</div></td>`;
-    });
-    return `<div class="fy-card ${isNow?'fy-now':''}">
-      <div class="fy-yr">${isNow?'● ':''} ${y}</div>
-      <table class="vg5"><tbody>
-        <tr>${cells.slice(0,3).join('')}</tr>
-        <tr>${cells.slice(3,6).join('')}</tr>
-        <tr>${cells.slice(6,9).join('')}</tr>
-      </tbody></table>
-      <div class="fy-pills">
-        <span class="pill-m">${P[yd.mNum].s} ${P[yd.mNum].n}</span>
-        <span class="pill-a">${P[yd.antar.red].s} ${P[yd.antar.red].n}</span>
-      </div>
-    </div>`;
-  }).join('');
-
-  const html = `<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Vedic Numerology Report</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#0d0b07;color:#EFE7D6;font-family:'Crimson Pro',serif;font-size:13px;line-height:1.55;padding:0;width:900px}
-.page{width:900px;padding:40px 48px;background:#0d0b07}
-
-/* cover band */
-.cover{text-align:center;padding:28px 0 24px;border-bottom:1px solid rgba(200,148,48,.25);margin-bottom:28px}
-.cover-eye{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#CA9430;margin-bottom:8px}
-.cover-title{font-family:'Cinzel',serif;font-size:28px;font-weight:700;color:#F6DC8E;margin-bottom:4px}
-.cover-sub{font-size:13px;font-style:italic;color:#B5A888;margin-bottom:6px}
-.cover-date{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#686050}
-
-/* stats strip */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
-.stat{background:#1a1510;border:1px solid rgba(200,148,48,.22);border-radius:10px;padding:12px 8px;text-align:center}
-.stat-l{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#CA9430;margin-bottom:4px}
-.stat-n{font-family:'Cinzel',serif;font-size:28px;color:#F6DC8E;line-height:1}
-.stat-p{font-size:11px;font-style:italic;color:#B5A888;margin-top:3px}
-
-/* section header */
-.sec-head{font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#CA9430;margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(200,148,48,.18);display:flex;align-items:center;gap:8px}
-.sec-head::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(200,148,48,.2),transparent)}
-
-/* vedic grid */
-.vg-wrap{display:flex;gap:28px;align-items:flex-start;margin-bottom:4px}
-table.vg{border-collapse:separate;border-spacing:3px;background:rgba(200,148,48,.14);border-radius:12px;overflow:hidden;padding:3px}
-.gc{width:64px;height:64px;background:#181410;border-radius:5px;text-align:center;vertical-align:middle;padding:4px}
-.gn{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:rgba(200,148,48,.2);line-height:1}
-.gc.glit .gn{color:#CA9430}
-.gd{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#F6DC8E;min-height:13px}
-.vg-info{flex:1}
-.vg-info h4{font-family:'Cinzel',serif;font-size:11px;color:#CA9430;margin-bottom:8px;font-weight:600;letter-spacing:.04em}
-.bd{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(200,148,48,.07);font-size:11px;color:#B5A888}
-.bd:last-child{border-bottom:none}
-.bv{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F6DC8E;background:rgba(200,148,48,.1);padding:2px 8px;border-radius:4px}
-.grid-note{margin-top:10px;padding:8px 10px;background:rgba(200,148,48,.05);border-left:2px solid #8C6018;border-radius:0 6px 6px 0;font-size:11px;color:#B5A888;font-style:italic;line-height:1.5}
-
-/* tables */
-table.data{width:100%;border-collapse:collapse;font-size:11px}
-table.data th{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#CA9430;padding:6px 8px;border-bottom:1px solid rgba(200,148,48,.2);font-weight:400;text-align:left;white-space:nowrap}
-table.data td{padding:5px 8px;border-bottom:1px solid rgba(200,148,48,.06);color:#B5A888;white-space:nowrap}
-table.data td:first-child{color:#EFE7D6;font-weight:500}
-tr.hi td{background:rgba(200,148,48,.1);color:#EFE7D6}
-tr.hi td:first-child{color:#F6DC8E}
-.now{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:1px;background:rgba(200,148,48,.2);border:1px solid rgba(200,148,48,.4);border-radius:20px;padding:1px 6px;color:#F6DC8E;vertical-align:middle;margin-left:4px}
-
-/* 5-year grids */
-.five-grid-row{display:flex;gap:10px;margin-bottom:8px}
-.fy-card{flex:1;background:#111009;border:1px solid rgba(200,148,48,.18);border-radius:10px;padding:8px 6px 10px;text-align:center}
-.fy-card.fy-now{border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.04)}
-.fy-yr{font-family:'Cinzel',serif;font-size:11px;font-weight:600;color:#B5A888;margin-bottom:6px}
-.fy-card.fy-now .fy-yr{color:#4ade80}
-table.vg5{border-collapse:separate;border-spacing:2px;background:rgba(200,148,48,.1);border-radius:7px;overflow:hidden;padding:2px;width:100%}
-.gc5{text-align:center;vertical-align:middle;background:#181410;border-radius:3px;padding:3px 1px}
-.gc5.gm{background:rgba(194,74,30,.2)}
-.gc5.ga{background:rgba(26,130,100,.2)}
-.gc5.gb{background:rgba(200,148,48,.22)}
-.gn5{font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:rgba(200,148,48,.2);line-height:1}
-.gc5.glit .gn5{color:#CA9430}
-.gc5.gm.glit .gn5{color:#f97316}
-.gc5.ga.glit .gn5{color:#34d399}
-.gc5.gb.glit .gn5{color:#F6DC8E}
-.gd5{font-family:'JetBrains Mono',monospace;font-size:6px;color:#F6DC8E;letter-spacing:1px;min-height:8px}
-.fy-pills{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:5px}
-.pill-m{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:20px;background:rgba(194,74,30,.18);color:#f97316;border:1px solid rgba(194,74,30,.25)}
-.pill-a{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:20px;background:rgba(26,130,100,.18);color:#34d399;border:1px solid rgba(26,130,100,.25)}
-
-/* five-grid legend */
-.fg-legend{display:flex;gap:14px;margin-top:8px;margin-bottom:4px}
-.fgl{display:flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:8px;color:#686050;text-transform:uppercase;letter-spacing:.5px}
-.fgl-dot{width:8px;height:8px;border-radius:2px}
-
-/* page break */
-.pb{page-break-before:always;padding-top:40px}
-
-/* footer */
-.footer{margin-top:32px;text-align:center;padding-top:14px;border-top:1px solid rgba(200,148,48,.15)}
-.footer-name{font-family:'Cinzel',serif;font-size:11px;color:#CA9430;margin-bottom:2px}
-.footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:#686050}
-</style>
-</head>
-<body>
-<div class="page">
-
-  <!-- COVER -->
-  <div class="cover">
-    <div class="cover-eye">ᳰ Ākāśa Gaṇita ᳰ</div>
-    <div class="cover-title">Vedic Numerology Report</div>
-    <div class="cover-sub">Moolank · Bhagyank · Mahadasha · Antardasha · Vedic Grid</div>
-    <div class="cover-date">Generated ${new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})} &nbsp;·&nbsp; DOB: ${DOB.toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</div>
-  </div>
-
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat"><div class="stat-l">Moolank</div><div class="stat-n">${ROOT}</div><div class="stat-p">${P[ROOT].s} ${P[ROOT].n}</div></div>
-    <div class="stat"><div class="stat-l">Bhagyank</div><div class="stat-n">${DEST}</div><div class="stat-p">${P[DEST].s} ${P[DEST].n}</div></div>
-    <div class="stat"><div class="stat-l">Mahadasha Now</div><div class="stat-n">${mNum}</div><div class="stat-p">${P[mNum].s} ${P[mNum].n}</div></div>
-    <div class="stat"><div class="stat-l">Antardasha Now</div><div class="stat-n">${an.red}</div><div class="stat-p">${P[an.red].s} ${P[an.red].n}</div></div>
-  </div>
-
-  <!-- VEDIC GRID -->
-  <div class="sec-head">Sacred Vedic Grid</div>
-  <div class="vg-wrap">
-    <table class="vg"><tbody>${gridRows}</tbody></table>
-    <div class="vg-info">
-      <h4>Placement Breakdown</h4>
-      <div class="bd"><span>Day — ${DOB.getDate()} → digits: ${[...String(DOB.getDate())].join(' + ')}</span><span class="bv">${DOB.getDate()}</span></div>
-      <div class="bd"><span>Month — ${DOB.getMonth()+1} → digits: ${[...String(DOB.getMonth()+1)].join(' + ')}</span><span class="bv">${DOB.getMonth()+1}</span></div>
-      <div class="bd"><span>Year last 2 — ${String(DOB.getFullYear()).slice(-2)}</span><span class="bv">${String(DOB.getFullYear()).slice(-2)}</span></div>
-      <div class="bd"><span>Moolank</span><span class="bv">${ROOT} — ${P[ROOT].s} ${P[ROOT].n}</span></div>
-      <div class="bd"><span>Bhagyank</span><span class="bv">${DEST} — ${P[DEST].s} ${P[DEST].n}</span></div>
-      <div class="grid-note">Fixed positions: 3·1·9 (celestial) · 6·7·5 (earthly) · 2·8·4 (ancestral). Repeated digits amplify energy; absent digits require conscious effort.</div>
-    </div>
-  </div>
-
-  <!-- 5-YEAR GRIDS -->
-  <div class="sec-head">5-Year Holographic View (${todayY-2} — ${todayY+2})</div>
-  <div class="five-grid-row">${fiveGridsHtml}</div>
-  <div class="fg-legend">
-    <div class="fgl"><div class="fgl-dot" style="background:rgba(194,74,30,.65)"></div>Mahadasha</div>
-    <div class="fgl"><div class="fgl-dot" style="background:rgba(26,130,100,.65)"></div>Antardasha</div>
-    <div class="fgl"><div class="fgl-dot" style="background:rgba(200,148,48,.65)"></div>Both</div>
-    <div class="fgl"><div class="fgl-dot" style="background:rgba(74,222,128,.5)"></div>Current year</div>
-  </div>
-
-  <!-- MAHADASHA TABLE -->
-  <div class="sec-head pb">100-Year Mahadasha Cycle</div>
-  <table class="data">
-    <thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start</th><th>End</th><th>Duration</th></tr></thead>
-    <tbody>${mahaRows}</tbody>
-  </table>
-
-  <!-- ANTARDASHA TABLE -->
-  <div class="sec-head" style="margin-top:32px">Yearly Antardasha (100 Years)</div>
-  <table class="data">
-    <thead><tr><th>Year</th><th>Yr%100</th><th>Moolank</th><th>Month</th><th>Day#</th><th>Sum → Root</th><th>Antardasha</th></tr></thead>
-    <tbody>${antarRows}</tbody>
-  </table>
-
-  <!-- FOOTER -->
-  <div class="footer">
-    <div class="footer-name">✦ Designed by Himangshu</div>
-    <div class="footer-sub">Ākāśa Gaṇita — Free Vedic Numerology Calculator · Authentic Jyotish Ankaśāstra</div>
-  </div>
-
-</div>
-</body>
-</html>`;
-
-  // Inject html2canvas script tag into the popup HTML before </body>
-  const htmlWithCanvas = html.replace('</body>', `<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"><\/script></body>`);
-  printWin.document.write(htmlWithCanvas);
-  printWin.document.close();
-
-  // Wait for fonts/images/scripts to load, then capture via html2canvas + jsPDF
-  printWin.onload = async () => {
-    try {
-      await new Promise(r => setTimeout(r, 1800)); // allow Google Fonts + html2canvas to load
-
-      const { jsPDF } = window.jspdf;
-      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
-
-      const pageW = 210, pageH = 297, margin = 10;
-      const contentW = pageW - margin * 2;
-
-      const body = printWin.document.body;
-      const totalH = body.scrollHeight;
-      const scale  = 2; // retina quality
-
-      // Render full long page as one canvas
-      const canvas = await printWin.html2canvas(body, {
-        scale,
-        useCORS: true,
-        backgroundColor: '#0d0b07',
-        width: 900,
-        height: totalH,
-        windowWidth: 900,
-        windowHeight: totalH,
-        scrollX: 0,
-        scrollY: 0,
-      });
-
-      const imgData = canvas.toDataURL('image/jpeg', 0.92);
-      const imgW    = contentW;
-      const imgH    = (canvas.height / canvas.width) * contentW;
-
-      // Slice into A4 pages
-      const pxPerMm   = canvas.width / contentW;
-      const pageHpx   = (pageH - margin * 2) * pxPerMm;
-      const totalPages = Math.ceil(canvas.height / pageHpx);
-
-      for (let pg = 0; pg < totalPages; pg++) {
-        if (pg > 0) pdf.addPage();
-
-        const srcY  = pg * pageHpx;
-        const srcH  = Math.min(pageHpx, canvas.height - srcY);
-        const sliceH = (srcH / canvas.height) * imgH;
-
-        // Create a slice canvas
-        const slice = document.createElement('canvas');
-        slice.width  = canvas.width;
-        slice.height = Math.round(srcH);
-        const ctx = slice.getContext('2d');
-        ctx.drawImage(canvas, 0, srcY, canvas.width, srcH, 0, 0, canvas.width, srcH);
-
-        const sliceData = slice.toDataURL('image/jpeg', 0.92);
-        pdf.addImage(sliceData, 'JPEG', margin, margin, imgW, sliceH);
-      }
-
-      pdf.save(`vedic-numerology-${DOB.toISOString().slice(0,10)}.pdf`);
-      printWin.close();
-      showToast('PDF downloaded ✦');
-    } catch(err) {
-      console.error(err);
-      printWin.close();
-      showToast('PDF error — try again');
+    // ========== NUMEROLOGY ENGINE ==========
+   const letterVal = new Map([
+    ['A',1], ['I',1], ['J',1], ['Q',1], ['Y',1],
+    ['B',2], ['K',2], ['R',2],
+    ['C',3], ['G',3], ['L',3], ['S',3],
+    ['D',4], ['M',4], ['T',4],
+    ['E',5], ['H',5], ['N',5], ['X',5],
+    ['U',6], ['V',6], ['W',6],
+    ['O',7], ['Z',7],
+    ['F',8], ['P',8]
+]);
+
+    function reduceToSingleDigit(num) {
+        if (num === 0) return 0;
+        while (num > 9) { let s = 0, t = num; while (t > 0) { s += t % 10; t = Math.floor(t/10); } num = s; }
+        return num;
     }
-  };
-};
 
-// ── TOAST ────────────────────────────────────────────────
-function showToast(msg){
-  const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),3200);
-}
+    function getRawNameSum(fullName) {
+        if (!fullName) return 0;
+        const clean = fullName.toUpperCase().replace(/[^A-Z]/g, '');
+        let sum = 0;
+        for (let ch of clean) if (letterVal.has(ch)) sum += letterVal.get(ch);
+        return sum;
+    }
 
-// ── BOOT ─────────────────────────────────────────────────
-init('1994-09-17');
+    function reduceToCompoundRange(rawSum) {
+        if (rawSum >= 10 && rawSum <= 80) return rawSum;
+        let current = rawSum;
+        while (current > 80 || current < 10) {
+            let d = 0, t = current;
+            while (t > 0) { d += t % 10; t = Math.floor(t/10); }
+            current = d;
+            if (current >= 10 && current <= 80) break;
+            if (current >= 1 && current <= 9) return current;
+        }
+        return current;
+    }
+
+    function getRootNumber(day) { return reduceToSingleDigit(day); }
+    function getDestinyNumber(day, month, year) { return reduceToSingleDigit(day + month + year); }
+
+    function getProfile(fullName, dobStr) {
+        if (!fullName || !dobStr) return null;
+        const d = new Date(dobStr);
+        if (isNaN(d.getTime())) return null;
+        const day = d.getDate(), month = d.getMonth() + 1, year = d.getFullYear();
+        const rawSum = getRawNameSum(fullName);
+        if (rawSum === 0) return null;
+        return {
+            firstName: fullName.split(' ')[0] || "Soul",
+            root: getRootNumber(day),
+            destiny: getDestinyNumber(day, month, year),
+            compound: reduceToCompoundRange(rawSum),
+            rawSum
+        };
+    }
+
+    // ========== ENEMY NUMBERS ==========
+    // enemyOf[n] = array of root numbers that n considers enemy
+    const enemyOf = {
+        1: [3, 9],
+        2: [8],
+        3: [1],
+        4: [3, 9],
+        5: [],
+        6: [],
+        7: [9],
+        8: [9, 1],
+        9: [4, 7]
+    };
+
+    function areEnemies(root1, root2) {
+        const e1 = enemyOf[root1] || [];
+        const e2 = enemyOf[root2] || [];
+        return e1.includes(root2) || e2.includes(root1);
+    }
+
+    function isMutualEnemy(root1, root2) {
+        const e1 = enemyOf[root1] || [];
+        const e2 = enemyOf[root2] || [];
+        return e1.includes(root2) && e2.includes(root1);
+    }
+
+    function getEnemyDescription(root1, root2, name1, name2) {
+        const e1 = (enemyOf[root1] || []).includes(root2);
+        const e2 = (enemyOf[root2] || []).includes(root1);
+        if (e1 && e2) {
+            return `⚠️ Mutual Enmity: Root ${root1} (${name1}) and Root ${root2} (${name2}) are enemies of each other. This creates a challenging dynamic that requires conscious effort, patience, and strong intention to harmonise. Spiritual practices and open communication are essential.`;
+        } else if (e1) {
+            return `⚠️ Number ${root1} (${name1}) considers ${root2} an enemy number. This may create subtle friction; mindful understanding of each other's nature is advised.`;
+        } else if (e2) {
+            return `⚠️ Number ${root2} (${name2}) considers ${root1} an enemy number. Awareness and compassion can help bridge this gap in your connection.`;
+        }
+        return '';
+    }
+
+    // LUCKY COLOURS
+    const luckyColours = {
+        1: ["Red","Orange","Gold"], 2: ["White","Silver","Orange"], 3: ["Yellow","Purple","Pink"],
+        4: ["Blue","Grey"], 5: ["Green","Turquoise"], 6: ["White","Light Blue","Green"],
+        7: ["Light Yellow","White","Green"], 8: ["Dark Blue","Black"], 9: ["Red","Maroon","Rose"]
+    };
+    const colourHex = {
+        "Red":"#e34d4d","Orange":"#ff9f4a","Gold":"#e6c300","White":"#f5f0eb","Silver":"#c0c0c0",
+        "Yellow":"#ffde59","Purple":"#b280d9","Pink":"#ffb7c5","Blue":"#6c91d9","Grey":"#adb5bd",
+        "Green":"#6fbf4c","Turquoise":"#48c9b0","Light Blue":"#a3d0ff","Dark Blue":"#2c3e66","Black":"#2d2d2d",
+        "Maroon":"#a12a2a","Rose":"#ff99cc","Light Yellow":"#fff0b3"
+    };
+
+    function renderLuckyChips(root) {
+        const colors = luckyColours[root];
+        if (!colors) return '';
+        return colors.map(c => `<span class="lucky-chip"><span class="dot" style="background:${colourHex[c]||'#c0a080'}"></span>${c}</span>`).join('');
+    }
+
+    // COMPOUND MEANINGS — Full text as per sacred numerology source
+    const compoundExact = {
+        10: "Wheel of Fortune. A powerful number representing fame, self-confidence, and success. Results depend deeply on individual effort, but these individuals have the potential to change their destiny.",
+        11: "A hungry lion with hands and legs tied. An unlucky number denoting future problems, betrayal, and significant life difficulties.",
+        12: "Self-sacrifice. Unlucky; denotes tension and suffering caused by the actions of others.",
+        13: "Extremity. Results are either extreme success or extreme failure.",
+        14: "Storm, fire, and flood. Though victims may suffer due to others, it is lucky for betting, gambling, and changing businesses.",
+        15: "Magic and occult mysteries. These people are inquisitive and impulsive. It is very lucky unless it contains the numbers 4 and 8, which may lead to using negative means for goals.",
+        16: "A king falling off a tower. Unlucky; indicates future misfortunes, accidents, and failure due to destiny.",
+        17: "An eight-edged twinkling star. A lucky number that brings name, fame, and the end of difficulties. However, it is very unlucky if composed of 4 and 8.",
+        18: "A shining moon. Denotes family problems and suffering from enemies. Money may be earned through religious corruption or social revolts; not for auspicious work.",
+        19: "Sun. Very lucky; brings happiness, success, and the fulfilment of goals.",
+        20: "An angel blowing a trumpet. Lucky; indicates justice and new opportunities where success is achieved through nature despite obstacles.",
+        21: "The world. Represents success, fame, and reaching the peak of a career after some struggle.",
+        22: "A person turns blind because of others' errors. Unlucky; denotes failure and poor decision-making influenced by others.",
+        23: "The royal star of the lion. Very lucky; provides success and assistance from powerful people.",
+        24: "Success in love. Lucky; individuals rise in life with help from the opposite sex.",
+        25: "Represents success through experience and struggle; early ventures may be difficult, but future success is assured.",
+        26: "Problems in future. Unlucky; warns of serious future problems, defamation, and failures through association with others or gambling.",
+        27: "The sceptre. Lucky; provides power and leadership qualities if the person works independently.",
+        28: "Opposition and defame. Unlucky; prone to betrayal and court cases. Small mistakes can lead to major suffering.",
+        29: "Uncertainty and betrayal. Unlucky; indicates tension from friends and the opposite sex.",
+        30: "A neutral number for intelligent people who prefer knowledge. Success or failure is based on thinking.",
+        31: "Solitude. Not lucky from a family perspective; represents a love for solitude and a lack of specific life aims.",
+        32: "Very lucky; denotes fame and success. One should trust their own instincts rather than others' advice.",
+        33: "Same as number 24 — Success in love. Lucky; individuals rise in life with help from the opposite sex.",
+        34: "Same as number 25 — Success through experience and struggle; early ventures may be difficult, but future success is assured.",
+        35: "Same as number 26 — Problems in future. Unlucky; warns of serious future problems, defamation, and failures through association with others.",
+        36: "Same as number 27 — The sceptre. Lucky; provides power and leadership qualities if the person works independently.",
+        37: "Unity, fame. Powerful; brings success in love, friendship, and partnerships.",
+        38: "Same as number 29 — Uncertainty and betrayal. Unlucky; indicates tension from friends and the opposite sex.",
+        39: "Same as number 30 — A neutral number for intelligent people who prefer knowledge. Success or failure is based on thinking.",
+        40: "Same as number 31 — Solitude. Not lucky from a family perspective; represents a love for solitude and a lack of specific life aims.",
+        41: "Same as number 32 — Very lucky; denotes fame and success. One should trust their own instincts rather than others' advice.",
+        42: "Same as number 24 — Success in love. Lucky; individuals rise in life with help from the opposite sex.",
+        43: "Struggle. Depicts rivalry, obstacles, and tension. It is considered unlucky.",
+        44: "Same as number 26 — Problems in future. Unlucky; warns of serious future problems, defamation, and failures through association with others.",
+        45: "Same as number 27 — The sceptre. Lucky; provides power and leadership qualities if the person works independently.",
+        46: "Same as number 37 — Unity, fame. Powerful; brings success in love, friendship, and partnerships.",
+        47: "Same as number 29 — Uncertainty and betrayal. Unlucky; indicates tension from friends and the opposite sex.",
+        48: "Same as number 30 — A neutral number for intelligent people who prefer knowledge. Success or failure is based on thinking.",
+        49: "Same as number 31 — Solitude. Not lucky from a family perspective; represents a love for solitude and a lack of specific life aims.",
+        50: "Same as number 32 — Very lucky; denotes fame and success. One should trust their own instincts rather than others' advice.",
+        51: "Warrior and victory. Unique and powerful; signifies unexpected opportunities and strength, though enemies and betrayal by friends are possible.",
+        52: "Same as number 43 — Struggle. Depicts rivalry, obstacles, and tension. It is considered unlucky.",
+        53: "Success and intelligence. Lucky for politicians and military personnel; change the name only if seeking a financial rise.",
+        54: "Success and prosperity. It is recommended to read Hanuman Chalisa to avoid accidents.",
+        55: "Decisions are often hasty and regretted. Suggests changing the business.",
+        56: "Success comes only after significant effort; spendthrift nature. Name change is suggested for earlier success.",
+        57: "Lucky for business; jolly nature. No name change needed.",
+        58: "Emotional and kind-hearted, though poor at budgeting. No name change needed.",
+        59: "Involves many problems, but travel brings benefits and sufficient money.",
+        60: "Lucky; suggests changing attitude rather than name.",
+        61: "Initial difficulties followed by later success. If under age 40, a name change is suggested.",
+        62: "Hardworking with a sudden rise in life. Suggests changing business instead of name.",
+        63: "Lucky name for helpful, spendthrift people.",
+        64: "Family and colleague problems; financial luck exists, but a name change is suggested for general positivity.",
+        65: "Successful life and material wealth, but prone to accidents. Recommended to read Hanuman Chalisa.",
+        66: "Lucky and soft-spoken; success is achieved through magnetic personality and contacts.",
+        67: "Success comes later than expected. Individuals are fearless and healthy but need to be practical.",
+        68: "Immediate name change suggested; denotes depression, lack of support, and persistent failure.",
+        69: "Lucky; financially sound with a blessed married life and benefits from partnerships.",
+        70: "Positive end results and a luxurious life, though minor financial struggles may occur initially.",
+        71: "Lucky; emotional and hardworking advisors who should not change their names.",
+        72: "Childhood struggle and hardships; name change is suggested to avoid continued struggle.",
+        73: "Prosperous, religious, and financially strong; does not take favours from others.",
+        74: "Patient and alert; success may cause family opposition. Should not change name or take responsibility for others' finances.",
+        75: "Unlucky; involves health problems and betrayal by friends.",
+        76: "Success in all spheres and a blessed married life.",
+        77: "Unlucky; obstacles in executing plans and financial struggle. Name change is suggested.",
+        78: "Failure to achieve success despite hard work; characterised by constant tension.",
+        79: "Success and prosperity, but prone to accidents; reading Hanuman Chalisa is suggested.",
+        80: "Lucky and religious; those helped by this person often find more success than the person themselves. Change name only for business/money success."
+    };
+
+    // Negative compound numbers that need name correction
+    const negativeCompounds = [11, 12, 16, 18, 22, 26, 28, 29, 31, 35, 38, 40, 43, 44, 47, 52, 56, 59, 64, 68, 72, 75, 77, 78];
+
+    function isNegativeCompound(num) {
+        return negativeCompounds.includes(num);
+    }
+
+    function getCompoundExact(num) {
+        return compoundExact[num] || (num >= 1 && num <= 9 ? `${num}: Core number — foundational energy.` : `${num}: Sacred compound vibration.`);
+    }
+
+    // COMPATIBILITY SCORING (with enemy number penalty)
+    function computeScore(p1, p2) {
+        let s = 0;
+
+        // Root number score
+        const rd = Math.abs(p1.root - p2.root);
+        s += rd===0 ? 40 : rd===1 ? 32 : rd===2 ? 25 : rd<=4 ? 18 : 10;
+
+        // Destiny score
+        const dd = Math.abs(p1.destiny - p2.destiny);
+        s += dd===0 ? 35 : dd===1 ? 28 : dd===2 ? 22 : 12;
+
+        // Name/compound score
+        const nd = Math.abs(reduceToSingleDigit(p1.compound) - reduceToSingleDigit(p2.compound));
+        s += nd===0 ? 25 : nd===1 ? 18 : nd<=3 ? 12 : 6;
+
+        // Enemy number penalty
+        if (isMutualEnemy(p1.root, p2.root)) {
+            s = Math.max(5, s - 25); // heavy penalty for mutual enmity
+        } else if (areEnemies(p1.root, p2.root)) {
+            s = Math.max(8, s - 15); // moderate penalty for one-sided enmity
+        }
+
+        return Math.min(100, Math.floor(s));
+    }
+
+    function getMatchMessage(s, hasEnemies) {
+        if (hasEnemies) {
+            if (s >= 60) return "karmic tension · growth through challenge";
+            if (s >= 40) return "opposing forces · conscious effort needed";
+            return "conflicting vibrations · tread mindfully";
+        }
+        if (s>=85) return "deep resonance · twin flame energy";
+        if (s>=70) return "harmonious alignment · beautiful potential";
+        if (s>=55) return "meaningful connection · nurture with care";
+        if (s>=40) return "balanced polarity · growth through understanding";
+        return "gentle bond · intention creates magic";
+    }
+
+    function getHearts(s) {
+        if (s>=85) return "♡ ♡ ♡ ♡ ♡";
+        if (s>=70) return "♡ ♡ ♡ ♡";
+        if (s>=55) return "♡ ♡ ♡";
+        if (s>=40) return "♡ ♡";
+        return "♡";
+    }
+
+    function auraMsg(p1,p2) {
+        if (p1.root===p2.root) return `both root ${p1.root} · same palette`;
+        return `${luckyColours[p1.root]?.[0]||'warm'} + ${luckyColours[p2.root]?.[0]||'soft'}`;
+    }
+
+    // DRESS
+    let currentOccasion = "daily";
+
+    function getDressTip(colors, occasion) {
+        const p = colors[0], s = colors[1]||colors[0];
+        const tips = {
+            daily:`${p} tones invite daily harmony. Reach for a ${p.toLowerCase()} piece or accessory.`,
+            date:`For romance: ${p} or ${s} creates magnetic attraction.`,
+            meeting:`Confidence & authority: ${p} or ${s} commands trust.`,
+            party:`Celebrate in ${p} or ${s} — bold and radiant.`
+        };
+        return tips[occasion]||tips.daily;
+    }
+
+    function renderSwatches(colors) {
+        return colors.map(c=>`<div class="swatch" style="background:${colourHex[c]||'#c0a080'}" title="${c}"></div>`).join('');
+    }
+
+    function updateDress(p1,p2) {
+        if (!p1||!p2) {
+            ['1','2'].forEach(n=>{
+                document.getElementById(`dressPerson${n}`).textContent='—';
+                document.getElementById(`dressColors${n}`).innerHTML='';
+                document.getElementById(`dressTip${n}`).textContent='enter details above';
+            });
+            return;
+        }
+        const c1=luckyColours[p1.root]||["Neutral"], c2=luckyColours[p2.root]||["Neutral"];
+        document.getElementById('dressPerson1').textContent=p1.firstName;
+        document.getElementById('dressPerson2').textContent=p2.firstName;
+        document.getElementById('dressColors1').innerHTML=renderSwatches(c1);
+        document.getElementById('dressColors2').innerHTML=renderSwatches(c2);
+        document.getElementById('dressTip1').textContent=getDressTip(c1,currentOccasion);
+        document.getElementById('dressTip2').textContent=getDressTip(c2,currentOccasion);
+    }
+
+    // MAIN UPDATE
+    function update() {
+        const p1=getProfile(document.getElementById('name1').value, document.getElementById('dob1').value);
+        const p2=getProfile(document.getElementById('name2').value, document.getElementById('dob2').value);
+
+        if (!p1||!p2) {
+            document.getElementById('p1NameLabel').textContent='First Soul';
+            document.getElementById('p2NameLabel').textContent='Second Soul';
+            document.getElementById('p1Stats').textContent='root — | destiny — | name —';
+            document.getElementById('p2Stats').textContent='root — | destiny — | name —';
+            document.getElementById('p1Lucky').innerHTML='';
+            document.getElementById('p2Lucky').innerHTML='';
+            document.getElementById('compatPercent').textContent='--%';
+            document.getElementById('compatPercent').className='compat-score';
+            document.getElementById('matchMsg').textContent='enter both partners to reveal alignment';
+            document.getElementById('heartRating').textContent='♡ ♡ ♡';
+            document.getElementById('rootPair').textContent='—';
+            document.getElementById('rootPair').className='tile-value';
+            document.getElementById('destinyPair').textContent='—';
+            document.getElementById('namePair').textContent='—';
+            document.getElementById('auraSync').textContent='—';
+            document.getElementById('compoundNum1').textContent='—';
+            document.getElementById('compoundDesc1').textContent='—';
+            document.getElementById('compoundNum2').textContent='—';
+            document.getElementById('compoundDesc2').textContent='—';
+            document.getElementById('compoundTile1').className='compound-tile';
+            document.getElementById('compoundTile2').className='compound-tile';
+            document.getElementById('compoundNum1').className='compound-person';
+            document.getElementById('compoundDesc1').className='compound-body';
+            document.getElementById('compoundNum2').className='compound-person';
+            document.getElementById('compoundDesc2').className='compound-body';
+            document.getElementById('nameCorrect1').style.display='none';
+            document.getElementById('nameCorrect2').style.display='none';
+            document.getElementById('enemyWarning').style.display='none';
+            document.getElementById('suggestionBox').style.display='none';
+            updateDress(null,null);
+            return;
+        }
+
+        // Names
+        document.getElementById('p1NameLabel').textContent=p1.firstName;
+        document.getElementById('p2NameLabel').textContent=p2.firstName;
+
+        const r1=p1.rawSum!==p1.compound?` (${p1.rawSum}→${p1.compound})`:'';
+        const r2=p2.rawSum!==p2.compound?` (${p2.rawSum}→${p2.compound})`:'';
+        document.getElementById('p1Stats').innerHTML=`<strong>root</strong> ${p1.root} &nbsp;|&nbsp; <strong>destiny</strong> ${p1.destiny} &nbsp;|&nbsp; <strong>name</strong> ${p1.compound}${r1}`;
+        document.getElementById('p2Stats').innerHTML=`<strong>root</strong> ${p2.root} &nbsp;|&nbsp; <strong>destiny</strong> ${p2.destiny} &nbsp;|&nbsp; <strong>name</strong> ${p2.compound}${r2}`;
+        document.getElementById('p1Lucky').innerHTML=renderLuckyChips(p1.root);
+        document.getElementById('p2Lucky').innerHTML=renderLuckyChips(p2.root);
+
+        // Compatibility with enemy logic
+        const hasEnemyRelation = areEnemies(p1.root, p2.root);
+        const score = computeScore(p1, p2);
+
+        const scoreEl = document.getElementById('compatPercent');
+        scoreEl.textContent=`${score}%`;
+        scoreEl.className = score < 45 || hasEnemyRelation ? 'compat-score low-score' : 'compat-score';
+
+        document.getElementById('matchMsg').textContent=getMatchMessage(score, hasEnemyRelation);
+        document.getElementById('heartRating').textContent=getHearts(score);
+
+        // Root pair — flag enemy
+        const rootPairEl = document.getElementById('rootPair');
+        rootPairEl.textContent=`${p1.root} & ${p2.root}`;
+        if (hasEnemyRelation) {
+            rootPairEl.className='tile-value enemy-flag';
+            rootPairEl.textContent=`${p1.root} & ${p2.root} ⚠`;
+        } else {
+            rootPairEl.className='tile-value';
+        }
+
+        document.getElementById('destinyPair').textContent=`${p1.destiny} & ${p2.destiny}`;
+        document.getElementById('namePair').textContent=`${p1.compound} & ${p2.compound}`;
+        document.getElementById('auraSync').textContent=auraMsg(p1,p2);
+
+        // Enemy warning banner
+        const enemyWarnEl = document.getElementById('enemyWarning');
+        if (hasEnemyRelation) {
+            const msg = getEnemyDescription(p1.root, p2.root, p1.firstName, p2.firstName);
+            enemyWarnEl.textContent = msg;
+            enemyWarnEl.style.display = 'block';
+        } else {
+            enemyWarnEl.style.display = 'none';
+        }
+
+        // Compound section — full text, negative styling
+        const neg1 = isNegativeCompound(p1.compound);
+        const neg2 = isNegativeCompound(p2.compound);
+
+        document.getElementById('compoundNum1').textContent=`${p1.firstName} · ${p1.compound}`;
+        document.getElementById('compoundDesc1').textContent=getCompoundExact(p1.compound);
+        document.getElementById('compoundTile1').className = 'compound-tile' + (neg1 ? ' negative' : '');
+        document.getElementById('compoundNum1').className = 'compound-person' + (neg1 ? ' negative-num' : '');
+        document.getElementById('compoundDesc1').className = 'compound-body' + (neg1 ? ' negative-text' : '');
+        document.getElementById('nameCorrect1').style.display = neg1 ? 'block' : 'none';
+
+        document.getElementById('compoundNum2').textContent=`${p2.firstName} · ${p2.compound}`;
+        document.getElementById('compoundDesc2').textContent=getCompoundExact(p2.compound);
+        document.getElementById('compoundTile2').className = 'compound-tile' + (neg2 ? ' negative' : '');
+        document.getElementById('compoundNum2').className = 'compound-person' + (neg2 ? ' negative-num' : '');
+        document.getElementById('compoundDesc2').className = 'compound-body' + (neg2 ? ' negative-text' : '');
+        document.getElementById('nameCorrect2').style.display = neg2 ? 'block' : 'none';
+
+        // Name suggestion banner (legacy)
+        const sBox=document.getElementById('suggestionBox');
+        sBox.style.display='none';
+
+        updateDress(p1,p2);
+    }
+
+    document.getElementById('syncBtn').addEventListener('click', update);
+    ['name1','dob1','name2','dob2'].forEach(id=>{
+        const el=document.getElementById(id);
+        if(el){ el.addEventListener('input',update); el.addEventListener('change',update); }
+    });
+    document.querySelectorAll('.occ-btn').forEach(btn=>{
+        btn.addEventListener('click',function(){
+            document.querySelectorAll('.occ-btn').forEach(b=>b.classList.remove('active'));
+            this.classList.add('active');
+            currentOccasion=this.dataset.occasion;
+            update();
+        });
+    });
+    window.addEventListener('DOMContentLoaded', update);
 </script>
 </body>
 </html>
