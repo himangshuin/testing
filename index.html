@@ -619,6 +619,17 @@
         8: [9, 1],
         9: [4, 7]
     };
+    const friendOf = {
+    1: [2,4,7],
+    2: [1,3,6],
+    3: [2,6,9],
+    4: [1,5,7],
+    5: [4,6],
+    6: [2,3,9],
+    7: [1,4],
+    8: [2,4],
+    9: [3,6]
+};
 
     function areEnemies(root1, root2) {
         const e1 = enemyOf[root1] || [];
@@ -751,34 +762,36 @@
     }
 
     // COMPATIBILITY SCORING (with enemy number penalty)
-  function computeScore(p1, p2) {
+ function computeScore(p1, p2) {
     let score = 0;
 
-    // ===== ROOT NUMBER =====
-    if (areEnemies(p1.root, p2.root)) {
-        score += 20; // half of 40
-    } else {
-        score += 40; // full
-    }
+    // ROOT (40)
+    const rootRel = getRelation(p1.root, p2.root);
+    if (rootRel === "friend") score += 40;
+    else if (rootRel === "neutral") score += 25;
+    else score += 10;
 
-    // ===== DESTINY NUMBER =====
-    if (areEnemies(p1.destiny, p2.destiny)) {
-        score += 18; // half of 35
-    } else {
-        score += 35; // full
-    }
+    // DESTINY (35)
+    const destRel = getRelation(p1.destiny, p2.destiny);
+    if (destRel === "friend") score += 35;
+    else if (destRel === "neutral") score += 20;
+    else score += 8;
 
-    // ===== NAME / COMPOUND =====
-    const name1Negative = isNegativeCompound(p1.compound);
-    const name2Negative = isNegativeCompound(p2.compound);
+     function getRelation(n1, n2) {
+    if (areEnemies(n1, n2)) return "enemy";
+    if ((friendOf[n1] || []).includes(n2)) return "friend";
+    return "neutral";
+}
 
-    if (name1Negative || name2Negative) {
-        score += 13; // half
-    } else {
-        score += 25; // full
-    }
+    // NAME (25)
+    const name1Neg = isNegativeCompound(p1.compound);
+    const name2Neg = isNegativeCompound(p2.compound);
 
-    return Math.min(100, Math.round(score));
+    if (!name1Neg && !name2Neg) score += 25;
+    else if (name1Neg && name2Neg) score += 5;
+    else score += 12;
+
+    return Math.round(score);
 }
 
     function getMatchMessage(s, hasEnemies) {
@@ -894,7 +907,9 @@
         document.getElementById('p2Lucky').innerHTML=renderLuckyChips(p2.root);
 
         // Compatibility with enemy logic
-        const hasEnemyRelation = areEnemies(p1.root, p2.root);
+        const hasEnemyRelation =
+    areEnemies(p1.root, p2.root) ||
+    areEnemies(p1.destiny, p2.destiny);
         const score = computeScore(p1, p2);
 
         const scoreEl = document.getElementById('compatPercent');
