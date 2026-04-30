@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Ākāśa Gaṇita | Vedic Numerology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ── TOKENS ─────────────────────────────────────────── */
+:root {
+  --ink:      #0c0a06;
+  --ink2:     #181410;
+  --ink3:     #221e16;
+  --surface:  rgba(18,14,8,0.82);
+  --border:   rgba(185,138,52,0.2);
+  --border-hi:rgba(220,170,70,0.5);
+  --gold-a:   #F6DC8E;
+  --gold-b:   #CA9430;
+  --gold-c:   #8C6018;
+  --cream:    #EFE7D6;
+  --cream-dim:#B5A888;
+  --muted:    #686050;
+  --fd: 'Cinzel', serif;
+  --fb: 'Crimson Pro', serif;
+  --fm: 'JetBrains Mono', monospace;
+  --r: 1rem;
+  --r2: 1.6rem;
+  --sh: 0 24px 56px -16px rgba(0,0,0,0.85);
+}
+
+/* ── RESET ───────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  min-height:100svh;
+  background:var(--ink);
+  font-family:var(--fb);
+  color:var(--cream);
+  overflow-x:hidden;
+  font-size:16px;
+  line-height:1.65;
+}
+
+/* ── BACKGROUND ──────────────────────────────────────── */
+.bg-layer{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(ellipse 90% 55% at 12% 8%,  rgba(185,138,52,0.08) 0%,transparent 60%),
+    radial-gradient(ellipse 55% 90% at 88% 82%,  rgba(130,75,15,0.07) 0%,transparent 60%),
+    radial-gradient(ellipse 130% 70% at 50% 50%, #110e08 0%,#050402 100%);
+}
+.stars{
+  position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:
+    radial-gradient(1.5px 1.5px at 11% 21%,rgba(245,220,155,0.4) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 79%  7%,rgba(245,220,155,0.3) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 43% 64%,rgba(245,220,155,0.25)0%,transparent 100%),
+    radial-gradient(2px   2px   at 92% 41%,rgba(245,220,155,0.3) 0%,transparent 100%),
+    radial-gradient(1px   1px   at 34% 87%,rgba(245,220,155,0.2) 0%,transparent 100%),
+    radial-gradient(1.5px 1.5px at 63% 29%,rgba(245,220,155,0.22)0%,transparent 100%),
+    radial-gradient(1px   1px   at 6%  54%,rgba(245,220,155,0.28)0%,transparent 100%),
+    radial-gradient(1px   1px   at 57% 78%,rgba(245,220,155,0.18)0%,transparent 100%);
+}
+
+/* ── SCROLLBAR ───────────────────────────────────────── */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:var(--ink)}
+::-webkit-scrollbar-thumb{background:var(--gold-c);border-radius:2px}
+
+/* ── LAYOUT ─────────────────────────────────────────── */
+.app{
+  position:relative;z-index:2;
+  max-width:1060px;
+  margin:0 auto;
+  padding:2rem 1.25rem 6rem;
+}
+
+/* ── HEADER ─────────────────────────────────────────── */
+.header{text-align:center;padding:3.5rem 0 2.5rem}
+.eyebrow{
+  font-family:var(--fm);font-size:0.62rem;letter-spacing:5px;
+  text-transform:uppercase;color:var(--gold-b);margin-bottom:1rem;
+  display:flex;align-items:center;justify-content:center;gap:0.8rem;
+}
+.eyebrow::before,.eyebrow::after{
+  content:'';width:48px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-c));
+}
+.eyebrow::after{background:linear-gradient(90deg,var(--gold-c),transparent)}
+.header h1{
+  font-family:var(--fd);
+  font-size:clamp(2.4rem,6.5vw,4.2rem);
+  font-weight:700;letter-spacing:0.05em;
+  background:linear-gradient(155deg,var(--gold-a) 0%,var(--gold-b) 48%,#9A6A18 100%);
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  line-height:1.12;margin-bottom:0.6rem;
+}
+.header-sub{
+  font-family:var(--fb);font-size:1.05rem;
+  font-style:italic;color:var(--cream-dim);letter-spacing:0.04em;
+}
+
+/* ── INPUT CARD ──────────────────────────────────────── */
+.input-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r2);
+  padding:1.5rem 1.75rem;
+  backdrop-filter:blur(20px);
+  box-shadow:var(--sh),inset 0 1px 0 rgba(255,255,255,0.035);
+  margin-bottom:1.25rem;
+}
+.input-row{
+  display:flex;gap:0.75rem;align-items:flex-end;flex-wrap:wrap;
+}
+.field-group{display:flex;flex-direction:column;gap:0.35rem;flex:1;min-width:180px}
+.field-label{
+  font-family:var(--fm);font-size:0.58rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold-b);
+}
+.field-input{
+  background:rgba(0,0,0,0.55);
+  border:1px solid var(--border);
+  border-radius:var(--r);
+  padding:0.7rem 1rem;
+  color:var(--cream);
+  font-family:var(--fb);font-size:1rem;
+  width:100%;
+  transition:border-color .25s,box-shadow .25s;
+  -webkit-appearance:none;color-scheme:dark;
+}
+.field-input:focus{
+  outline:none;border-color:var(--gold-b);
+  box-shadow:0 0 0 3px rgba(200,148,48,0.14);
+}
+.field-input::-webkit-calendar-picker-indicator{
+  filter:invert(.7) sepia(1) saturate(2) hue-rotate(10deg);cursor:pointer
+}
+
+/* Buttons */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:0.4rem;
+  padding:0.6rem 1.1rem;
+  border:none;border-radius:var(--r);
+  font-family:var(--fm);font-size:0.62rem;
+  font-weight:500;letter-spacing:1.2px;text-transform:uppercase;
+  cursor:pointer;transition:all .22s ease;white-space:nowrap;
+  height:42px;
+}
+.btn svg{width:12px;height:12px;flex-shrink:0}
+.btn-calc{
+  background:transparent;color:var(--gold-a);
+  border:1px solid var(--border-hi);
+  position:relative;overflow:hidden;
+}
+.btn-calc::before{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(200,148,48,.14),rgba(200,148,48,.06));
+  opacity:0;transition:opacity .22s;
+}
+.btn-calc:hover{border-color:var(--gold-a);color:#fff;transform:translateY(-2px);box-shadow:0 0 16px rgba(200,148,48,.22)}
+.btn-calc:hover::before{opacity:1}
+.btn-calc:active{transform:translateY(0)}
+
+.btn-wa{
+  background:linear-gradient(135deg,#1a7a46,#25D366);
+  color:#fff;box-shadow:0 4px 14px rgba(37,211,102,.22);
+}
+.btn-wa:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(37,211,102,.4)}
+
+.btn-pdf{
+  background:transparent;color:var(--cream-dim);
+  border:1px solid rgba(255,255,255,.1);
+}
+.btn-pdf:hover{border-color:rgba(255,255,255,.28);color:var(--cream);transform:translateY(-2px)}
+
+/* ── STATS ───────────────────────────────────────────── */
+.stats-row{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:1rem;margin-bottom:1.25rem;
+}
+@media(max-width:700px){.stats-row{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:380px){.stats-row{grid-template-columns:1fr 1fr}}
+
+.stat-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r2);
+  padding:1.6rem 1rem 1.4rem;
+  text-align:center;
+  backdrop-filter:blur(12px);
+  transition:border-color .3s,transform .3s,box-shadow .3s;
+  position:relative;overflow:hidden;cursor:default;
+}
+.stat-card::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(circle at 50% -10%,rgba(200,148,48,.1) 0%,transparent 65%);
+  opacity:0;transition:opacity .3s;
+}
+.stat-card:hover{border-color:var(--border-hi);transform:translateY(-5px);box-shadow:0 24px 48px -12px rgba(0,0,0,.7)}
+.stat-card:hover::after{opacity:1}
+
+.stat-label{
+  font-family:var(--fm);font-size:0.6rem;
+  letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--gold-b);margin-bottom:0.6rem;
+}
+.stat-num{
+  font-family:var(--fd);
+  font-size:3.8rem;font-weight:700;line-height:1;
+  background:linear-gradient(145deg,var(--gold-a),var(--gold-b));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:0.4rem;
+}
+.stat-planet{
+  font-family:var(--fb);font-size:1rem;
+  font-style:italic;color:var(--cream-dim);letter-spacing:0.02em;
+}
+.stat-sym{
+  font-size:1.3rem;display:block;margin-bottom:1px;
+  opacity:0.7;
+}
+
+/* ── PROMO BANNER ────────────────────────────────────── */
+.promo-banner{
+  position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:space-between;
+  gap:2rem;flex-wrap:wrap;
+  margin-bottom:1.25rem;
+  padding:1.75rem 2rem;
+  background:rgba(10,8,4,.9);
+  border:1px solid rgba(200,148,48,.32);
+  border-radius:var(--r2);
+  backdrop-filter:blur(16px);
+  box-shadow:inset 0 0 0 1px rgba(200,148,48,.07),var(--sh);
+}
+.promo-sweep{
+  position:absolute;top:0;left:-60%;
+  width:40%;height:100%;
+  background:linear-gradient(105deg,transparent 30%,rgba(200,148,48,.07) 50%,transparent 70%);
+  animation:sweep 5s ease-in-out infinite;
+  pointer-events:none;
+}
+@keyframes sweep{0%{left:-60%}65%{left:130%}100%{left:130%}}
+.promo-banner::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent 0%,var(--gold-b) 38%,var(--gold-a) 62%,transparent 100%);
+  opacity:.55;
+}
+.promo-left{flex:1;min-width:180px}
+.promo-eyebrow{
+  font-family:var(--fm);font-size:0.57rem;letter-spacing:3px;
+  text-transform:uppercase;color:var(--gold-b);margin-bottom:0.35rem;
+}
+.promo-title{
+  font-family:var(--fd);font-size:1.3rem;font-weight:700;
+  background:linear-gradient(130deg,var(--gold-a),var(--gold-b));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:0.45rem;line-height:1.2;
+}
+.promo-desc{
+  font-size:0.9rem;color:var(--cream-dim);line-height:1.6;
+  max-width:460px;margin-bottom:0.9rem;
+}
+.promo-feats{display:flex;flex-wrap:wrap;gap:0.45rem}
+.promo-feat{
+  font-family:var(--fm);font-size:0.6rem;letter-spacing:.5px;
+  padding:3px 10px;border-radius:20px;
+  background:rgba(200,148,48,.08);border:1px solid rgba(200,148,48,.2);
+  color:var(--cream-dim);
+}
+.promo-right{
+  display:flex;flex-direction:column;align-items:center;gap:0.7rem;
+  min-width:140px;
+}
+.promo-price{text-align:center;line-height:1}
+.promo-amt{
+  font-family:var(--fd);font-size:2.4rem;font-weight:700;
+  background:linear-gradient(135deg,var(--gold-a),var(--gold-b));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.promo-per{
+  display:block;font-family:var(--fm);font-size:0.58rem;
+  letter-spacing:1px;color:var(--muted);text-transform:uppercase;margin-top:3px;
+}
+.promo-cta{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:0.72rem 1.6rem;
+  background:linear-gradient(135deg,var(--gold-c),var(--gold-b));
+  border:none;border-radius:3rem;
+  font-family:var(--fm);font-size:0.67rem;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;
+  color:var(--ink);cursor:pointer;
+  transition:all .22s;
+  box-shadow:0 4px 20px rgba(200,148,48,.35);white-space:nowrap;
+}
+.promo-cta:hover{transform:translateY(-2px) scale(1.02);box-shadow:0 8px 28px rgba(200,148,48,.5);filter:brightness(1.08)}
+.promo-cta:active{transform:translateY(0) scale(1)}
+.promo-note{
+  font-family:var(--fm);font-size:0.54rem;
+  letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);
+}
+
+/* ── TABS ────────────────────────────────────────────── */
+.tabs-wrap{
+  position:sticky;top:0;z-index:10;
+  padding:0.5rem 0;
+  background:linear-gradient(to bottom,rgba(12,10,6,1) 75%,transparent);
+  margin-bottom:1.4rem;
+}
+.tabs{
+  display:flex;gap:2px;
+  background:rgba(0,0,0,.55);
+  border:1px solid var(--border);
+  border-radius:3rem;padding:4px;
+  backdrop-filter:blur(16px);
+  overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  flex:1;min-width:max-content;
+  background:transparent;border:none;
+  padding:0.7rem 1.3rem;border-radius:2.5rem;
+  font-family:var(--fm);font-size:0.68rem;
+  letter-spacing:1.5px;text-transform:uppercase;
+  color:var(--muted);cursor:pointer;transition:all .22s;
+}
+.tab svg{width:12px;height:12px;margin-right:5px;vertical-align:middle}
+.tab.active{
+  background:rgba(200,148,48,.18);color:var(--gold-a);
+  box-shadow:0 2px 8px rgba(0,0,0,.3),inset 0 1px 0 rgba(255,255,255,.05);
+}
+.tab:hover:not(.active){color:var(--cream-dim)}
+.tab-pane{display:none;animation:fadein .28s ease}
+.tab-pane.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── SECTION CARD ────────────────────────────────────── */
+.section-card{
+  background:var(--surface);
+  border:1px solid var(--border);
+  border-radius:var(--r2);
+  padding:2rem;
+  backdrop-filter:blur(12px);
+  box-shadow:var(--sh);
+}
+.section-title{
+  font-family:var(--fd);font-size:0.78rem;font-weight:600;
+  letter-spacing:3px;text-transform:uppercase;
+  color:var(--gold-b);margin-bottom:1.4rem;
+  display:flex;align-items:center;gap:0.6rem;
+}
+.section-title::after{
+  content:'';flex:1;height:1px;
+  background:linear-gradient(90deg,var(--border),transparent);
+}
+
+/* ── VEDIC GRID ──────────────────────────────────────── */
+.grid-layout{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
+@media(max-width:640px){.grid-layout{grid-template-columns:1fr}}
+
+.vedic-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  background:rgba(200,148,48,.14);
+  border:1px solid rgba(200,148,48,.25);
+  border-radius:1.4rem;overflow:hidden;
+  width:288px;flex-shrink:0;
+}
+@media(max-width:640px){.vedic-grid{width:100%}}
+
+.grid-cell{
+  background:var(--ink2);
+  aspect-ratio:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;
+  transition:background .25s;cursor:default;
+  position:relative;
+}
+.grid-cell:hover{background:rgba(200,148,48,.1)}
+.cell-pos{
+  font-family:var(--fd);
+  font-size:2.2rem;font-weight:700;line-height:1;
+  color:rgba(200,148,48,.22);
+  transition:color .25s;
+}
+.cell-pos.has-val{color:var(--gold-b)}
+.cell-dots{
+  font-family:var(--fm);font-size:0.68rem;
+  letter-spacing:2.5px;color:var(--gold-a);
+  min-height:16px;line-height:1;
+}
+.cell-repeat{
+  position:absolute;top:5px;right:7px;
+  font-family:var(--fm);font-size:0.5rem;
+  color:var(--gold-b);opacity:.7;
+}
+
+.grid-info h3{
+  font-family:var(--fd);font-size:0.95rem;font-weight:600;
+  color:var(--gold-b);letter-spacing:.05em;margin-bottom:1.1rem;
+}
+.breakdown-item{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.5rem 0;
+  border-bottom:1px solid rgba(200,148,48,.07);
+}
+.breakdown-item:last-child{border-bottom:none}
+.bd-key{color:var(--cream-dim);font-size:0.88rem}
+.bd-sub{font-size:0.72rem;color:var(--muted);display:block;margin-top:1px}
+.bd-val{
+  font-family:var(--fm);font-size:0.8rem;
+  color:var(--gold-a);background:rgba(200,148,48,.1);
+  padding:3px 10px;border-radius:6px;white-space:nowrap;
+}
+.grid-note{
+  margin-top:1.4rem;
+  padding:0.9rem 1.1rem;
+  background:rgba(200,148,48,.05);
+  border-left:2px solid var(--gold-c);
+  border-radius:0 8px 8px 0;
+  font-size:0.85rem;color:var(--cream-dim);
+  line-height:1.55;font-style:italic;
+}
+
+/* ── TABLES ──────────────────────────────────────────── */
+.table-wrap{overflow-x:auto;border-radius:var(--r)}
+table{width:100%;border-collapse:collapse}
+thead tr{border-bottom:1px solid var(--border)}
+th{
+  padding:0.85rem 1.1rem;
+  font-family:var(--fm);font-size:0.62rem;
+  letter-spacing:2px;text-transform:uppercase;
+  color:var(--gold-b);text-align:left;
+  font-weight:400;white-space:nowrap;
+}
+td{
+  padding:0.8rem 1.1rem;
+  font-size:0.95rem;
+  border-bottom:1px solid rgba(200,148,48,.06);
+  color:var(--cream-dim);white-space:nowrap;
+}
+td:first-child{color:var(--cream);font-weight:500;font-size:1rem}
+tr.hi td{background:rgba(200,148,48,.11);color:var(--cream)}
+tr.hi td:first-child{color:var(--gold-a)}
+tr:hover:not(.hi) td{background:rgba(200,148,48,.04)}
+
+.pill{
+  display:inline-flex;align-items:center;gap:4px;
+  background:rgba(200,148,48,.12);border:1px solid var(--border);
+  border-radius:20px;padding:3px 10px;
+  font-size:0.82rem;color:var(--gold-a);
+}
+.badge-now{
+  display:inline-block;
+  background:rgba(200,148,48,.22);border:1px solid var(--gold-c);
+  border-radius:20px;padding:2px 9px;
+  font-family:var(--fm);font-size:0.58rem;
+  color:var(--gold-a);letter-spacing:1px;
+  vertical-align:middle;margin-left:5px;
+}
+.badge-dur{
+  display:inline-block;
+  background:rgba(255,255,255,.04);border:1px solid var(--border);
+  border-radius:5px;padding:2px 8px;
+  font-family:var(--fm);font-size:0.74rem;color:var(--muted);
+}
+
+/* ── 20-YEAR ─────────────────────────────────────────── */
+.ctrl-row{
+  display:flex;gap:0.6rem;margin-bottom:1.6rem;flex-wrap:wrap;
+  align-items:center;
+}
+.ctrl-label{
+  font-family:var(--fm);font-size:0.58rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--muted);margin-right:auto;
+}
+.btn-ctrl{
+  padding:0.5rem 1.1rem;
+  background:rgba(0,0,0,.5);border:1px solid var(--border);
+  border-radius:2rem;
+  font-family:var(--fm);font-size:0.6rem;letter-spacing:1px;
+  color:var(--cream-dim);cursor:pointer;transition:all .22s;
+  display:inline-flex;align-items:center;gap:5px;text-transform:uppercase;
+}
+.btn-ctrl:hover{border-color:var(--border-hi);color:var(--gold-a);background:rgba(200,148,48,.06)}
+
+/* Timeline row */
+.year-timeline{
+  display:flex;gap:0;
+  overflow-x:auto;
+  scrollbar-width:thin;
+  scrollbar-color:var(--gold-c) transparent;
+  padding-bottom:1rem;
+  margin-bottom:1.6rem;
+}
+.year-timeline::-webkit-scrollbar{height:3px}
+.year-timeline::-webkit-scrollbar-thumb{background:var(--gold-c);border-radius:2px}
+
+.yt-item{
+  display:flex;flex-direction:column;align-items:center;
+  cursor:pointer;transition:all .22s;flex-shrink:0;width:52px;
+  position:relative;
+}
+.yt-item:hover .yt-dot{border-color:var(--gold-a);background:rgba(200,148,48,.25)}
+.yt-item.sel .yt-dot{
+  background:var(--gold-b);border-color:var(--gold-a);
+  box-shadow:0 0 12px rgba(200,148,48,.6);
+}
+.yt-item.is-now .yt-dot{
+  background:rgba(74,222,128,.2);border-color:#4ade80;
+  box-shadow:0 0 10px rgba(74,222,128,.4);
+}
+.yt-dot{
+  width:10px;height:10px;border-radius:50%;
+  border:1.5px solid var(--border);
+  background:rgba(0,0,0,.5);
+  transition:all .22s;margin-bottom:5px;
+  position:relative;z-index:1;
+}
+.yt-line{
+  position:absolute;top:5px;left:0;right:0;height:1.5px;
+  background:linear-gradient(90deg,var(--border),var(--border));
+  z-index:0;
+}
+.yt-item:first-child .yt-line{left:50%}
+.yt-item:last-child .yt-line{right:50%}
+.yt-yr{
+  font-family:var(--fm);font-size:0.52rem;letter-spacing:.5px;
+  color:var(--muted);margin-top:3px;text-align:center;
+  transition:color .22s;
+}
+.yt-item.sel .yt-yr,.yt-item:hover .yt-yr{color:var(--gold-b)}
+.yt-item.is-now .yt-yr{color:#4ade80}
+
+/* Big card for selected year */
+.year-detail{
+  display:grid;
+  grid-template-columns:auto 1fr;
+  gap:2rem;
+  background:rgba(6,5,3,.8);
+  border:1px solid rgba(200,148,48,.35);
+  border-radius:1.8rem;
+  padding:1.8rem;
+  margin-bottom:1.4rem;
+  position:relative;overflow:hidden;
+  min-height:240px;
+  transition:all .3s;
+}
+@media(max-width:620px){.year-detail{grid-template-columns:1fr}}
+.year-detail::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--gold-b) 40%,var(--gold-a) 60%,transparent);
+  opacity:.5;
+}
+.yd-glow{
+  position:absolute;top:-40%;right:-10%;
+  width:300px;height:300px;border-radius:50%;
+  background:radial-gradient(circle,rgba(200,148,48,.06) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* Year title block */
+.yd-title{
+  display:flex;flex-direction:column;justify-content:center;
+  gap:0.3rem;margin-bottom:1.4rem;
+}
+.yd-year{
+  font-family:var(--fd);
+  font-size:3.8rem;font-weight:700;line-height:1;
+  background:linear-gradient(145deg,var(--gold-a),var(--gold-b));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.yd-now-badge{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--fm);font-size:0.6rem;letter-spacing:2px;
+  text-transform:uppercase;color:#4ade80;
+}
+.yd-now-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:#4ade80;
+  box-shadow:0 0 8px #4ade80;
+  animation:pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.4);opacity:.7}}
+
+.yd-planets{display:flex;flex-direction:column;gap:0.7rem}
+.yd-planet-row{
+  display:flex;align-items:center;gap:0.8rem;
+}
+.yd-planet-icon{
+  width:36px;height:36px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem;flex-shrink:0;
+}
+.yd-planet-icon.maha{background:rgba(194,74,30,.18);border:1px solid rgba(194,74,30,.35)}
+.yd-planet-icon.antar{background:rgba(26,107,74,.18);border:1px solid rgba(26,107,74,.35)}
+.yd-planet-info{display:flex;flex-direction:column;gap:1px}
+.yd-planet-label{
+  font-family:var(--fm);font-size:0.55rem;letter-spacing:2px;
+  text-transform:uppercase;color:var(--muted);
+}
+.yd-planet-name{
+  font-family:var(--fb);font-size:1.05rem;
+  color:var(--cream);font-style:italic;
+}
+.yd-planet-num{
+  font-family:var(--fd);font-size:0.8rem;color:var(--gold-b);
+}
+
+/* Big vedic grid for selected year */
+.yd-grid-wrap{display:flex;flex-direction:column;gap:0.6rem}
+.yd-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:3px;
+  background:rgba(200,148,48,.12);
+  border:1px solid rgba(200,148,48,.2);
+  border-radius:1rem;overflow:hidden;
+  flex:1;
+}
+.yd-cell{
+  background:var(--ink2);
+  aspect-ratio:1;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:3px;
+  position:relative;transition:background .2s;
+}
+.yd-cell.is-maha{background:rgba(194,74,30,.12)}
+.yd-cell.is-antar{background:rgba(26,107,74,.12)}
+.yd-cell.is-both{background:rgba(200,148,48,.15)}
+.yd-cell-num{
+  font-family:var(--fd);
+  font-size:1.6rem;font-weight:700;line-height:1;
+  color:rgba(255,255,255,.07);
+  transition:color .2s;
+}
+.yd-cell-num.lit{
+  color:var(--gold-a);
+  text-shadow:0 0 14px rgba(200,148,48,.55);
+}
+.yd-cell-dots{
+  font-family:var(--fd);font-size:0.65rem;font-weight:600;
+  color:var(--gold-a);letter-spacing:2px;min-height:12px;
+  text-shadow:0 0 8px rgba(200,148,48,.4);
+}
+.yd-cell-tag{
+  position:absolute;bottom:3px;right:4px;
+  font-family:var(--fm);font-size:0.42rem;letter-spacing:.5px;
+  text-transform:uppercase;
+}
+.yd-cell-tag.mt{color:rgba(245,151,108,.7)}
+.yd-cell-tag.at{color:rgba(109,222,173,.7)}
+.yd-cell-tag.bt{color:rgba(200,148,48,.8)}
+
+/* Grid legend */
+.yd-legend{
+  display:flex;gap:1rem;flex-wrap:wrap;
+}
+.yd-leg-item{
+  display:flex;align-items:center;gap:5px;
+  font-family:var(--fm);font-size:0.58rem;letter-spacing:.5px;
+  color:var(--muted);text-transform:uppercase;
+}
+.yd-leg-dot{width:8px;height:8px;border-radius:2px}
+
+/* Year strip (small cards below) */
+.year-strip{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(90px,1fr));
+  gap:0.5rem;
+}
+.ys-card{
+  background:rgba(8,6,3,.7);
+  border:1px solid var(--border);
+  border-radius:0.8rem;
+  padding:0.6rem 0.5rem;
+  text-align:center;
+  cursor:pointer;
+  transition:all .2s;
+}
+.ys-card:hover{border-color:var(--border-hi);transform:translateY(-2px)}
+.ys-card.sel{
+  border-color:var(--gold-b);
+  background:rgba(200,148,48,.08);
+  box-shadow:0 0 12px rgba(200,148,48,.15);
+}
+.ys-card.is-now{border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.05)}
+.ys-year{
+  font-family:var(--fd);font-size:0.9rem;font-weight:600;
+  color:var(--cream-dim);margin-bottom:3px;
+  transition:color .2s;
+}
+.ys-card.sel .ys-year,.ys-card:hover .ys-year{color:var(--gold-a)}
+.ys-card.is-now .ys-year{color:#4ade80}
+.ys-planets{
+  font-family:var(--fm);font-size:0.52rem;
+  color:var(--muted);letter-spacing:.3px;
+  line-height:1.4;
+}
+
+/* ── PRATYANTAR MINI BANNER ──────────────────────────── */
+.prat-banner{
+  margin-top:1.4rem;
+  background:rgba(194,74,30,.07);
+  border:1px solid rgba(194,74,30,.22);
+  border-radius:var(--r);
+  padding:1rem 1.4rem;
+  display:flex;align-items:center;gap:1rem;flex-wrap:wrap;
+  justify-content:space-between;
+}
+.prat-banner p{font-size:0.9rem;color:var(--cream-dim)}
+.prat-banner strong{color:var(--cream)}
+.badge-soon{
+  font-family:var(--fm);font-size:0.57rem;letter-spacing:2px;text-transform:uppercase;
+  padding:4px 12px;border-radius:20px;
+  background:rgba(194,74,30,.18);border:1px solid rgba(194,74,30,.38);
+  color:#F5976C;white-space:nowrap;
+}
+.btn-notify{
+  padding:6px 16px;
+  background:linear-gradient(135deg,#9a3a12,#C44A1E);
+  border:none;border-radius:20px;
+  font-family:var(--fm);font-size:0.62rem;letter-spacing:1.5px;text-transform:uppercase;
+  color:#fff;cursor:pointer;transition:all .2s;
+}
+.btn-notify:hover{transform:translateY(-1px);filter:brightness(1.1)}
+
+/* ── ARTICLE ─────────────────────────────────────────── */
+.article-wrap{
+  margin-top:4rem;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:var(--r2);padding:2.5rem;backdrop-filter:blur(12px);
+}
+.article-wrap h2{
+  font-family:var(--fd);font-size:1.55rem;
+  background:linear-gradient(135deg,var(--gold-a),var(--gold-b));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  margin-bottom:1.4rem;
+}
+.article-wrap h3{
+  font-family:var(--fd);font-size:0.95rem;color:var(--gold-b);
+  margin:1.5rem 0 0.55rem;letter-spacing:.05em;font-weight:600;
+}
+.article-wrap p{font-size:1rem;color:var(--cream-dim);margin-bottom:.8rem;line-height:1.75}
+.quote-block{
+  margin-top:2rem;border-left:2px solid var(--gold-b);
+  padding:.75rem 1.2rem;font-style:italic;color:var(--cream-dim);font-size:1rem;
+}
+
+/* ── FOOTER ──────────────────────────────────────────── */
+.footer{
+  margin-top:4rem;text-align:center;
+  padding-top:2rem;border-top:1px solid var(--border);
+}
+.footer-name{font-family:var(--fd);font-size:1.05rem;color:var(--gold-b);margin-bottom:.3rem}
+.footer-sub{font-size:0.72rem;color:var(--muted);font-style:italic}
+
+/* ── TOAST ───────────────────────────────────────────── */
+.toast{
+  position:fixed;bottom:2rem;left:50%;
+  transform:translateX(-50%) translateY(120px);
+  background:rgba(18,14,8,.96);border:1px solid var(--border-hi);
+  border-radius:3rem;padding:0.7rem 1.6rem;
+  font-family:var(--fm);font-size:0.72rem;letter-spacing:1px;
+  color:var(--gold-a);backdrop-filter:blur(12px);
+  transition:transform .35s cubic-bezier(.2,.9,.3,1.1);
+  z-index:100;white-space:nowrap;
+}
+.toast.show{transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="bg-layer"></div>
+<div class="stars"></div>
+
+<div class="app">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="eyebrow">ᳰ Ākāśa Gaṇita ᳰ</div>
+    <h1>Vedic Numerology</h1>
+    <p class="header-sub">Moolank · Bhagyank · Mahadasha · Antardasha · Pratyantar</p>
+  </header>
+
+  <!-- INPUT -->
+  <div class="input-card">
+    <div class="input-row">
+      <div class="field-group">
+        <label class="field-label" for="dobInput">Birth Date</label>
+        <input class="field-input" type="date" id="dobInput" value="1994-09-17">
+      </div>
+      <button class="btn btn-calc" id="calcBtn">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm1 10H7V7h2v4zm0-6H7V3h2v2z"/></svg>
+        Calculate
+      </button>
+      <button class="btn btn-wa" id="waBtn">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.557 4.122 1.533 5.858L.054 23.447a.5.5 0 0 0 .611.61l5.72-1.502A11.95 11.95 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.953 9.953 0 0 1-5.204-1.458l-.374-.22-3.394.891.905-3.301-.241-.381A9.953 9.953 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Share
+      </button>
+      <button class="btn btn-pdf" id="pdfBtn">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 1H3a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V6L9 1z"/><path d="M9 1v5h5M5 10h6M5 12.5h4"/></svg>
+        PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-label">Moolank</div>
+      <div class="stat-num" id="sRoot">—</div>
+      <div class="stat-planet" id="sRootName"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Bhagyank</div>
+      <div class="stat-num" id="sDest">—</div>
+      <div class="stat-planet" id="sDestName"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Mahadasha</div>
+      <div class="stat-num" id="sMaha">—</div>
+      <div class="stat-planet" id="sMahaName"></div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-label">Antardasha</div>
+      <div class="stat-num" id="sAntar">—</div>
+      <div class="stat-planet" id="sAntarName"></div>
+    </div>
+  </div>
+
+  <!-- PROMO -->
+  <div class="promo-banner">
+    <div class="promo-sweep"></div>
+    <div class="promo-left">
+      <div class="promo-eyebrow">✦ Pro Upgrade</div>
+      <div class="promo-title">Unlock Dasha Pratyantar</div>
+      <div class="promo-desc">Go beyond yearly Antardasha — see week-level sub-periods, month-by-month planetary rulers, and a full 3-level dasha tree for every year in your chart.</div>
+      <div class="promo-feats">
+        <span class="promo-feat">⬡ Pratyantar periods</span>
+        <span class="promo-feat">⬡ Monthly breakdown</span>
+        <span class="promo-feat">⬡ 3-level dasha tree</span>
+        <span class="promo-feat">⬡ PDF export</span>
+      </div>
+    </div>
+    <div class="promo-right">
+      <div class="promo-price">
+        <span class="promo-amt">₹299</span>
+        <span class="promo-per">/ one-time</span>
+      </div>
+      <button class="promo-cta" onclick="showToast('Early access opening soon — you\'re on the list ✦')">
+        Get Early Access
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+      </button>
+      <div class="promo-note">Early bird · Limited seats</div>
+    </div>
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-wrap">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-tab="grid" role="tab">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="1" width="5" height="5" rx="1"/><rect x="10" y="1" width="5" height="5" rx="1"/><rect x="1" y="10" width="5" height="5" rx="1"/><rect x="10" y="10" width="5" height="5" rx="1"/></svg>
+        Vedic Grid
+      </button>
+      <button class="tab" data-tab="maha" role="tab">
+        <svg viewBox="0 0 16 16" fill="currentColor"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M8 4v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/></svg>
+        Mahadasha
+      </button>
+      <button class="tab" data-tab="antar" role="tab">
+        <svg viewBox="0 0 16 16" fill="currentColor"><rect x="1" y="3" width="14" height="11" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/><path d="M5 1v3M11 1v3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M1 7h14" stroke="currentColor" stroke-width="1"/></svg>
+        Yearly Antardasha
+      </button>
+      <button class="tab" data-tab="twenty" role="tab">
+        <svg viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h5v5H2zM9 2h5v5H9zM2 9h5v5H2zM9 9h5v5H9z" opacity=".5"/></svg>
+        20‑Year View
+      </button>
+    </div>
+  </div>
+
+  <!-- TAB: GRID -->
+  <div id="tab-grid" class="tab-pane active">
+    <div class="section-card">
+      <div class="section-title">Sacred Vedic Grid</div>
+      <div class="grid-layout">
+        <div class="vedic-grid" id="vedicGrid"></div>
+        <div class="grid-info">
+          <h3>Placement Breakdown</h3>
+          <div id="breakdownGrid"></div>
+          <div class="grid-note">
+            Fixed positions: 3·1·9 (celestial row) · 6·7·5 (earthly row) · 2·8·4 (ancestral row).
+            Repeated digits amplify that planet's energy; absent numbers indicate areas requiring conscious effort.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: MAHA -->
+  <div id="tab-maha" class="tab-pane">
+    <div class="section-card">
+      <div class="section-title">100-Year Mahadasha Cycle</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start</th><th>End</th><th>Duration</th></tr></thead>
+          <tbody id="mahaBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: ANTAR -->
+  <div id="tab-antar" class="tab-pane">
+    <div class="section-card">
+      <div class="section-title">Yearly Antardasha (100 Years)</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Year</th><th>Yr%100</th><th>Moolank</th><th>Month</th><th>Day#</th><th>Sum → Root</th><th>Antardasha</th></tr></thead>
+          <tbody id="antarBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB: 20-YEAR -->
+  <div id="tab-twenty" class="tab-pane">
+    <div class="section-card">
+      <div class="section-title">20-Year Holographic View</div>
+
+      <!-- Controls -->
+      <div class="ctrl-row">
+        <span class="ctrl-label">Navigate Years</span>
+        <button class="btn-ctrl" id="prev20">← Prev 20</button>
+        <button class="btn-ctrl" id="jumpNow">◉ Current</button>
+        <button class="btn-ctrl" id="next20">Next 20 →</button>
+      </div>
+
+      <!-- Timeline scrubber -->
+      <div class="year-timeline" id="yearTimeline"></div>
+
+      <!-- Big selected-year detail card -->
+      <div class="year-detail" id="yearDetail">
+        <div class="yd-glow"></div>
+        <div id="ydLeft"></div>
+        <div id="ydRight"></div>
+      </div>
+
+      <!-- Small year strip -->
+      <div class="year-strip" id="yearStrip"></div>
+
+      <div class="prat-banner" style="margin-top:1.4rem">
+        <p><strong>Dasha Pratyantar</strong> — Sub-sub periods for week-level precision within each year card.</p>
+        <div style="display:flex;align-items:center;gap:.6rem">
+          <span class="badge-soon">Coming Soon</span>
+          <button class="btn-notify" onclick="showToast('You\'ll be notified when Pratyantar launches!')">Notify Me</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ARTICLE -->
+  <article class="article-wrap">
+    <h2>Master Your Destiny: The Vedic Numerology Guide</h2>
+    <p>Vedic numerology — Ankaśāstra — uses your exact date of birth to unveil your cosmic blueprint. Unlike Western systems, it maps each digit to a Jyotish planet and tracks major planetary periods spanning your entire life.</p>
+    <h3>1. Moolank — The Soul's Signature</h3>
+    <p>Your Moolank is derived from your birth day reduced to a single digit (1–9). Each corresponds to a planet: Sun (1), Moon (2), Jupiter (3), Rahu (4), Mercury (5), Venus (6), Ketu (7), Saturn (8), Mars (9).</p>
+    <h3>2. Bhagyank — The Karmic Blueprint</h3>
+    <p>Sum all digits of your complete birth date and reduce to a single digit. This is your life path, career destiny, and spiritual direction.</p>
+    <h3>3. Mahadasha — The 100-Year Cycle</h3>
+    <p>The planetary sequence starts from your Moolank and cycles 1 through 9, with each planet ruling for years equal to its number.</p>
+    <h3>4. Antardasha — Yearly Sub-Periods</h3>
+    <p>Each calendar year carries a sub-ruler computed from year, Moolank, birth month, and weekday of that year's birthday — reduced to a single digit.</p>
+    <h3>5. The Vedic Grid</h3>
+    <p>A 3×3 grid with fixed positions: 3-1-9 (divine), 6-7-5 (material), 2-8-4 (ancestral). Repeated digits intensify that planet's vibration; absent numbers indicate areas requiring effort.</p>
+    <div class="quote-block">
+      "Yathā pinde tathā brahmāṇḍe" — As in the microcosm, so in the macrocosm. Your numbers mirror the universe.
+    </div>
+  </article>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-name">✦ Designed by Himangshu</div>
+    <div class="footer-sub">Ākāśa Gaṇita — The Celestial Computation</div>
+  </footer>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+// ── VEDIC ENGINE ─────────────────────────────────────────
+
+const P = {
+  1:{n:"Sun",    s:"☉"},2:{n:"Moon",    s:"☽"},3:{n:"Jupiter",s:"♃"},
+  4:{n:"Rahu",   s:"☊"},5:{n:"Mercury", s:"☿"},6:{n:"Venus",  s:"♀"},
+  7:{n:"Ketu",   s:"☋"},8:{n:"Saturn",  s:"♄"},9:{n:"Mars",   s:"♂"}
+};
+
+const LAYOUT = [3,1,9,6,7,5,2,8,4];
+const DOW_MAP = {0:1,1:2,2:9,3:5,4:3,5:6,6:8};
+
+const reduce = n => {
+  let x = Math.abs(+n);
+  while (x > 9) {
+    let s = 0;
+    while (x) { s += x % 10; x = Math.floor(x/10); }
+    x = s;
+  }
+  return x;
+};
+
+const rootFromDay = d => reduce([...String(d)].reduce((a,c) => a + +c, 0));
+const bhagyank  = (d,m,y) => reduce([...String(d),...String(m),...String(y)].reduce((a,c)=>a+ +c,0));
+const dowNum    = dt => DOW_MAP[dt.getDay()];
+
+const getFreq = (dob, root, dest) => {
+  const d = dob.getDate(), m = dob.getMonth()+1, y = dob.getFullYear();
+  const nums = [
+    ...String(d).split('').map(Number),
+    ...String(m).split('').map(Number),
+    ...String(y).slice(-2).split('').map(Number),
+    root, dest
+  ].filter(v => v>=1 && v<=9);
+  const f = new Array(10).fill(0);
+  nums.forEach(v => f[v]++);
+  return f;
+};
+
+const genMahaSeq = (root, dob) => {
+  const order = [];
+  for (let i = root; i <= 9; i++) order.push(i);
+  for (let i = 1; i < root; i++) order.push(i);
+  let seq = [], cur = new Date(dob), total = 0, idx = 0;
+  while (total < 100) {
+    const num = order[idx % order.length];
+    const dur = Math.min(num, 100 - total);
+    const start = new Date(cur), end = new Date(cur);
+    end.setFullYear(end.getFullYear() + dur);
+    seq.push({num, dur, start, end});
+    cur = end; total += dur; idx++;
+  }
+  return seq;
+};
+
+const getMahaForYear = (yr, root, dob) => {
+  const order = [];
+  for (let i = root; i <= 9; i++) order.push(i);
+  for (let i = 1; i < root; i++) order.push(i);
+  let cur = new Date(dob);
+  for (let i = 0; i < 200; i++) {
+    const num = order[i % order.length], dur = num;
+    const next = new Date(cur); next.setFullYear(next.getFullYear() + dur);
+    if (yr >= cur.getFullYear() && yr < next.getFullYear()) return num;
+    cur = next;
+  }
+  return 1;
+};
+
+const getAntarForYear = (yr, dob, root) => {
+  const m = dob.getMonth() + 1;
+  let bd = new Date(yr, dob.getMonth(), dob.getDate());
+  if (bd.getMonth() !== dob.getMonth()) bd = new Date(yr, 1, 28);
+  const dow = dowNum(bd), yy = yr % 100;
+  const raw = yy + root + m + dow;
+  const red = reduce(raw);
+  return {yy, m, dow, raw, red};
+};
+
+// ── STATE ────────────────────────────────────────────────
+
+let DOB, ROOT, DEST, MAHAS, startGrid = null;
+
+// ── RENDER ───────────────────────────────────────────────
+
+function render() {
+  if (!DOB) return;
+  const today = new Date();
+  const todayY = today.getFullYear();
+  const mahaNum = getMahaForYear(todayY, ROOT, DOB);
+  const antar = getAntarForYear(todayY, DOB, ROOT);
+
+  // stats
+  const $ = id => document.getElementById(id);
+  $('sRoot').textContent = ROOT; $('sRootName').textContent = `${P[ROOT].s} ${P[ROOT].n}`;
+  $('sDest').textContent = DEST; $('sDestName').textContent = `${P[DEST].s} ${P[DEST].n}`;
+  $('sMaha').textContent = mahaNum; $('sMahaName').textContent = `${P[mahaNum].s} ${P[mahaNum].n}`;
+  $('sAntar').textContent = antar.red; $('sAntarName').textContent = `${P[antar.red].s} ${P[antar.red].n}`;
+
+  renderVedicGrid();
+  renderMahaDasha();
+  renderAntarDasha();
+  renderTwenty(startGrid ?? (todayY - 10));
+}
+
+function renderVedicGrid() {
+  const freq = getFreq(DOB, ROOT, DEST);
+  const grid = document.getElementById('vedicGrid');
+  grid.innerHTML = '';
+  LAYOUT.forEach(pos => {
+    const cnt = freq[pos] || 0;
+    const cell = document.createElement('div');
+    cell.className = 'grid-cell';
+    cell.innerHTML = `<div class="cell-pos ${cnt>0?'filled':''}">${pos}</div><div class="cell-dots">${cnt>0?String(pos).repeat(cnt):''}</div>`;
+    grid.appendChild(cell);
+  });
+
+  const d = DOB.getDate(), m = DOB.getMonth()+1, y = DOB.getFullYear();
+  const breakdown = document.getElementById('breakdownGrid');
+  breakdown.innerHTML = [
+    ['Day', `${d}`, `→ digits: ${[...String(d)].join(' + ')}`],
+    ['Month', `${m}`, `→ digits: ${[...String(m)].join(' + ')}`],
+    ['Year (last 2)', String(y).slice(-2), `→ digits: ${[...String(y).slice(-2)].join(' + ')}`],
+    ['Moolank', ROOT, `${P[ROOT].s} ${P[ROOT].n}`],
+    ['Bhagyank', DEST, `${P[DEST].s} ${P[DEST].n}`],
+  ].map(([k, v, note]) => `
+    <div class="breakdown-item">
+      <span class="breakdown-key">${k} <small style="opacity:.6">${note}</small></span>
+      <span class="breakdown-val">${v}</span>
+    </div>`).join('');
+}
+
+function renderMahaDasha() {
+  const today = new Date();
+  const tbody = document.getElementById('mahaBody');
+  tbody.innerHTML = MAHAS.map((m, i) => {
+    const active = today >= m.start && today < m.end;
+    const badge = active ? '<span class="badge-now">NOW</span>' : '';
+    return `<tr class="${active ? 'hi' : ''}">
+      <td>${i+1}</td>
+      <td><span class="planet-pill">${P[m.num].s} ${P[m.num].n}</span>${badge}</td>
+      <td>${m.num}</td>
+      <td>${m.start.toLocaleDateString('en-IN', {year:'numeric',month:'short',day:'numeric'})}</td>
+      <td>${m.end.toLocaleDateString('en-IN', {year:'numeric',month:'short',day:'numeric'})}</td>
+      <td><span class="dur-badge">${m.dur} yr</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function renderAntarDasha() {
+  const todayY = new Date().getFullYear();
+  const tbody = document.getElementById('antarBody');
+  let rows = '';
+  for (let i = 0; i < 100; i++) {
+    const y = DOB.getFullYear() + i;
+    const a = getAntarForYear(y, DOB, ROOT);
+    const active = y === todayY;
+    rows += `<tr class="${active ? 'hi' : ''}">
+      <td>${y}${active ? '<span class="badge-now">NOW</span>' : ''}</td>
+      <td>${a.yy}</td><td>${ROOT}</td><td>${a.m}</td><td>${a.dow}</td>
+      <td>${a.raw} → ${a.red}</td>
+      <td><span class="planet-pill">${P[a.red].s} ${P[a.red].n}</span></td>
+    </tr>`;
+  }
+  tbody.innerHTML = rows;
+}
+
+let selYear = null;
+
+function buildYearData(y) {
+  const baseFreq = getFreq(DOB, ROOT, DEST);
+  const mNum  = getMahaForYear(y, ROOT, DOB);
+  const antar = getAntarForYear(y, DOB, ROOT);
+  const yf    = [...baseFreq];
+  if (mNum  >= 1) yf[mNum]++;
+  if (antar.red >= 1) yf[antar.red]++;
+  return { y, mNum, antar, yf };
+}
+
+function renderYearDetail(y) {
+  selYear = y;
+  const todayY = new Date().getFullYear();
+  const { mNum, antar, yf } = buildYearData(y);
+  const isNow = y === todayY;
+
+  // Left panel
+  document.getElementById('ydLeft').innerHTML = `
+    <div class="yd-title">
+      <div class="yd-year">${y}</div>
+      ${isNow ? '<div class="yd-now-badge"><div class="yd-now-dot"></div> Current Year</div>' : ''}
+    </div>
+    <div class="yd-planets">
+      <div class="yd-planet-row">
+        <div class="yd-planet-icon maha">${P[mNum].s}</div>
+        <div class="yd-planet-info">
+          <span class="yd-planet-label">Mahadasha</span>
+          <span class="yd-planet-name">${P[mNum].n}</span>
+          <span class="yd-planet-num">${mNum}</span>
+        </div>
+      </div>
+      <div class="yd-planet-row">
+        <div class="yd-planet-icon antar">${P[antar.red].s}</div>
+        <div class="yd-planet-info">
+          <span class="yd-planet-label">Antardasha</span>
+          <span class="yd-planet-name">${P[antar.red].n}</span>
+          <span class="yd-planet-num">${antar.red}</span>
+        </div>
+      </div>
+    </div>`;
+
+  // Right panel — big grid
+  const cells = LAYOUT.map(d => {
+    const cnt = yf[d] || 0;
+    const isMaha  = d === mNum;
+    const isAntar = d === antar.red;
+    const isBoth  = isMaha && isAntar;
+    const cls = isBoth ? 'is-both' : isMaha ? 'is-maha' : isAntar ? 'is-antar' : '';
+    const tag = isBoth
+      ? '<span class="yd-cell-tag bt">M+A</span>'
+      : isMaha  ? '<span class="yd-cell-tag mt">M</span>'
+      : isAntar ? '<span class="yd-cell-tag at">A</span>' : '';
+    return `<div class="yd-cell ${cls}">
+      <div class="yd-cell-num ${cnt>0?'lit':''}">${d}</div>
+      <div class="yd-cell-dots">${cnt>0?String(d).repeat(cnt):''}</div>
+      ${tag}
+    </div>`;
+  }).join('');
+
+  document.getElementById('ydRight').innerHTML = `
+    <div class="yd-grid-wrap">
+      <div class="yd-grid">${cells}</div>
+      <div class="yd-legend">
+        <div class="yd-leg-item"><div class="yd-leg-dot" style="background:rgba(194,74,30,.5)"></div> Mahadasha</div>
+        <div class="yd-leg-item"><div class="yd-leg-dot" style="background:rgba(26,107,74,.5)"></div> Antardasha</div>
+        <div class="yd-leg-item"><div class="yd-leg-dot" style="background:rgba(200,148,48,.5)"></div> Both</div>
+      </div>
+    </div>`;
+
+  // Highlight timeline & strip
+  document.querySelectorAll('.yt-item').forEach(el => el.classList.toggle('sel', +el.dataset.y === y));
+  document.querySelectorAll('.ys-card').forEach(el => el.classList.toggle('sel', +el.dataset.y === y));
+}
+
+function renderTwenty(sy) {
+  startGrid = sy;
+  const todayY = new Date().getFullYear();
+  if (selYear === null) selYear = todayY;
+
+  // Timeline
+  const tl = document.getElementById('yearTimeline');
+  tl.innerHTML = '';
+  for (let y = sy; y < sy + 20; y++) {
+    const el = document.createElement('div');
+    el.className = `yt-item${y === todayY ? ' is-now' : ''}${y === selYear ? ' sel' : ''}`;
+    el.dataset.y = y;
+    el.innerHTML = `<div class="yt-line"></div><div class="yt-dot"></div><div class="yt-yr">${y}</div>`;
+    el.onclick = () => renderYearDetail(y);
+    tl.appendChild(el);
+  }
+
+  // Strip
+  const strip = document.getElementById('yearStrip');
+  strip.innerHTML = '';
+  for (let y = sy; y < sy + 20; y++) {
+    const mNum  = getMahaForYear(y, ROOT, DOB);
+    const antar = getAntarForYear(y, DOB, ROOT);
+    const el = document.createElement('div');
+    el.className = `ys-card${y === todayY ? ' is-now' : ''}${y === selYear ? ' sel' : ''}`;
+    el.dataset.y = y;
+    el.innerHTML = `
+      <div class="ys-year">${y}</div>
+      <div class="ys-planets">${P[mNum].s}${P[mNum].n.slice(0,3)}<br>${P[antar.red].s}${P[antar.red].n.slice(0,3)}</div>`;
+    el.onclick = () => renderYearDetail(y);
+    strip.appendChild(el);
+  }
+
+  renderYearDetail(selYear >= sy && selYear < sy + 20 ? selYear : (todayY >= sy && todayY < sy + 20 ? todayY : sy));
+}
+
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3200);
+}
+
+function init(dateStr) {
+  const d = new Date(dateStr);
+  if (isNaN(d)) return;
+  DOB = d; ROOT = rootFromDay(d.getDate());
+  DEST = bhagyank(d.getDate(), d.getMonth()+1, d.getFullYear());
+  MAHAS = genMahaSeq(ROOT, DOB);
+  if (startGrid === null) startGrid = new Date().getFullYear() - 10;
+  render();
+}
+
+// ── EVENTS ──────────────────────────────────────────────
+
+document.getElementById('calcBtn').onclick = () => {
+  const v = document.getElementById('dobInput').value;
+  if (v) { startGrid = null; init(v); showToast('Chart generated ✦'); }
+};
+
+document.getElementById('dobInput').addEventListener('change', e => {
+  startGrid = null; init(e.target.value);
+});
+
+document.getElementById('waBtn').onclick = () => {
+  if (!DOB) return;
+  const todayY = new Date().getFullYear();
+  const mNum = getMahaForYear(todayY, ROOT, DOB);
+  const an = getAntarForYear(todayY, DOB, ROOT);
+  const msg = encodeURIComponent(
+    `🪷 Ākāśa Gaṇita — Vedic Numerology\n📅 DOB: ${DOB.toDateString()}\n` +
+    `🌟 Moolank: ${ROOT} (${P[ROOT].s} ${P[ROOT].n})\n` +
+    `🌍 Bhagyank: ${DEST} (${P[DEST].s} ${P[DEST].n})\n` +
+    `⚡ Mahadasha: ${P[mNum].s} ${P[mNum].n}\n` +
+    `🌙 Antardasha: ${P[an.red].s} ${P[an.red].n}\n` +
+    `✨ Explore at: vedic-numerology.himangshu.com`
+  );
+  window.open(`https://wa.me/?text=${msg}`, '_blank');
+};
+
+document.getElementById('prev20').onclick  = () => { selYear = null; renderTwenty(startGrid - 20); };
+document.getElementById('next20').onclick  = () => { selYear = null; renderTwenty(startGrid + 20); };
+document.getElementById('jumpNow').onclick = () => { startGrid = new Date().getFullYear() - 10; selYear = new Date().getFullYear(); renderTwenty(startGrid); };
+
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.add('active');
+  });
+});
+
+// Auto-scroll to current row when a table tab is activated
+['maha','antar'].forEach(tabId => {
+  document.querySelector(`[data-tab="${tabId}"]`).addEventListener('click', () => {
+    setTimeout(() => {
+      const row = document.querySelector(`#tab-${tabId} .hi`);
+      if (row) row.scrollIntoView({behavior:'smooth', block:'center'});
+    }, 80);
+  });
+});
+
+// ── PDF EXPORT ───────────────────────────────────────────
+document.getElementById('pdfBtn').onclick = () => {
+  if (!DOB) { showToast('Generate a chart first ✦'); return; }
+  showToast('Preparing PDF…');
+
+  const todayY = new Date().getFullYear();
+  const mNum = getMahaForYear(todayY, ROOT, DOB);
+  const an   = getAntarForYear(todayY, DOB, ROOT);
+  const freq = getFreq(DOB, ROOT, DEST);
+
+  // Build grid rows for PDF
+  const gridRows = [
+    [LAYOUT[0], LAYOUT[1], LAYOUT[2]],
+    [LAYOUT[3], LAYOUT[4], LAYOUT[5]],
+    [LAYOUT[6], LAYOUT[7], LAYOUT[8]],
+  ].map(row => row.map(pos => {
+    const cnt = freq[pos] || 0;
+    return `<td style="width:60px;height:60px;text-align:center;vertical-align:middle;border:1px solid #c8922a44;background:#1a1510;font-family:serif;">
+      <div style="font-size:1.4rem;color:${cnt>0?'#C8922A':'#c8922a33'}">${pos}</div>
+      <div style="font-size:0.55rem;letter-spacing:2px;color:#F5D98A">${cnt>0?String(pos).repeat(cnt):''}</div>
+    </td>`;
+  }).join('')).map(r => `<tr>${r}</tr>`).join('');
+
+  // Maha table rows
+  const mahaRows = MAHAS.map((m, i) => {
+    const active = new Date() >= m.start && new Date() < m.end;
+    return `<tr style="${active?'background:#c8922a18;':''}">
+      <td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${i+1}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${P[m.num].s} ${P[m.num].n}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.num}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.start.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.end.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td>
+      <td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.dur} yr</td>
+    </tr>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8">
+  <title>Ākāśa Gaṇita — Vedic Numerology Report</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:ital,wght@0,400;1,400&display=swap');
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0d0b07; color: #F0E8D8; font-family: 'Crimson Pro', serif; padding: 40px; }
+    h1 { font-family: 'Cinzel', serif; font-size: 2rem; background: linear-gradient(135deg,#F5D98A,#C8922A); -webkit-background-clip:text; background-clip:text; color:transparent; margin-bottom:4px; }
+    .sub { font-style:italic; color:#B8AA90; margin-bottom:28px; font-size:0.95rem; }
+    .section { margin-bottom:32px; }
+    h2 { font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:3px; text-transform:uppercase; color:#C8922A; margin-bottom:14px; border-bottom:1px solid #c8922a33; padding-bottom:6px; }
+    .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:32px; }
+    .stat { background:#1a1510; border:1px solid #c8922a33; border-radius:12px; padding:14px; text-align:center; }
+    .stat-l { font-family:monospace; font-size:0.55rem; letter-spacing:2px; text-transform:uppercase; color:#C8922A; margin-bottom:4px; }
+    .stat-n { font-family:'Cinzel',serif; font-size:2rem; color:#F5D98A; line-height:1; }
+    .stat-p { font-size:0.8rem; color:#B8AA90; font-style:italic; margin-top:2px; }
+    table { width:100%; border-collapse:collapse; font-size:0.88rem; color:#B8AA90; }
+    th { text-align:left; padding:6px 8px; font-family:monospace; font-size:0.58rem; letter-spacing:1.5px; text-transform:uppercase; color:#C8922A; border-bottom:1px solid #c8922a44; font-weight:400; }
+    .footer { margin-top:40px; text-align:center; border-top:1px solid #c8922a22; padding-top:16px; color:#6B6050; font-size:0.75rem; font-style:italic; }
+    @media print { body { -webkit-print-color-adjust:exact; print-color-adjust:exact; } }
+  </style></head><body>
+  <h1>Ākāśa Gaṇita</h1>
+  <p class="sub">Vedic Numerology Report &nbsp;·&nbsp; Generated ${new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</p>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-l">Birth Date</div><div class="stat-n" style="font-size:1rem;margin-top:4px">${DOB.toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</div></div>
+    <div class="stat"><div class="stat-l">Moolank</div><div class="stat-n">${ROOT}</div><div class="stat-p">${P[ROOT].s} ${P[ROOT].n}</div></div>
+    <div class="stat"><div class="stat-l">Bhagyank</div><div class="stat-n">${DEST}</div><div class="stat-p">${P[DEST].s} ${P[DEST].n}</div></div>
+    <div class="stat"><div class="stat-l">Mahadasha Now</div><div class="stat-n">${mNum}</div><div class="stat-p">${P[mNum].s} ${P[mNum].n}</div></div>
+  </div>
+
+  <div class="section">
+    <h2>Vedic Grid</h2>
+    <table style="width:auto"><tbody>${gridRows}</tbody></table>
+  </div>
+
+  <div class="section">
+    <h2>Mahadasha Cycle (100 Years)</h2>
+    <table><thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start</th><th>End</th><th>Duration</th></tr></thead>
+    <tbody>${mahaRows}</tbody></table>
+  </div>
+
+  <div class="footer">Ākāśa Gaṇita — The Celestial Computation &nbsp;·&nbsp; Designed by Himangshu</div>
+  </body></html>`;
+
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `vedic-numerology-${DOB.toISOString().slice(0,10)}.html`;
+  a.click();
+  URL.revokeObjectURL(url);
+  showToast('PDF report downloaded ✦');
+};
+
+// ── BOOT ─────────────────────────────────────────────────
+init('1994-09-17');
+</script>
+
+</body>
+</html>
