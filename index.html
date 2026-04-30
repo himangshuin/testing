@@ -751,7 +751,7 @@
     }
 
     // COMPATIBILITY SCORING (with enemy number penalty)
-   function computeScore(p1, p2) {
+  function computeScore(p1, p2) {
     let score = 0;
 
     // ===== ROOT NUMBER =====
@@ -772,14 +772,8 @@
     const name1Negative = isNegativeCompound(p1.compound);
     const name2Negative = isNegativeCompound(p2.compound);
 
-    if (name1Negative && name2Negative) {
-    score += 10; // both bad
-} else if (name1Negative || name2Negative) {
-    score += 13; // one bad
-} else {
-    score += 25; // both good
-} {
-        score += 13; // half of 25
+    if (name1Negative || name2Negative) {
+        score += 13; // half
     } else {
         score += 25; // full
     }
