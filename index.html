@@ -21,6 +21,8 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Free Vedic Numerology Calculator","alternateName":"Ākāśa Gaṇita","description":"Free online Vedic Numerology Calculator to find your Moolank (birth number), Bhagyank (destiny number), Mahadasha, Antardasha planetary periods and sacred Vedic grid.","url":"https://vedic-numerology.himangshu.com/","applicationCategory":"LifestyleApplication","operatingSystem":"Web Browser","offers":{"@type":"Offer","price":"0","priceCurrency":"INR"},"author":{"@type":"Person","name":"Himangshu"},"keywords":"vedic numerology, free numerology calculator, moolank, bhagyank, mahadasha, antardasha, jyotish"}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
 <style>
 :root{
   --ink:#0c0a06;--ink2:#181410;--ink3:#221e16;
@@ -977,26 +979,303 @@ document.getElementById('waBtn').onclick=()=>{
   window.open(`https://wa.me/?text=${msg}`,'_blank');
 };
 
-// ── PDF EXPORT ───────────────────────────────────────────
-document.getElementById('pdfBtn').onclick=()=>{
-  if(!DOB){showToast('Generate a chart first ✦');return;}
-  showToast('Preparing PDF…');
-  const todayY=new Date().getFullYear();
-  const mNum=getMahaForYear(todayY,ROOT,DOB);
-  const an=getAntarForYear(todayY,DOB,ROOT);
-  const freq=getFreq(DOB,ROOT,DEST);
-  const gridRows=[LAYOUT.slice(0,3),LAYOUT.slice(3,6),LAYOUT.slice(6,9)].map(row=>
-    row.map(pos=>{const cnt=freq[pos]||0;return`<td style="width:60px;height:60px;text-align:center;vertical-align:middle;border:1px solid #c8922a44;background:#1a1510;font-family:serif;"><div style="font-size:1.4rem;color:${cnt>0?'#C8922A':'#c8922a33'}">${pos}</div><div style="font-size:0.55rem;letter-spacing:2px;color:#F5D98A">${cnt>0?String(pos).repeat(cnt):''}</div></td>`;}).join('')
-  ).map(r=>`<tr>${r}</tr>`).join('');
-  const mahaRows=MAHAS.map((m,i)=>{
-    const active=new Date()>=m.start&&new Date()<m.end;
-    return`<tr style="${active?'background:#c8922a18;':''}"><td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${i+1}</td><td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${P[m.num].s} ${P[m.num].n}</td><td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.num}</td><td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.start.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td><td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.end.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td><td style="padding:5px 8px;border-bottom:1px solid #c8922a15">${m.dur} yr</td></tr>`;
+// ── PDF EXPORT (real .pdf via jsPDF + html2canvas) ───────
+document.getElementById('pdfBtn').onclick = async () => {
+  if (!DOB) { showToast('Generate a chart first ✦'); return; }
+  showToast('Building PDF — please wait…');
+
+  const todayY = new Date().getFullYear();
+  const mNum   = getMahaForYear(todayY, ROOT, DOB);
+  const an     = getAntarForYear(todayY, DOB, ROOT);
+  const freq   = getFreq(DOB, ROOT, DEST);
+
+  /* ── build a self-contained off-screen print document ── */
+  const printWin = window.open('', '_blank', 'width=900,height=1,left=-9999,top=-9999');
+  if (!printWin) { showToast('Allow pop-ups to export PDF'); return; }
+
+  // ── helper: grid HTML ──
+  const gridRows = [LAYOUT.slice(0,3), LAYOUT.slice(3,6), LAYOUT.slice(6,9)]
+    .map(row => '<tr>' + row.map(pos => {
+      const cnt = freq[pos] || 0;
+      return `<td class="gc ${cnt>0?'glit':''}"><div class="gn">${pos}</div><div class="gd">${cnt>0?String(pos).repeat(cnt):''}</div></td>`;
+    }).join('') + '</tr>').join('');
+
+  // ── helper: mahadasha rows ──
+  const mahaRows = MAHAS.map((m, i) => {
+    const active = new Date() >= m.start && new Date() < m.end;
+    return `<tr class="${active?'hi':''}">
+      <td>${i+1}</td>
+      <td>${P[m.num].s} ${P[m.num].n}${active?' <span class="now">NOW</span>':''}</td>
+      <td>${m.num}</td>
+      <td>${m.start.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td>
+      <td>${m.end.toLocaleDateString('en-IN',{year:'numeric',month:'short',day:'numeric'})}</td>
+      <td>${m.dur} yr</td>
+    </tr>`;
   }).join('');
-  const html=`<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Free Vedic Numerology Report — Ākāśa Gaṇita</title><style>@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Crimson+Pro:ital,wght@0,400;1,400&display=swap');*{box-sizing:border-box;margin:0;padding:0}body{background:#0d0b07;color:#F0E8D8;font-family:'Crimson Pro',serif;padding:40px}h1{font-family:'Cinzel',serif;font-size:2rem;background:linear-gradient(135deg,#F5D98A,#C8922A);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:4px}.sub{font-style:italic;color:#B8AA90;margin-bottom:28px;font-size:0.95rem}.section{margin-bottom:32px}h2{font-family:'Cinzel',serif;font-size:0.85rem;letter-spacing:3px;text-transform:uppercase;color:#C8922A;margin-bottom:14px;border-bottom:1px solid #c8922a33;padding-bottom:6px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:32px}.stat{background:#1a1510;border:1px solid #c8922a33;border-radius:12px;padding:14px;text-align:center}.stat-l{font-family:monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:#C8922A;margin-bottom:4px}.stat-n{font-family:'Cinzel',serif;font-size:2rem;color:#F5D98A;line-height:1}.stat-p{font-size:0.8rem;color:#B8AA90;font-style:italic;margin-top:2px}table{width:100%;border-collapse:collapse;font-size:0.88rem;color:#B8AA90}th{text-align:left;padding:6px 8px;font-family:monospace;font-size:0.58rem;letter-spacing:1.5px;text-transform:uppercase;color:#C8922A;border-bottom:1px solid #c8922a44;font-weight:400}.footer{margin-top:40px;text-align:center;border-top:1px solid #c8922a22;padding-top:16px;color:#6B6050;font-size:0.75rem;font-style:italic}@media print{body{-webkit-print-color-adjust:exact;print-color-adjust:exact}}</style></head><body><h1>Ākāśa Gaṇita</h1><p class="sub">Free Vedic Numerology Report · Generated ${new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</p><div class="stats"><div class="stat"><div class="stat-l">Birth Date</div><div class="stat-n" style="font-size:1rem;margin-top:4px">${DOB.toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</div></div><div class="stat"><div class="stat-l">Moolank</div><div class="stat-n">${ROOT}</div><div class="stat-p">${P[ROOT].s} ${P[ROOT].n}</div></div><div class="stat"><div class="stat-l">Bhagyank</div><div class="stat-n">${DEST}</div><div class="stat-p">${P[DEST].s} ${P[DEST].n}</div></div><div class="stat"><div class="stat-l">Mahadasha Now</div><div class="stat-n">${mNum}</div><div class="stat-p">${P[mNum].s} ${P[mNum].n}</div></div></div><div class="section"><h2>Vedic Grid</h2><table style="width:auto"><tbody>${gridRows}</tbody></table></div><div class="section"><h2>Mahadasha Cycle (100 Years)</h2><table><thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start</th><th>End</th><th>Duration</th></tr></thead><tbody>${mahaRows}</tbody></table></div><div class="footer">Ākāśa Gaṇita — Free Vedic Numerology Calculator · Designed by Himangshu</div></body></html>`;
-  const blob=new Blob([html],{type:'text/html'});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement('a');a.href=url;a.download=`vedic-numerology-${DOB.toISOString().slice(0,10)}.html`;a.click();URL.revokeObjectURL(url);
-  showToast('PDF report downloaded ✦');
+
+  // ── helper: antardasha rows (100 years) ──
+  let antarRows = '';
+  for (let i = 0; i < 100; i++) {
+    const y = DOB.getFullYear() + i;
+    const a = getAntarForYear(y, DOB, ROOT);
+    const active = y === todayY;
+    antarRows += `<tr class="${active?'hi':''}">
+      <td>${y}${active?' <span class="now">NOW</span>':''}</td>
+      <td>${a.yy}</td><td>${ROOT}</td><td>${a.m}</td><td>${a.dow}</td>
+      <td>${a.raw} → ${a.red}</td>
+      <td>${P[a.red].s} ${P[a.red].n}</td>
+    </tr>`;
+  }
+
+  // ── helper: 5-year grids ──
+  const fiveYears = [todayY-2, todayY-1, todayY, todayY+1, todayY+2];
+  const fiveGridsHtml = fiveYears.map(y => {
+    const yd = buildYrData(y);
+    const isNow = y === todayY;
+    const cells = LAYOUT.map(pos => {
+      const cnt = yd.yf[pos]||0;
+      const isMaha = pos===yd.mNum, isAntar = pos===yd.antar.red, isBoth = isMaha&&isAntar;
+      const cls = isBoth?'gc5 gb':isMaha?'gc5 gm':isAntar?'gc5 ga':'gc5';
+      return `<td class="${cls} ${cnt>0?'glit':''}"><div class="gn5">${pos}</div><div class="gd5">${cnt>0?String(pos).repeat(cnt):''}</div></td>`;
+    });
+    return `<div class="fy-card ${isNow?'fy-now':''}">
+      <div class="fy-yr">${isNow?'● ':''} ${y}</div>
+      <table class="vg5"><tbody>
+        <tr>${cells.slice(0,3).join('')}</tr>
+        <tr>${cells.slice(3,6).join('')}</tr>
+        <tr>${cells.slice(6,9).join('')}</tr>
+      </tbody></table>
+      <div class="fy-pills">
+        <span class="pill-m">${P[yd.mNum].s} ${P[yd.mNum].n}</span>
+        <span class="pill-a">${P[yd.antar.red].s} ${P[yd.antar.red].n}</span>
+      </div>
+    </div>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Vedic Numerology Report</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap');
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0b07;color:#EFE7D6;font-family:'Crimson Pro',serif;font-size:13px;line-height:1.55;padding:0;width:900px}
+.page{width:900px;padding:40px 48px;background:#0d0b07}
+
+/* cover band */
+.cover{text-align:center;padding:28px 0 24px;border-bottom:1px solid rgba(200,148,48,.25);margin-bottom:28px}
+.cover-eye{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:5px;text-transform:uppercase;color:#CA9430;margin-bottom:8px}
+.cover-title{font-family:'Cinzel',serif;font-size:28px;font-weight:700;color:#F6DC8E;margin-bottom:4px}
+.cover-sub{font-size:13px;font-style:italic;color:#B5A888;margin-bottom:6px}
+.cover-date{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:#686050}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:28px}
+.stat{background:#1a1510;border:1px solid rgba(200,148,48,.22);border-radius:10px;padding:12px 8px;text-align:center}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:2px;text-transform:uppercase;color:#CA9430;margin-bottom:4px}
+.stat-n{font-family:'Cinzel',serif;font-size:28px;color:#F6DC8E;line-height:1}
+.stat-p{font-size:11px;font-style:italic;color:#B5A888;margin-top:3px}
+
+/* section header */
+.sec-head{font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:#CA9430;margin:24px 0 12px;padding-bottom:6px;border-bottom:1px solid rgba(200,148,48,.18);display:flex;align-items:center;gap:8px}
+.sec-head::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,rgba(200,148,48,.2),transparent)}
+
+/* vedic grid */
+.vg-wrap{display:flex;gap:28px;align-items:flex-start;margin-bottom:4px}
+table.vg{border-collapse:separate;border-spacing:3px;background:rgba(200,148,48,.14);border-radius:12px;overflow:hidden;padding:3px}
+.gc{width:64px;height:64px;background:#181410;border-radius:5px;text-align:center;vertical-align:middle;padding:4px}
+.gn{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:rgba(200,148,48,.2);line-height:1}
+.gc.glit .gn{color:#CA9430}
+.gd{font-family:'JetBrains Mono',monospace;font-size:9px;letter-spacing:2px;color:#F6DC8E;min-height:13px}
+.vg-info{flex:1}
+.vg-info h4{font-family:'Cinzel',serif;font-size:11px;color:#CA9430;margin-bottom:8px;font-weight:600;letter-spacing:.04em}
+.bd{display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid rgba(200,148,48,.07);font-size:11px;color:#B5A888}
+.bd:last-child{border-bottom:none}
+.bv{font-family:'JetBrains Mono',monospace;font-size:10px;color:#F6DC8E;background:rgba(200,148,48,.1);padding:2px 8px;border-radius:4px}
+.grid-note{margin-top:10px;padding:8px 10px;background:rgba(200,148,48,.05);border-left:2px solid #8C6018;border-radius:0 6px 6px 0;font-size:11px;color:#B5A888;font-style:italic;line-height:1.5}
+
+/* tables */
+table.data{width:100%;border-collapse:collapse;font-size:11px}
+table.data th{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;color:#CA9430;padding:6px 8px;border-bottom:1px solid rgba(200,148,48,.2);font-weight:400;text-align:left;white-space:nowrap}
+table.data td{padding:5px 8px;border-bottom:1px solid rgba(200,148,48,.06);color:#B5A888;white-space:nowrap}
+table.data td:first-child{color:#EFE7D6;font-weight:500}
+tr.hi td{background:rgba(200,148,48,.1);color:#EFE7D6}
+tr.hi td:first-child{color:#F6DC8E}
+.now{font-family:'JetBrains Mono',monospace;font-size:7px;letter-spacing:1px;background:rgba(200,148,48,.2);border:1px solid rgba(200,148,48,.4);border-radius:20px;padding:1px 6px;color:#F6DC8E;vertical-align:middle;margin-left:4px}
+
+/* 5-year grids */
+.five-grid-row{display:flex;gap:10px;margin-bottom:8px}
+.fy-card{flex:1;background:#111009;border:1px solid rgba(200,148,48,.18);border-radius:10px;padding:8px 6px 10px;text-align:center}
+.fy-card.fy-now{border-color:rgba(74,222,128,.45);background:rgba(74,222,128,.04)}
+.fy-yr{font-family:'Cinzel',serif;font-size:11px;font-weight:600;color:#B5A888;margin-bottom:6px}
+.fy-card.fy-now .fy-yr{color:#4ade80}
+table.vg5{border-collapse:separate;border-spacing:2px;background:rgba(200,148,48,.1);border-radius:7px;overflow:hidden;padding:2px;width:100%}
+.gc5{text-align:center;vertical-align:middle;background:#181410;border-radius:3px;padding:3px 1px}
+.gc5.gm{background:rgba(194,74,30,.2)}
+.gc5.ga{background:rgba(26,130,100,.2)}
+.gc5.gb{background:rgba(200,148,48,.22)}
+.gn5{font-family:'Cinzel',serif;font-size:11px;font-weight:700;color:rgba(200,148,48,.2);line-height:1}
+.gc5.glit .gn5{color:#CA9430}
+.gc5.gm.glit .gn5{color:#f97316}
+.gc5.ga.glit .gn5{color:#34d399}
+.gc5.gb.glit .gn5{color:#F6DC8E}
+.gd5{font-family:'JetBrains Mono',monospace;font-size:6px;color:#F6DC8E;letter-spacing:1px;min-height:8px}
+.fy-pills{display:flex;gap:4px;justify-content:center;flex-wrap:wrap;margin-top:5px}
+.pill-m{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:20px;background:rgba(194,74,30,.18);color:#f97316;border:1px solid rgba(194,74,30,.25)}
+.pill-a{font-family:'JetBrains Mono',monospace;font-size:7px;padding:2px 5px;border-radius:20px;background:rgba(26,130,100,.18);color:#34d399;border:1px solid rgba(26,130,100,.25)}
+
+/* five-grid legend */
+.fg-legend{display:flex;gap:14px;margin-top:8px;margin-bottom:4px}
+.fgl{display:flex;align-items:center;gap:5px;font-family:'JetBrains Mono',monospace;font-size:8px;color:#686050;text-transform:uppercase;letter-spacing:.5px}
+.fgl-dot{width:8px;height:8px;border-radius:2px}
+
+/* page break */
+.pb{page-break-before:always;padding-top:40px}
+
+/* footer */
+.footer{margin-top:32px;text-align:center;padding-top:14px;border-top:1px solid rgba(200,148,48,.15)}
+.footer-name{font-family:'Cinzel',serif;font-size:11px;color:#CA9430;margin-bottom:2px}
+.footer-sub{font-family:'JetBrains Mono',monospace;font-size:8px;letter-spacing:1px;color:#686050}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- COVER -->
+  <div class="cover">
+    <div class="cover-eye">ᳰ Ākāśa Gaṇita ᳰ</div>
+    <div class="cover-title">Vedic Numerology Report</div>
+    <div class="cover-sub">Moolank · Bhagyank · Mahadasha · Antardasha · Vedic Grid</div>
+    <div class="cover-date">Generated ${new Date().toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})} &nbsp;·&nbsp; DOB: ${DOB.toLocaleDateString('en-IN',{year:'numeric',month:'long',day:'numeric'})}</div>
+  </div>
+
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat"><div class="stat-l">Moolank</div><div class="stat-n">${ROOT}</div><div class="stat-p">${P[ROOT].s} ${P[ROOT].n}</div></div>
+    <div class="stat"><div class="stat-l">Bhagyank</div><div class="stat-n">${DEST}</div><div class="stat-p">${P[DEST].s} ${P[DEST].n}</div></div>
+    <div class="stat"><div class="stat-l">Mahadasha Now</div><div class="stat-n">${mNum}</div><div class="stat-p">${P[mNum].s} ${P[mNum].n}</div></div>
+    <div class="stat"><div class="stat-l">Antardasha Now</div><div class="stat-n">${an.red}</div><div class="stat-p">${P[an.red].s} ${P[an.red].n}</div></div>
+  </div>
+
+  <!-- VEDIC GRID -->
+  <div class="sec-head">Sacred Vedic Grid</div>
+  <div class="vg-wrap">
+    <table class="vg"><tbody>${gridRows}</tbody></table>
+    <div class="vg-info">
+      <h4>Placement Breakdown</h4>
+      <div class="bd"><span>Day — ${DOB.getDate()} → digits: ${[...String(DOB.getDate())].join(' + ')}</span><span class="bv">${DOB.getDate()}</span></div>
+      <div class="bd"><span>Month — ${DOB.getMonth()+1} → digits: ${[...String(DOB.getMonth()+1)].join(' + ')}</span><span class="bv">${DOB.getMonth()+1}</span></div>
+      <div class="bd"><span>Year last 2 — ${String(DOB.getFullYear()).slice(-2)}</span><span class="bv">${String(DOB.getFullYear()).slice(-2)}</span></div>
+      <div class="bd"><span>Moolank</span><span class="bv">${ROOT} — ${P[ROOT].s} ${P[ROOT].n}</span></div>
+      <div class="bd"><span>Bhagyank</span><span class="bv">${DEST} — ${P[DEST].s} ${P[DEST].n}</span></div>
+      <div class="grid-note">Fixed positions: 3·1·9 (celestial) · 6·7·5 (earthly) · 2·8·4 (ancestral). Repeated digits amplify energy; absent digits require conscious effort.</div>
+    </div>
+  </div>
+
+  <!-- 5-YEAR GRIDS -->
+  <div class="sec-head">5-Year Holographic View (${todayY-2} — ${todayY+2})</div>
+  <div class="five-grid-row">${fiveGridsHtml}</div>
+  <div class="fg-legend">
+    <div class="fgl"><div class="fgl-dot" style="background:rgba(194,74,30,.65)"></div>Mahadasha</div>
+    <div class="fgl"><div class="fgl-dot" style="background:rgba(26,130,100,.65)"></div>Antardasha</div>
+    <div class="fgl"><div class="fgl-dot" style="background:rgba(200,148,48,.65)"></div>Both</div>
+    <div class="fgl"><div class="fgl-dot" style="background:rgba(74,222,128,.5)"></div>Current year</div>
+  </div>
+
+  <!-- MAHADASHA TABLE -->
+  <div class="sec-head pb">100-Year Mahadasha Cycle</div>
+  <table class="data">
+    <thead><tr><th>#</th><th>Planet</th><th>Number</th><th>Start</th><th>End</th><th>Duration</th></tr></thead>
+    <tbody>${mahaRows}</tbody>
+  </table>
+
+  <!-- ANTARDASHA TABLE -->
+  <div class="sec-head" style="margin-top:32px">Yearly Antardasha (100 Years)</div>
+  <table class="data">
+    <thead><tr><th>Year</th><th>Yr%100</th><th>Moolank</th><th>Month</th><th>Day#</th><th>Sum → Root</th><th>Antardasha</th></tr></thead>
+    <tbody>${antarRows}</tbody>
+  </table>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-name">✦ Designed by Himangshu</div>
+    <div class="footer-sub">Ākāśa Gaṇita — Free Vedic Numerology Calculator · Authentic Jyotish Ankaśāstra</div>
+  </div>
+
+</div>
+</body>
+</html>`;
+
+  // Inject html2canvas script tag into the popup HTML before </body>
+  const htmlWithCanvas = html.replace('</body>', `<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"><\/script></body>`);
+  printWin.document.write(htmlWithCanvas);
+  printWin.document.close();
+
+  // Wait for fonts/images/scripts to load, then capture via html2canvas + jsPDF
+  printWin.onload = async () => {
+    try {
+      await new Promise(r => setTimeout(r, 1800)); // allow Google Fonts + html2canvas to load
+
+      const { jsPDF } = window.jspdf;
+      const pdf = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+      const pageW = 210, pageH = 297, margin = 10;
+      const contentW = pageW - margin * 2;
+
+      const body = printWin.document.body;
+      const totalH = body.scrollHeight;
+      const scale  = 2; // retina quality
+
+      // Render full long page as one canvas
+      const canvas = await printWin.html2canvas(body, {
+        scale,
+        useCORS: true,
+        backgroundColor: '#0d0b07',
+        width: 900,
+        height: totalH,
+        windowWidth: 900,
+        windowHeight: totalH,
+        scrollX: 0,
+        scrollY: 0,
+      });
+
+      const imgData = canvas.toDataURL('image/jpeg', 0.92);
+      const imgW    = contentW;
+      const imgH    = (canvas.height / canvas.width) * contentW;
+
+      // Slice into A4 pages
+      const pxPerMm   = canvas.width / contentW;
+      const pageHpx   = (pageH - margin * 2) * pxPerMm;
+      const totalPages = Math.ceil(canvas.height / pageHpx);
+
+      for (let pg = 0; pg < totalPages; pg++) {
+        if (pg > 0) pdf.addPage();
+
+        const srcY  = pg * pageHpx;
+        const srcH  = Math.min(pageHpx, canvas.height - srcY);
+        const sliceH = (srcH / canvas.height) * imgH;
+
+        // Create a slice canvas
+        const slice = document.createElement('canvas');
+        slice.width  = canvas.width;
+        slice.height = Math.round(srcH);
+        const ctx = slice.getContext('2d');
+        ctx.drawImage(canvas, 0, srcY, canvas.width, srcH, 0, 0, canvas.width, srcH);
+
+        const sliceData = slice.toDataURL('image/jpeg', 0.92);
+        pdf.addImage(sliceData, 'JPEG', margin, margin, imgW, sliceH);
+      }
+
+      pdf.save(`vedic-numerology-${DOB.toISOString().slice(0,10)}.pdf`);
+      printWin.close();
+      showToast('PDF downloaded ✦');
+    } catch(err) {
+      console.error(err);
+      printWin.close();
+      showToast('PDF error — try again');
+    }
+  };
 };
 
 // ── TOAST ────────────────────────────────────────────────
