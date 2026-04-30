@@ -751,30 +751,35 @@
     }
 
     // COMPATIBILITY SCORING (with enemy number penalty)
-    function computeScore(p1, p2) {
-        let s = 0;
+   function computeScore(p1, p2) {
+    let score = 0;
 
-        // Root number score
-        const rd = Math.abs(p1.root - p2.root);
-        s += rd===0 ? 40 : rd===1 ? 32 : rd===2 ? 25 : rd<=4 ? 18 : 10;
-
-        // Destiny score
-        const dd = Math.abs(p1.destiny - p2.destiny);
-        s += dd===0 ? 35 : dd===1 ? 28 : dd===2 ? 22 : 12;
-
-        // Name/compound score
-        const nd = Math.abs(reduceToSingleDigit(p1.compound) - reduceToSingleDigit(p2.compound));
-        s += nd===0 ? 25 : nd===1 ? 18 : nd<=3 ? 12 : 6;
-
-        // Enemy number penalty
-        if (isMutualEnemy(p1.root, p2.root)) {
-            s = Math.max(5, s - 25); // heavy penalty for mutual enmity
-        } else if (areEnemies(p1.root, p2.root)) {
-            s = Math.max(8, s - 15); // moderate penalty for one-sided enmity
-        }
-
-        return Math.min(100, Math.floor(s));
+    // ===== ROOT NUMBER =====
+    if (areEnemies(p1.root, p2.root)) {
+        score += 20; // half of 40
+    } else {
+        score += 40; // full
     }
+
+    // ===== DESTINY NUMBER =====
+    if (areEnemies(p1.destiny, p2.destiny)) {
+        score += 18; // half of 35
+    } else {
+        score += 35; // full
+    }
+
+    // ===== NAME / COMPOUND =====
+    const name1Negative = isNegativeCompound(p1.compound);
+    const name2Negative = isNegativeCompound(p2.compound);
+
+    if (name1Negative || name2Negative) {
+        score += 13; // half of 25
+    } else {
+        score += 25; // full
+    }
+
+    return Math.min(100, Math.round(score));
+}
 
     function getMatchMessage(s, hasEnemies) {
         if (hasEnemies) {
