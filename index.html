@@ -10,7 +10,7 @@
   --bg:#0c0d0e;--bg2:#121314;--bg3:#191a1b;--bg4:#1f2021;--bg5:#252627;
   --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);--border3:rgba(255,255,255,0.18);
   --gold:#c9a84c;--gold2:#e8c97a;--gold3:#f5dfa0;--gold-dim:rgba(201,168,76,0.13);--gold-glow:rgba(201,168,76,0.06);
-  --text:#e2ddd4;--text2:#928d84;--text3:#56534e;
+  --text:#e2ddd4;--text2:#928d84;--text3:#8a8680;
   --red:#c0392b;--green:#27ae60;--blue:#2980b9;--amber:#d68910;--purple:#8e44ad;--teal:#16a085;
   --r:10px;--rs:6px;
 }
@@ -20,7 +20,7 @@ body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,se
 body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 90% 50% at 50% -10%,rgba(201,168,76,0.05) 0%,transparent 60%),repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,0.012) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,0.012) 80px);pointer-events:none;z-index:0}
 .wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 18px 80px}
 .nav-tabs{display:flex;gap:2px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:4px;margin-bottom:20px;flex-wrap:wrap}
-.nav-tab{flex:1;min-width:120px;padding:9px 12px;background:transparent;border:none;border-radius:var(--rs);color:var(--text2);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-align:center;white-space:nowrap}
+.nav-tab{flex:1;min-width:110px;padding:9px 10px;background:transparent;border:none;border-radius:var(--rs);color:var(--text2);font-family:'Cinzel',serif;font-size:10px;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-align:center;white-space:nowrap}
 .nav-tab:hover{background:var(--bg4);color:var(--text)}
 .nav-tab.active{background:var(--gold-dim);color:var(--gold2);border:1px solid rgba(201,168,76,0.25)}
 .tab-panel{display:none}.tab-panel.active{display:block}
@@ -42,19 +42,18 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
 @media(max-width:560px){.fg,.fg3{grid-template-columns:1fr}}
 .field{display:flex;flex-direction:column;gap:6px}
-.field label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-family:'Cinzel',serif}
+.field label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text2);font-family:'Cinzel',serif}
 .field input,.field select{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);color:var(--text);font-family:'Crimson Pro',serif;font-size:15px;padding:10px 13px;outline:none;width:100%;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
 .field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
 .field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M0 0l5 7 5-7z' fill='%23928d84'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px}
-.hint{font-size:11px;color:var(--text3);font-style:italic;margin-top:-3px}
+.hint{font-size:12px;color:var(--text2);font-style:italic;margin-top:-3px}
 .night-note{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--gold2);margin-bottom:14px;display:flex;gap:8px;align-items:flex-start}
 .night-note-ico{font-size:16px;flex-shrink:0;margin-top:1px}
-/* SYNC BANNER */
 .sync-banner{background:rgba(39,174,96,0.08);border:1px solid rgba(39,174,96,0.28);border-radius:var(--rs);padding:10px 16px;font-size:13px;color:#2ecc71;margin-bottom:14px;display:flex;gap:10px;align-items:center}
 .sync-banner-ico{font-size:16px;flex-shrink:0}
 .pak-toggle{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border2);border-radius:var(--rs);overflow:hidden}
 .pak-btn{padding:11px 14px;background:var(--bg3);border:none;color:var(--text2);font-family:'Crimson Pro',serif;font-size:14px;cursor:pointer;transition:all .2s;text-align:center;line-height:1.3}
-.pak-btn span{display:block;font-size:11px;font-style:italic;color:var(--text3)}
+.pak-btn span{display:block;font-size:11px;font-style:italic;color:var(--text2)}
 .pak-btn.active{background:var(--gold-dim);color:var(--gold2);border:1px solid var(--gold);margin:-1px;z-index:1;position:relative;border-radius:var(--rs)}
 .cbtn{width:100%;padding:14px;background:linear-gradient(135deg,#a8860a,#c9a84c 50%,#a8860a);border:none;border-radius:var(--r);color:#1a1200;font-family:'Cinzel',serif;font-size:14px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;margin-top:6px;box-shadow:0 4px 20px rgba(201,168,76,.25);transition:opacity .2s,transform .15s;position:relative;overflow:hidden}
 .cbtn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 50%);pointer-events:none}
@@ -78,21 +77,21 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .t-neutral{background:var(--bg4);color:var(--text2);border:1px solid var(--border2)}
 .t-gold{background:var(--gold-dim);color:var(--gold2);border:1px solid rgba(201,168,76,.25)}
 .t-dead{background:rgba(192,57,43,.14);color:#e74c3c;border:1px solid rgba(192,57,43,.28)}
-.t-past{background:var(--bg4);color:var(--text3);border:1px solid var(--border)}
+.t-past{background:var(--bg4);color:var(--text2);border:1px solid var(--border)}
 .tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px}
 .tile{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px}
-.tile-lbl{font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:4px}
+.tile-lbl{font-size:10px;color:var(--text2);letter-spacing:.1em;text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:4px}
 .tile-val{font-size:16px;font-weight:500;color:var(--text)}
 .tile-val.sm{font-size:13px}
 .tl-row{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;position:relative;overflow:hidden}
 .tl-row.birth{border-color:var(--gold);background:var(--bg4)}
 .tl-row.birth::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);border-radius:2px 0 0 2px}
-.tl-num{width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:11px;color:var(--text3);flex-shrink:0}
+.tl-num{width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:11px;color:var(--text2);flex-shrink:0}
 .tl-row.birth .tl-num{background:var(--gold-dim);border-color:var(--gold);color:var(--gold2)}
 .tl-ico{font-size:22px;flex-shrink:0}
 .tl-name{min-width:80px}
 .tl-bname{font-size:15px;font-weight:500}
-.tl-bskt{font-size:11px;color:var(--text3);font-style:italic}
+.tl-bskt{font-size:12px;color:var(--text2);font-style:italic}
 .tl-time{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);background:var(--bg);padding:3px 9px;border-radius:5px;white-space:nowrap;flex-shrink:0}
 .tl-bar{flex:1;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;min-width:30px;position:relative}
 .tl-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
@@ -100,14 +99,14 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .tl-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
 .tl-birth-tag{font-size:10px;font-family:'Cinzel',serif;letter-spacing:.07em;color:var(--gold)}
 .tl-state{font-size:10px;padding:2px 8px;border-radius:10px}
-.tl-dur{font-size:11px;color:var(--text3)}
+.tl-dur{font-size:11px;color:var(--text2)}
 .gh-row{display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;margin-bottom:7px;position:relative}
 .gh-row.cur{border-color:var(--gold);background:var(--bg4)}
 .gh-act{width:85px;flex-shrink:0;font-size:11px;font-family:'Cinzel',serif;text-align:center;padding:4px 7px;border-radius:16px;letter-spacing:.04em}
 .gh-time{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);background:var(--bg);padding:3px 8px;border-radius:5px;white-space:nowrap;flex-shrink:0}
 .gh-bar{flex:1;height:4px;background:var(--bg);border-radius:2px;overflow:hidden}
 .gh-fill{height:100%;border-radius:2px}
-.gh-dur{font-size:11px;color:var(--text3);flex-shrink:0}
+.gh-dur{font-size:11px;color:var(--text2);flex-shrink:0}
 .gh-cur-tag{position:absolute;right:12px;font-size:10px;font-family:'Cinzel',serif;color:var(--gold)}
 .sig-table{width:100%;border-collapse:collapse}
 .sig-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--border2);text-align:left;background:var(--bg3)}
@@ -120,11 +119,10 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .prow:last-child{border-bottom:none}
 .p-lbl{color:var(--text2)}
 .p-val{font-weight:500;text-align:right;max-width:60%}
-
-/* ── DASHA STYLES ── */
+/* DASHA */
 .maha-block{border:1px solid var(--border);border-radius:var(--r);margin-bottom:12px;overflow:hidden}
 .maha-block.current{border-color:var(--gold)}
-.maha-block.past{opacity:.65}
+.maha-block.past{opacity:.82}
 .maha-header{display:flex;align-items:center;gap:14px;padding:14px 18px;background:var(--bg3);cursor:pointer;user-select:none;transition:background .2s}
 .maha-header:hover{background:var(--bg4)}
 .maha-block.current .maha-header{background:var(--gold-dim)}
@@ -133,32 +131,29 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .maha-info{flex:1}
 .maha-name{font-family:'Cinzel',serif;font-size:16px;font-weight:500}
 .maha-block.current .maha-name{color:var(--gold2)}
-.maha-block.past .maha-name{color:var(--text3)}
+.maha-block.past .maha-name{color:var(--text2)}
 .maha-dates{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);margin-top:2px}
 .maha-bar-wrap{width:120px;flex-shrink:0}
 .maha-bar{height:6px;background:var(--bg);border-radius:3px;overflow:hidden}
 .maha-bar-fill{height:100%;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
-.maha-pct{font-size:11px;color:var(--text3);margin-top:3px;text-align:right;font-family:'JetBrains Mono',monospace}
+.maha-pct{font-size:11px;color:var(--text2);margin-top:3px;text-align:right;font-family:'JetBrains Mono',monospace}
 .maha-badge{font-size:11px;padding:3px 10px;border-radius:12px;font-family:'Cinzel',serif;letter-spacing:.05em;flex-shrink:0}
-.maha-chevron{font-size:14px;color:var(--text3);flex-shrink:0;transition:transform .25s}
+.maha-chevron{font-size:14px;color:var(--text2);flex-shrink:0;transition:transform .25s}
 .maha-block.open .maha-chevron{transform:rotate(180deg)}
-
 .antar-list{display:none;padding:8px 14px 14px}
 .maha-block.open .antar-list{display:block}
 .antar-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--rs);margin-bottom:5px;border:1px solid var(--border);background:var(--bg2);position:relative}
 .antar-row.cur{background:var(--gold-dim);border-color:rgba(201,168,76,.4)}
-.antar-row.past-a{opacity:.55}
+.antar-row.past-a{opacity:.72}
 .antar-act{width:80px;flex-shrink:0;font-size:10px;font-family:'Cinzel',serif;text-align:center;padding:3px 7px;border-radius:12px;letter-spacing:.04em}
 .antar-dates{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);flex:1}
-.antar-dur{font-size:11px;color:var(--text3);flex-shrink:0;text-align:right;min-width:50px}
+.antar-dur{font-size:11px;color:var(--text2);flex-shrink:0;text-align:right;min-width:50px}
 .antar-cur-tag{font-size:10px;font-family:'Cinzel',serif;color:var(--gold);flex-shrink:0}
 .antar-prog{position:absolute;bottom:0;left:0;height:2px;border-radius:0 0 var(--rs) var(--rs);transition:width .6s}
-
 .dasha-tips{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);padding:14px 18px;margin-bottom:12px;font-size:13px;color:var(--text2)}
 .dasha-tips strong{color:var(--text)}
 .dasha-summary{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px}
 @media(max-width:560px){.dasha-summary{grid-template-columns:1fr 1fr}}
-
 .tips-table{width:100%;border-collapse:collapse}
 .tips-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:7px 10px;border-bottom:1px solid var(--border2);background:var(--bg3)}
 .tips-table td{padding:7px 10px;border-bottom:1px solid var(--border);font-size:13px}
@@ -166,14 +161,14 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .tips-table tr:hover td{background:var(--bg4)}
 .warn{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.22);border-radius:var(--rs);padding:12px 16px;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#e74c3c;margin-top:10px}
 .warn-ico{font-size:18px;flex-shrink:0;margin-top:1px}
-.divider{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);font-size:12px;margin:8px 0;opacity:.45}
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);font-size:12px;margin:8px 0;opacity:.55}
 .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border2)}
 .mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
 .mc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;text-align:center}
 .mc.hl{border-color:var(--gold);background:var(--gold-dim)}
 .mc .mc-ico{font-size:20px;margin-bottom:5px}
 .mc .mc-nm{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.07em;margin-bottom:3px}
-.mc .mc-ds{font-size:11px;color:var(--text3);line-height:1.4;font-style:italic}
+.mc .mc-ds{font-size:11px;color:var(--text2);line-height:1.4;font-style:italic}
 .mc.hl .mc-nm{color:var(--gold2)}.mc.hl .mc-ds{color:var(--text2)}
 .nk-table{width:100%;border-collapse:collapse;font-size:12px}
 .nk-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:6px 8px;border-bottom:1px solid var(--border2);background:var(--bg3);text-align:left}
@@ -183,7 +178,27 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 .cs-item{border-radius:var(--rs);padding:12px 8px;text-align:center;border:1px solid var(--border)}
 .cs-item .cs-color{width:28px;height:28px;border-radius:50%;margin:0 auto 6px;border:2px solid rgba(255,255,255,.15)}
 .cs-item .cs-nm{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em;color:var(--text2)}
-.cs-item .cs-act{font-size:11px;color:var(--text3);font-style:italic;margin-top:2px}
+.cs-item .cs-act{font-size:11px;color:var(--text2);font-style:italic;margin-top:2px}
+/* MUHURTA SPECIFIC */
+.auspicious-box{background:rgba(39,174,96,.09);border:1px solid rgba(39,174,96,.28);border-radius:var(--rs);padding:14px 18px;margin-bottom:10px}
+.auspicious-box .ab-lbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#2ecc71;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.auspicious-box .ab-lbl::after{content:'';flex:1;height:1px;background:rgba(39,174,96,.25)}
+.auspicious-slot{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(39,174,96,.13)}
+.auspicious-slot:last-child{border-bottom:none}
+.avoid-box{background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.22);border-radius:var(--rs);padding:14px 18px;margin-bottom:10px}
+.avoid-box .ab-lbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:#e74c3c;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.avoid-box .ab-lbl::after{content:'';flex:1;height:1px;background:rgba(192,57,43,.22)}
+.avoid-slot{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid rgba(192,57,43,.12)}
+.avoid-slot:last-child{border-bottom:none}
+.muh-tl-row{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:11px 14px;display:flex;align-items:center;gap:10px;margin-bottom:5px;position:relative;overflow:hidden}
+.muh-tl-row.now-m{border-color:var(--gold);background:var(--bg4)}
+.muh-tl-row.now-m::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold)}
+.muh-tl-row.past-m{opacity:.65}
+.muh-gh-row{display:flex;align-items:center;gap:10px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:9px 13px;margin-bottom:4px;position:relative}
+.muh-gh-row.cur-m{border-color:var(--gold);background:var(--bg4)}
+.muh-gh-row.past-gm{opacity:.62}
+.muh-gh-row.ruling-m{border-color:rgba(39,174,96,.4);background:rgba(39,174,96,.05)}
+.muh-gh-row.dying-m{border-color:rgba(192,57,43,.3);background:rgba(192,57,43,.04)}
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
 @media(max-width:600px){.card{padding:16px 14px}.tl-row{flex-wrap:wrap}.nk-table,.tips-table{font-size:11px}}
 </style>
@@ -204,12 +219,13 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 </header>
 
 <div class="nav-tabs">
-  <button class="nav-tab active" onclick="showTab('natal',this)">🔮 Natal Chart</button>
+  <button class="nav-tab active" onclick="showTab('natal',this)">🔮 Natal</button>
   <button class="nav-tab" onclick="showTab('prasna',this)">❓ Prasna</button>
-  <button class="nav-tab" onclick="showTab('today',this)">⏱ Today's Birds</button>
+  <button class="nav-tab" onclick="showTab('today',this)">⏱ Today</button>
+  <button class="nav-tab" onclick="showTab('muhurta',this)">✨ Muhurta</button>
   <button class="nav-tab" onclick="showTab('dasha',this)">📅 Dasha</button>
-  <button class="nav-tab" onclick="showTab('signif',this)">📖 Significations</button>
-  <button class="nav-tab" onclick="showTab('match',this)">💞 Matchmaking</button>
+  <button class="nav-tab" onclick="showTab('signif',this)">📖 Signif.</button>
+  <button class="nav-tab" onclick="showTab('match',this)">💞 Match</button>
 </div>
 
 <!-- ══ TAB 1: NATAL ══ -->
@@ -313,7 +329,48 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
   <div id="today-result" style="display:none;margin-top:16px"></div>
 </div>
 
-<!-- ══ TAB 4: DASHA ══ -->
+<!-- ══ TAB 4: MUHURTA ══ -->
+<div id="tab-muhurta" class="tab-panel">
+  <div class="card">
+    <div class="slabel">Muhurta — Auspicious Time Finder</div>
+    <p style="font-size:14px;color:var(--text2);margin-bottom:14px;font-style:italic">Finds auspicious (Ruling) and inauspicious (Dying) windows using the Muhurta-specific bird rising order from the Pancha Pakshi Shastram PDF. <strong style="color:var(--gold2)">Note:</strong> The Muhurta rising order differs from the general Panch Pakshi order used in Natal/Prasna/Today tabs.</p>
+    <div class="night-note">
+      <span class="night-note-ico">🌙</span>
+      <span>For <strong>night muhurta</strong> (after sunset): night = Sunset → next sunrise. Enter tomorrow's sunrise in the third field.</span>
+    </div>
+    <div class="fg3" style="margin-bottom:12px">
+      <div class="field"><label>Sunrise</label><input type="time" id="mu-sr" value="06:00" step="1"></div>
+      <div class="field"><label>Sunset</label><input type="time" id="mu-ss" value="18:00" step="1"></div>
+      <div class="field"><label>Next Day Sunrise</label><input type="time" id="mu-nsr" value="06:05" step="1"><span class="hint">For night muhurta</span></div>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>Paksha</label>
+      <div class="pak-toggle">
+        <button class="pak-btn active" id="mu-sp" onclick="setPaksha('mu','shukla')">Shukla Paksha<span>Waxing · Bright Fortnight</span></button>
+        <button class="pak-btn" id="mu-kp" onclick="setPaksha('mu','krishna')">Krishna Paksha<span>Waning · Dark Fortnight</span></button>
+      </div>
+    </div>
+    <input type="hidden" id="mu-paksha" value="shukla">
+    <div class="fg" style="margin-bottom:12px">
+      <div class="field">
+        <label>Date</label>
+        <input type="date" id="mu-date">
+      </div>
+      <div class="field">
+        <label>Period</label>
+        <div class="pak-toggle">
+          <button class="pak-btn active" id="mu-dayb" onclick="setMuPeriod('day')">Daytime<span>Sunrise → Sunset</span></button>
+          <button class="pak-btn" id="mu-nightb" onclick="setMuPeriod('night')">Night<span>Sunset → Next Sunrise</span></button>
+        </div>
+      </div>
+    </div>
+    <input type="hidden" id="mu-period" value="day">
+  </div>
+  <button class="cbtn" onclick="calcMuhurta()">✦ Find Auspicious Muhurta Windows</button>
+  <div id="muhurta-result" style="display:none;margin-top:16px"></div>
+</div>
+
+<!-- ══ TAB 5: DASHA ══ -->
 <div id="tab-dasha" class="tab-panel">
   <div id="dasha-sync-banner" class="sync-banner" style="display:none">
     <span class="sync-banner-ico">✓</span>
@@ -344,7 +401,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
   <div id="dasha-result" style="display:none;margin-top:16px"></div>
 </div>
 
-<!-- ══ TAB 5: SIGNIFICATIONS ══ -->
+<!-- ══ TAB 6: SIGNIFICATIONS ══ -->
 <div id="tab-signif" class="tab-panel">
   <div class="card">
     <div class="slabel">Bird Significations — Complete Reference</div>
@@ -377,9 +434,14 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
     <div class="slabel">Dead Bird Reference Table</div>
     <div style="overflow-x:auto"><table class="tips-table" id="dead-table"></table></div>
   </div>
+  <div class="card">
+    <div class="slabel">Muhurta Rising Order Reference</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:14px;font-style:italic">The Muhurta tab uses this separate rising order (from PDF). Different from the general Panch Pakshi order.</p>
+    <div style="overflow-x:auto"><table class="tips-table" id="muhurta-ref-table"></table></div>
+  </div>
 </div>
 
-<!-- ══ TAB 6: MATCHMAKING ══ -->
+<!-- ══ TAB 7: MATCHMAKING ══ -->
 <div id="tab-match" class="tab-panel">
   <div class="card">
     <div class="slabel">Pakshi Kuta — Nakshatra Matchmaking</div>
@@ -399,7 +461,7 @@ h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;col
 
 <script>
 // ════════════════════════════════════════════
-// DATA
+// SHARED DATA
 // ════════════════════════════════════════════
 const BIRDS = {
   vulture:{name:'Vulture',skt:'Shyena',ico:'🦅',strength:2,col:'#c9a84c',
@@ -465,6 +527,57 @@ const ORDERS = {
   }
 };
 
+const MUHURTA_ORDERS = {
+  shukla:{
+    day:{
+      0:['vulture','owl','crow','hen','peacock'],
+      1:['owl','crow','hen','peacock','vulture'],
+      2:['vulture','owl','crow','hen','peacock'],
+      3:['owl','crow','hen','peacock','vulture'],
+      4:['crow','hen','peacock','vulture','owl'],
+      5:['hen','peacock','vulture','owl','crow'],
+      6:['peacock','vulture','owl','crow','hen']
+    },
+    night:{
+      0:['crow','owl','vulture','peacock','hen'],
+      1:['hen','crow','owl','vulture','peacock'],
+      2:['crow','owl','vulture','peacock','hen'],
+      3:['hen','crow','owl','vulture','peacock'],
+      4:['peacock','hen','crow','owl','vulture'],
+      5:['vulture','peacock','hen','crow','owl'],
+      6:['owl','vulture','peacock','hen','crow']
+    }
+  },
+  krishna:{
+    day:{
+      0:['hen','vulture','crow','peacock','owl'],
+      1:['peacock','owl','hen','vulture','crow'],
+      2:['hen','vulture','crow','peacock','owl'],
+      3:['crow','peacock','owl','hen','vulture'],
+      4:['owl','hen','vulture','crow','peacock'],
+      5:['vulture','crow','peacock','owl','hen'],
+      6:['peacock','owl','hen','vulture','crow']
+    },
+    night:{
+      0:['vulture','hen','owl','peacock','crow'],
+      1:['hen','owl','peacock','crow','vulture'],
+      2:['vulture','hen','owl','peacock','crow'],
+      3:['owl','peacock','crow','vulture','hen'],
+      4:['crow','vulture','hen','owl','peacock'],
+      5:['peacock','crow','vulture','hen','owl'],
+      6:['hen','owl','peacock','crow','vulture']
+    }
+  }
+};
+
+const MUHURTA_ACT_BY_RISING_BIRD = {
+  vulture:['Ruling','Dying','Sleeping','Walking','Eating'],
+  owl:    ['Eating','Ruling','Dying','Sleeping','Walking'],
+  crow:   ['Walking','Eating','Ruling','Dying','Sleeping'],
+  hen:    ['Sleeping','Walking','Eating','Ruling','Dying'],
+  peacock:['Dying','Sleeping','Walking','Eating','Ruling']
+};
+
 const ACT_START_BY_POS = [
   ['Eating','Dying','Sleeping','Ruling','Walking'],
   ['Walking','Eating','Dying','Sleeping','Ruling'],
@@ -473,11 +586,11 @@ const ACT_START_BY_POS = [
   ['Dying','Sleeping','Ruling','Walking','Eating']
 ];
 
-const ACT_GHATIKAS = {Eating:1.5, Walking:1.25, Ruling:2, Sleeping:0.75, Dying:0.5};
-const TOTAL_G = 6; // sum of ACT_GHATIKAS
+const ACT_GHATIKAS = {Eating:1.5,Walking:1.25,Ruling:2,Sleeping:0.75,Dying:0.5};
+const TOTAL_G = 6;
 
 const DEAD = {
-  shukla: {0:'owl',1:'crow',2:'peacock',3:'hen',4:'vulture',5:'owl',6:'vulture'},
+  shukla:{0:'owl',1:'crow',2:'peacock',3:'hen',4:'vulture',5:'owl',6:'vulture'},
   krishna:{0:'crow',1:'owl',2:'vulture',3:'peacock',4:'hen',5:'peacock',6:'hen'}
 };
 
@@ -511,7 +624,8 @@ const TIPS_WINNING = [
 // ════════════════════════════════════════════
 // UTILITIES
 // ════════════════════════════════════════════
-let pak = {n:'shukla',p:'shukla',t:'shukla',d:'shukla'};
+let pak = {n:'shukla',p:'shukla',t:'shukla',d:'shukla',mu:'shukla'};
+let muPeriod = 'day';
 
 function setPaksha(prefix,val){
   pak[prefix]=val;
@@ -519,6 +633,13 @@ function setPaksha(prefix,val){
   document.getElementById(prefix+'-sp').classList.toggle('active',val==='shukla');
   document.getElementById(prefix+'-kp').classList.toggle('active',val==='krishna');
   if(prefix==='n') syncNatalToDasha();
+}
+
+function setMuPeriod(val){
+  muPeriod=val;
+  document.getElementById('mu-period').value=val;
+  document.getElementById('mu-dayb').classList.toggle('active',val==='day');
+  document.getElementById('mu-nightb').classList.toggle('active',val==='night');
 }
 
 function showTab(name,btn){
@@ -582,14 +703,12 @@ function syncNatalToDasha(){
   const ss=document.getElementById('n-ss').value;
   const nsr=document.getElementById('n-nsr').value;
   const paksha=pak.n;
-
   document.getElementById('d-dob').value=dob;
   document.getElementById('d-tob').value=tob;
   document.getElementById('d-sr').value=sr;
   document.getElementById('d-ss').value=ss;
   document.getElementById('d-nsr').value=nsr;
   setPaksha('d',paksha);
-
   const banner=document.getElementById('dasha-sync-banner');
   const txt=document.getElementById('dasha-sync-text');
   if(dob&&tob){
@@ -701,7 +820,203 @@ function calcToday(){
 }
 
 // ════════════════════════════════════════════
-// DASHA — Full past/current/future antardasha
+// MUHURTA
+// ════════════════════════════════════════════
+function calcMuhurta(){
+  const srVal=document.getElementById('mu-sr').value;
+  const ssVal=document.getElementById('mu-ss').value;
+  const nsrVal=document.getElementById('mu-nsr').value;
+  const muDateVal=document.getElementById('mu-date').value;
+  if(!muDateVal){alert('Please select a date.');return;}
+  const dow=new Date(muDateVal).getDay();
+  const paksha=pak.mu;
+  const period=muPeriod;
+
+  if(!srVal||!ssVal||!nsrVal){alert('Please fill all time fields.');return;}
+
+  const srMins=toMins(srVal),ssMins=toMins(ssVal),nsrMins=toMins(nsrVal);
+  let nsrAbs=nsrMins;if(nsrAbs<ssMins)nsrAbs+=1440;
+
+  const isNight=(period==='night');
+  const periodStart=isNight?ssMins:srMins;
+  const periodEnd=isNight?nsrAbs:ssMins;
+  const totalDur=periodEnd-periodStart;
+  const birdDur=totalDur/5;
+
+  const order=MUHURTA_ORDERS[paksha][isNight?'night':'day'][dow];
+  const deadKey=DEAD[paksha][dow];
+
+  const slots=order.map((birdKey,pos)=>{
+    const start=periodStart+pos*birdDur;
+    const end=start+birdDur;
+    const actOrder=MUHURTA_ACT_BY_RISING_BIRD[birdKey];
+    const ghats=[];
+    let aStart=start;
+    for(let j=0;j<5;j++){
+      const a=actOrder[j];
+      const dur=(birdDur/TOTAL_G)*ACT_GHATIKAS[a];
+      ghats.push({activity:a,start:aStart,end:aStart+dur,dur});
+      aStart+=dur;
+    }
+    return{birdKey,start,end,ghats,pos};
+  });
+
+  const now=new Date();
+  const nowM=now.getHours()*60+now.getMinutes()+now.getSeconds()/60;
+  let nowAdj=nowM;
+  if(isNight&&nowM<ssMins)nowAdj=nowM+1440;
+
+  const rulingWindows=[];
+  const dyingWindows=[];
+  for(const s of slots){
+    for(const g of s.ghats){
+      if(g.activity==='Ruling')rulingWindows.push({...g,birdKey:s.birdKey});
+      if(g.activity==='Dying')dyingWindows.push({...g,birdKey:s.birdKey});
+    }
+  }
+
+  const risingBird=BIRDS[order[0]];
+  const firstActOrder=MUHURTA_ACT_BY_RISING_BIRD[order[0]];
+
+  const el=document.getElementById('muhurta-result');
+  el.style.display='block';
+
+  let html=`<div class="tile-grid">
+    <div class="tile"><div class="tile-lbl">Date</div><div class="tile-val sm">${muDateVal}</div></div>
+    <div class="tile"><div class="tile-lbl">Day</div><div class="tile-val">${DAY_NAMES[dow]}</div></div>
+    <div class="tile"><div class="tile-lbl">Paksha</div><div class="tile-val sm">${paksha==='shukla'?'Shukla':'Krishna'}</div></div>
+    <div class="tile"><div class="tile-lbl">Period</div><div class="tile-val sm">${isNight?'Night':'Daytime'}</div></div>
+    <div class="tile"><div class="tile-lbl">Rising Bird</div><div class="tile-val sm">${risingBird.ico} ${risingBird.name}</div></div>
+    <div class="tile"><div class="tile-lbl">Dead Bird</div><div class="tile-val sm">${BIRDS[deadKey].ico} ${BIRDS[deadKey].name}</div></div>
+  </div>`;
+
+  html+=`<div class="hero">
+    <div class="h-orb" style="background:${risingBird.col}18;border-color:${risingBird.col}55">${risingBird.ico}</div>
+    <div class="h-info">
+      <div class="h-lbl">Rising Bird — ${isNight?'Night':'Day'} · ${DAY_NAMES[dow]}, ${paksha==='shukla'?'Shukla':'Krishna'} Paksha</div>
+      <div class="h-name">${risingBird.name}</div>
+      <div class="h-skt">${risingBird.skt} · First to rise · Opens with ${firstActOrder[0]}</div>
+      <div class="h-tags">
+        <span class="htag ${ACT_INFO[firstActOrder[0]].cls}">${ACT_INFO[firstActOrder[0]].icon} First activity: ${firstActOrder[0]}</span>
+        <span class="htag t-neutral">${risingBird.planet} · ${risingBird.tattva}</span>
+        ${order[0]===deadKey?`<span class="htag t-dead">⚠ Dead Bird Rises First</span>`:''}
+      </div>
+    </div>
+  </div>`;
+
+  html+=`<div class="card"><div class="slabel">Auspicious Windows — Ruling Activity</div>`;
+  html+=`<p style="font-size:13px;color:var(--text2);margin-bottom:12px;font-style:italic">Best times to begin important undertakings, sign agreements, start travel, ceremonies etc.</p>`;
+  if(rulingWindows.length){
+    html+=`<div class="auspicious-box"><div class="ab-lbl">Ruling Periods — Most Favourable</div>`;
+    for(const w of rulingWindows){
+      const b=BIRDS[w.birdKey];
+      const isDead=w.birdKey===deadKey;
+      html+=`<div class="auspicious-slot">
+        <span style="font-size:20px">${b.ico}</span>
+        <div style="flex:1">
+          <div style="font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--text)">${toHM(w.start)} → ${toHM(w.end)}</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:1px">${b.name} · ${fmtDur(w.dur)}${isDead?' · ⚠ Dead Bird — weakened':''}</div>
+        </div>
+        <span class="htag t-ruling" style="font-size:12px">👑 Ruling</span>
+      </div>`;
+    }
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+
+  html+=`<div class="card"><div class="slabel">Inauspicious Windows — Dying Activity</div>`;
+  html+=`<p style="font-size:13px;color:var(--text2);margin-bottom:12px;font-style:italic">Avoid starting any important work during these periods. Rest, routine tasks only.</p>`;
+  if(dyingWindows.length){
+    html+=`<div class="avoid-box"><div class="ab-lbl">Dying Periods — Most Unfavourable</div>`;
+    for(const w of dyingWindows){
+      const b=BIRDS[w.birdKey];
+      html+=`<div class="avoid-slot">
+        <span style="font-size:20px">${b.ico}</span>
+        <div style="flex:1">
+          <div style="font-family:'Cinzel',serif;font-size:13px;font-weight:500;color:var(--text)">${toHM(w.start)} → ${toHM(w.end)}</div>
+          <div style="font-size:11px;color:var(--text2);margin-top:1px">${b.name} · ${fmtDur(w.dur)}</div>
+        </div>
+        <span class="htag t-dying" style="font-size:12px">☁️ Dying</span>
+      </div>`;
+    }
+    html+=`</div>`;
+  }
+  html+=`</div>`;
+
+  html+=`<div class="card"><div class="slabel">Full Muhurta Schedule — ${isNight?'Night':'Day'} · ${toHM(periodStart)} → ${toHM(isNight?nsrMins:ssMins)}</div>`;
+  html+=`<p style="font-size:12px;color:var(--text2);margin-bottom:14px;font-style:italic">Activity sequence for each bird follows the Muhurta rule: each bird's own nature determines its activity order.</p>`;
+
+  for(let i=0;i<5;i++){
+    const s=slots[i];
+    const b=BIRDS[s.birdKey];
+    const isDead=s.birdKey===deadKey;
+    const isCurSlot=nowAdj>=s.start&&nowAdj<s.end;
+    const curGhat=isCurSlot?(s.ghats.find(g=>nowAdj>=g.start&&nowAdj<g.end)||s.ghats[4]):null;
+    const isPastSlot=nowAdj>=s.end&&!isCurSlot;
+    const slotPct=isCurSlot?Math.min(98,Math.max(3,(nowAdj-s.start)/birdDur*100)):(isPastSlot?100:0);
+    const rowCls=isCurSlot?'now-m':isPastSlot?'past-m':'';
+
+    html+=`<div class="muh-tl-row ${rowCls}">
+      <div class="tl-num" style="${isCurSlot?'background:var(--gold-dim);border-color:var(--gold);color:var(--gold2)':''}">${i+1}</div>
+      <div class="tl-ico">${b.ico}</div>
+      <div class="tl-name">
+        <div class="tl-bname" style="font-size:14px;font-weight:500">${b.name}${isDead?' ⚠':''}</div>
+        <div class="tl-bskt" style="font-size:11px;color:var(--text2);font-style:italic">Opens: ${MUHURTA_ACT_BY_RISING_BIRD[s.birdKey][0]}</div>
+      </div>
+      <div class="tl-time" style="font-family:monospace;font-size:12px;color:var(--text2);background:var(--bg);padding:3px 8px;border-radius:5px;white-space:nowrap">${toHM(s.start)} → ${toHM(s.end)}</div>
+      <div class="tl-bar">
+        <div class="tl-fill" style="width:${slotPct}%;background:${b.col};opacity:${isCurSlot?1:.3}"></div>
+        ${isCurSlot?`<div class="tl-marker" style="left:${slotPct}%"></div>`:''}
+      </div>
+      <div class="tl-right">
+        ${isCurSlot?`<span class="tl-birth-tag" style="font-size:10px;font-family:'Cinzel',serif;color:var(--gold)">✦ NOW</span>`:''}
+        ${curGhat?`<span class="tl-state ${ACT_INFO[curGhat.activity].cls}">${curGhat.activity}</span>`:''}
+        <span style="font-size:11px;color:var(--text2)">${fmtDur(birdDur)}</span>
+      </div>
+    </div>`;
+
+    for(const g of s.ghats){
+      const ai2=ACT_INFO[g.activity];
+      const isCurG=isCurSlot&&curGhat&&Math.abs(g.start-curGhat.start)<0.001;
+      const isPastG=nowAdj>=g.end;
+      let gCls='muh-gh-row';
+      if(isCurG)gCls+=' cur-m';
+      else if(isPastG&&(isCurSlot||isPastSlot))gCls+=' past-gm';
+      if(g.activity==='Ruling'&&!isCurG)gCls+=' ruling-m';
+      if(g.activity==='Dying'&&!isCurG)gCls+=' dying-m';
+      const maxG=Math.max(...s.ghats.map(x=>x.dur));
+      const gPct=(g.dur/maxG*100).toFixed(1);
+      html+=`<div class="${gCls}" style="margin-left:38px;margin-bottom:3px">
+        <div class="gh-act ${ai2.cls}" style="width:80px;flex-shrink:0;font-size:10px;font-family:'Cinzel',serif;text-align:center;padding:3px 6px;border-radius:14px">${ai2.icon} ${g.activity}</div>
+        <div class="gh-time" style="font-size:11px;color:var(--text2);background:var(--bg);padding:3px 8px;border-radius:5px;white-space:nowrap;font-family:monospace">${toHMS(g.start)} → ${toHMS(g.end)}</div>
+        <div class="gh-bar" style="flex:1;height:4px;background:var(--bg);border-radius:2px;overflow:hidden">
+          <div class="gh-fill" style="width:${gPct}%;height:100%;background:${b.col};opacity:${isCurG?1:.3};border-radius:2px"></div>
+        </div>
+        <div style="font-size:11px;color:var(--text2);flex-shrink:0;min-width:50px;text-align:right">${fmtDur(g.dur)}</div>
+        ${isCurG?`<div style="font-size:10px;font-family:'Cinzel',serif;color:var(--gold);flex-shrink:0">← now</div>`:''}
+      </div>`;
+    }
+
+    if(isCurSlot&&curGhat){
+      const nx=s.ghats[s.ghats.indexOf(curGhat)+1];
+      html+=`<div style="margin:0 0 10px 38px;background:var(--gold-dim);border-radius:0 0 var(--rs) var(--rs);padding:7px 14px;font-size:12px;color:var(--gold2)">
+        Current: <strong>${curGhat.activity}</strong> until ${toHMS(curGhat.end)} &nbsp;·&nbsp; Next: <strong>${nx?nx.activity:'Period ends'}</strong>
+      </div>`;
+    }
+  }
+  html+=`</div>`;
+
+  html+=`<div class="warn">
+    <span class="warn-ico">⚠</span>
+    <span><strong>${BIRDS[deadKey].name}</strong> is the Mrita (dead) bird for ${paksha==='shukla'?'Shukla':'Krishna'} Paksha ${DAY_NAMES[dow]}. Ruling windows during ${BIRDS[deadKey].name}'s slot are significantly weakened. Prefer Ruling windows belonging to other birds for truly auspicious muhurta.</span>
+  </div>`;
+
+  el.innerHTML=html;
+  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),80);
+}
+
+// ════════════════════════════════════════════
+// DASHA
 // ════════════════════════════════════════════
 function calcDasha(){
   const dobVal=document.getElementById('d-dob').value,tobVal=document.getElementById('d-tob').value,paksha=pak.d;
@@ -713,19 +1028,12 @@ function calcDasha(){
   const order=getOrder(paksha,isNight,dow),slots=buildSlots(order,periodStart,birdDur);
   const{slotIdx}=findCurrentSlot(slots,birthAdj);
   const birdKey=order[slotIdx],bInfo=BIRDS[birdKey];
-
-  // Bird sequence starting from birth bird
   const birdSeq=[];
   for(let i=slotIdx;i<5;i++)birdSeq.push(order[i]);
   for(let i=0;i<slotIdx;i++)birdSeq.push(order[i]);
-
   const dob=new Date(dobVal),today=new Date(),YEAR_MS=365.25*24*3600*1000;
   let cursor=new Date(dob);
-
-  // Build summary of current status
   let currentMaha=null,currentAntar=null;
-
-  // Build all dasha blocks
   const mahaBlocks=[];
   for(let rep=0;rep<5;rep++){
     for(let bi=0;bi<5;bi++){
@@ -733,8 +1041,6 @@ function calcDasha(){
       const mStart=new Date(cursor),mEnd=new Date(cursor.getTime()+6*YEAR_MS);
       const isCurrent=today>=mStart&&today<mEnd;
       const isPast=today>=mEnd;
-
-      // Build antardasha list for this mahadasha
       const antarList=[];
       let aCursor=new Date(mStart);
       const actOrder=ACT_START_BY_POS[bi];
@@ -752,10 +1058,7 @@ function calcDasha(){
       cursor=mEnd;
     }
   }
-
   const el=document.getElementById('dasha-result');el.style.display='block';
-
-  // Summary tiles
   let html=`<div class="dasha-summary">
     <div class="tile"><div class="tile-lbl">Birth Bird</div><div class="tile-val sm">${bInfo.ico} ${bInfo.name}</div></div>
     <div class="tile"><div class="tile-lbl">Strength</div><div class="tile-val sm">Rank ${bInfo.strength}/5</div></div>
@@ -767,28 +1070,22 @@ function calcDasha(){
     if(currentAntar)html+=`<div class="tile"><div class="tile-lbl">Current Antardasha</div><div class="tile-val sm">${ACT_INFO[currentAntar.act].icon} ${currentAntar.act}</div></div>`;
   }
   html+=`</div>`;
-
   html+=`<div class="dasha-tips"><strong>Antardasha durations</strong> (proportional to activity ghatika sizes within each 6-year Mahadasha):<br>👑 Ruling = 2.00 yrs &nbsp;|&nbsp; 🍽 Eating = 1.50 yrs &nbsp;|&nbsp; 🚶 Walking = 1.25 yrs &nbsp;|&nbsp; 💤 Sleeping = 0.75 yrs &nbsp;|&nbsp; ☁️ Dying = 0.50 yrs</div>`;
-
-  // Render all mahadasha blocks
   let prevRep=-1;
   for(const mb of mahaBlocks){
     if(mb.rep!==prevRep&&prevRep!==-1){
       html+=`<div class="divider">— Cycle ${mb.rep+1} of 5 (${mb.start.getFullYear()}–${new Date(mb.start.getTime()+30*YEAR_MS).getFullYear()}) —</div>`;
     }
     prevRep=mb.rep;
-
     const pct=mb.isCurrent?Math.min(100,(today-mb.start)/(mb.end-mb.start)*100).toFixed(1):(mb.isPast?100:0);
     const badge=mb.isCurrent?`<span class="maha-badge t-gold">Current</span>`:mb.isPast?`<span class="maha-badge t-past">Past</span>`:`<span class="maha-badge t-neutral">Upcoming</span>`;
     const blockCls=mb.isCurrent?'current':mb.isPast?'past':'';
-    // Auto-open current maha, keep others closed by default
     const isOpen=mb.isCurrent;
-
     html+=`<div class="maha-block ${blockCls}${isOpen?' open':''}" id="maha-${mb.rep}-${mb.bi}">
       <div class="maha-header" onclick="toggleMaha('maha-${mb.rep}-${mb.bi}')">
         <div class="maha-ico">${mb.b.ico}</div>
         <div class="maha-info">
-          <div class="maha-name">${mb.b.name} <span style="font-size:11px;opacity:.6">${mb.b.skt}</span></div>
+          <div class="maha-name">${mb.b.name} <span style="font-size:11px;opacity:.7">${mb.b.skt}</span></div>
           <div class="maha-dates">${fmtDate(mb.start)} → ${fmtDate(mb.end)}</div>
         </div>
         <div class="maha-bar-wrap">
@@ -799,7 +1096,7 @@ function calcDasha(){
         <span class="maha-chevron">▾</span>
       </div>
       <div class="antar-list">
-        <div style="font-size:11px;color:var(--text3);font-family:'Cinzel',serif;letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase">Antardasha Periods</div>
+        <div style="font-size:11px;color:var(--text2);font-family:'Cinzel',serif;letter-spacing:.1em;margin-bottom:8px;text-transform:uppercase">Antardasha Periods</div>
         ${mb.antarList.map(a=>{
           const ai2=ACT_INFO[a.act];
           const aPct=a.isCurrent?Math.min(100,(today-a.start)/(a.end-a.start)*100):0;
@@ -808,16 +1105,14 @@ function calcDasha(){
             <div class="antar-act ${ai2.cls}">${ai2.icon} ${a.act}</div>
             <div class="antar-dates">${fmtDate(a.start)} → ${fmtDate(a.end)}</div>
             <div class="antar-dur">${a.yrs.toFixed(2)} yrs</div>
-            ${a.isCurrent?`<div class="antar-cur-tag">← Now</div>`:a.isPast?`<div style="font-size:10px;color:var(--text3)">Done</div>`:`<div style="font-size:10px;color:var(--text3)">Future</div>`}
+            ${a.isCurrent?`<div class="antar-cur-tag">← Now</div>`:a.isPast?`<div style="font-size:10px;color:var(--text2)">Done</div>`:`<div style="font-size:10px;color:var(--text2)">Future</div>`}
             ${a.isCurrent?`<div class="antar-prog" style="width:${aPct}%;background:${mb.b.col}"></div>`:''}
           </div>`;
         }).join('')}
       </div>
     </div>`;
   }
-
   el.innerHTML=html;
-  // Scroll to current maha
   setTimeout(()=>{
     const cur=el.querySelector('.maha-block.current');
     if(cur)cur.scrollIntoView({behavior:'smooth',block:'start'});
@@ -826,8 +1121,7 @@ function calcDasha(){
 }
 
 function toggleMaha(id){
-  const el=document.getElementById(id);
-  el.classList.toggle('open');
+  document.getElementById(id).classList.toggle('open');
 }
 
 // ════════════════════════════════════════════
@@ -842,6 +1136,22 @@ function buildSignif(){
   document.getElementById('tips-table').innerHTML=`<thead><tr><th>Name Letter</th><th>Shukla Day</th><th>Shukla Night</th><th>Krishna Day</th><th>Krishna Night</th></tr></thead><tbody>${TIPS_WINNING.map(t=>`<tr><td style="font-weight:500">${t.letter}</td><td>${t.sd}</td><td>${t.sn}</td><td>${t.kd}</td><td>${t.kn}</td></tr>`).join('')}</tbody>`;
   document.getElementById('victorious-grid').innerHTML=Object.entries(BIRDS).map(([k,b])=>`<div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)"><div style="font-size:24px;flex-shrink:0">${b.ico}</div><div><div style="font-size:14px;font-weight:500;margin-bottom:3px">${b.name} wins in:</div><div style="font-size:13px;color:var(--text2)">${b.wins}</div></div></div>`).join('');
   document.getElementById('dead-table').innerHTML=`<thead><tr><th>Day</th><th>Shukla Dead Bird</th><th>Krishna Dead Bird</th></tr></thead><tbody>${DAY_NAMES.map((d,i)=>`<tr><td style="font-weight:500">${d}</td><td>${BIRDS[DEAD.shukla[i]].ico} ${BIRDS[DEAD.shukla[i]].name}</td><td>${BIRDS[DEAD.krishna[i]].ico} ${BIRDS[DEAD.krishna[i]].name}</td></tr>`).join('')}</tbody>`;
+
+  const pakDays=['shukla-day','shukla-night','krishna-day','krishna-night'];
+  let mRefHtml=`<thead><tr><th>Day</th><th>Shukla Day</th><th>Shukla Night</th><th>Krishna Day</th><th>Krishna Night</th></tr></thead><tbody>`;
+  for(let d=0;d<7;d++){
+    mRefHtml+=`<tr><td style="font-weight:500">${DAY_NAMES[d]}</td>`;
+    const sd=MUHURTA_ORDERS.shukla.day[d];
+    const sn=MUHURTA_ORDERS.shukla.night[d];
+    const kd=MUHURTA_ORDERS.krishna.day[d];
+    const kn=MUHURTA_ORDERS.krishna.night[d];
+    [sd,sn,kd,kn].forEach(ord=>{
+      mRefHtml+=`<td style="font-size:11px;line-height:1.7">${ord.map((bk,i)=>`${i+1}. ${BIRDS[bk].ico} ${BIRDS[bk].name}`).join('<br>')}</td>`;
+    });
+    mRefHtml+=`</tr>`;
+  }
+  mRefHtml+=`</tbody>`;
+  document.getElementById('muhurta-ref-table').innerHTML=mRefHtml;
 }
 
 // ════════════════════════════════════════════
@@ -854,7 +1164,7 @@ function buildMatchmaking(){
   const bkeys=['vulture','owl','crow','hen','peacock'],nkByBird={};
   bkeys.forEach(b=>{nkByBird[b]=[];});
   MATCH_NAKSHATRAS.forEach(n=>{const b=NK_BIRDS_MATCH[n];if(b&&nkByBird[b])nkByBird[b].push(n);});
-  document.getElementById('nk-full-table').innerHTML=`<thead><tr><th>Bird</th><th>Nakshatras (Sages' System)</th></tr></thead><tbody>${bkeys.map(b=>`<tr><td><div class="bname-cell">${BIRDS[b].ico} ${BIRDS[b].name} <span style="font-size:10px;color:var(--text3)">#${BIRDS[b].strength}</span></div></td><td>${nkByBird[b].join(' · ')}</td></tr>`).join('')}</tbody>`;
+  document.getElementById('nk-full-table').innerHTML=`<thead><tr><th>Bird</th><th>Nakshatras (Sages' System)</th></tr></thead><tbody>${bkeys.map(b=>`<tr><td><div class="bname-cell">${BIRDS[b].ico} ${BIRDS[b].name} <span style="font-size:10px;color:var(--text2)">#${BIRDS[b].strength}</span></div></td><td>${nkByBird[b].join(' · ')}</td></tr>`).join('')}</tbody>`;
   checkMatch();
 }
 
@@ -870,7 +1180,7 @@ function checkMatch(){
   else if(friendly&&!enemy){status='Good — Friendly Birds';statusCls='t-eating';desc='Birds are friends. Generally positive compatibility.';}
   else if(enemy){status='Challenging — Enemy Birds';statusCls='t-dying';desc='Birds are enemies. Significant challenges in the relationship.';}
   else{status='Neutral — No Special Bond';statusCls='t-walking';desc='No particular friendship or enmity. Neutral compatibility.';}
-  document.getElementById('match-result').innerHTML=`<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:18px 22px"><div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:14px"><div style="text-align:center"><div style="font-size:32px">${bird1.ico}</div><div style="font-size:13px;font-weight:500">${bird1.name}</div><div style="font-size:11px;color:var(--text3)">${nk1}</div></div><div style="font-size:22px;color:var(--gold)">↔</div><div style="text-align:center"><div style="font-size:32px">${bird2.ico}</div><div style="font-size:13px;font-weight:500">${bird2.name}</div><div style="font-size:11px;color:var(--text3)">${nk2}</div></div></div><div style="text-align:center"><span class="htag ${statusCls}" style="font-size:13px">${status}</span></div><div style="font-size:13px;color:var(--text2);text-align:center;margin-top:10px">${desc}</div></div>`;
+  document.getElementById('match-result').innerHTML=`<div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:18px 22px"><div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:14px"><div style="text-align:center"><div style="font-size:32px">${bird1.ico}</div><div style="font-size:13px;font-weight:500">${bird1.name}</div><div style="font-size:11px;color:var(--text2)">${nk1}</div></div><div style="font-size:22px;color:var(--gold)">↔</div><div style="text-align:center"><div style="font-size:32px">${bird2.ico}</div><div style="font-size:13px;font-weight:500">${bird2.name}</div><div style="font-size:11px;color:var(--text2)">${nk2}</div></div></div><div style="text-align:center"><span class="htag ${statusCls}" style="font-size:13px">${status}</span></div><div style="font-size:13px;color:var(--text2);text-align:center;margin-top:10px">${desc}</div></div>`;
 }
 
 // ════════════════════════════════════════════
@@ -878,6 +1188,7 @@ function checkMatch(){
 // ════════════════════════════════════════════
 document.addEventListener('DOMContentLoaded',()=>{
   document.getElementById('p-date').value=new Date().toISOString().split('T')[0];
+  document.getElementById('mu-date').value=new Date().toISOString().split('T')[0];
   buildSignif();
   buildMatchmaking();
 });
