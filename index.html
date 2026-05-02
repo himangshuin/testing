@@ -2,583 +2,1298 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Śakti Vedic Compass | Maha · Antar · Pratyantar Dasha Grid</title>
-<meta name="description" content="Immersive Vedic Numerology experience: Moolank, Bhagyank, sacred 3x3 grid, complete 100-year Dasha cascade with Pratyantardasha. Interactive yearly grid with cosmic visuals.">
-<link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panch Pakshi Shastram — Complete Calculator</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Crimson+Pro:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+:root{
+  --bg:#0c0d0e;--bg2:#121314;--bg3:#191a1b;--bg4:#1f2021;--bg5:#252627;
+  --border:rgba(255,255,255,0.06);--border2:rgba(255,255,255,0.11);--border3:rgba(255,255,255,0.18);
+  --gold:#c9a84c;--gold2:#e8c97a;--gold3:#f5dfa0;--gold-dim:rgba(201,168,76,0.13);--gold-glow:rgba(201,168,76,0.06);
+  --text:#e2ddd4;--text2:#928d84;--text3:#56534e;
+  --red:#c0392b;--green:#27ae60;--blue:#2980b9;--amber:#d68910;--purple:#8e44ad;--teal:#16a085;
+  --r:10px;--rs:6px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Crimson Pro',Georgia,serif;font-size:16px;line-height:1.65;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse 90% 50% at 50% -10%,rgba(201,168,76,0.05) 0%,transparent 60%),repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,0.012) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,0.012) 80px);pointer-events:none;z-index:0}
+.wrap{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:0 18px 80px}
 
-  body {
-    background: #0b0907;
-    background-image: radial-gradient(circle at 15% 30%, rgba(201, 151, 58, 0.08) 0%, #080604 90%);
-    font-family: 'Inter', sans-serif;
-    color: #f5efe3;
-    scroll-behavior: smooth;
-  }
+/* NAV TABS */
+.nav-tabs{display:flex;gap:2px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:4px;margin-bottom:20px;flex-wrap:wrap}
+.nav-tab{flex:1;min-width:120px;padding:9px 12px;background:transparent;border:none;border-radius:var(--rs);color:var(--text2);font-family:'Cinzel',serif;font-size:11px;letter-spacing:0.1em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;text-align:center;white-space:nowrap}
+.nav-tab:hover{background:var(--bg4);color:var(--text)}
+.nav-tab.active{background:var(--gold-dim);color:var(--gold2);border:1px solid rgba(201,168,76,0.25)}
+.tab-panel{display:none}.tab-panel.active{display:block}
 
-  ::-webkit-scrollbar { width: 6px; height: 6px; }
-  ::-webkit-scrollbar-track { background: #1e1a14; border-radius: 10px; }
-  ::-webkit-scrollbar-thumb { background: #c9973a; border-radius: 10px; }
+/* HEADER */
+.site-header{text-align:center;padding:48px 0 32px;position:relative}
+.hdr-orn{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px;color:var(--gold);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.3em;text-transform:uppercase}
+.hdr-orn::before,.hdr-orn::after{content:'';flex:1;max-width:100px;height:1px;background:linear-gradient(90deg,transparent,var(--gold))}
+.hdr-orn::after{background:linear-gradient(270deg,transparent,var(--gold))}
+h1{font-family:'Cinzel',serif;font-size:clamp(24px,5vw,40px);font-weight:500;color:var(--gold2);letter-spacing:.07em;margin-bottom:6px}
+.sub{font-size:14px;color:var(--text2);font-style:italic}
+.birds-row{display:flex;justify-content:center;gap:10px;margin:22px 0;flex-wrap:wrap}
+.bp{display:flex;align-items:center;gap:7px;background:var(--bg3);border:1px solid var(--border);border-radius:24px;padding:5px 12px 5px 8px;font-size:12px;color:var(--text2);transition:border-color .2s,color .2s;cursor:default}
+.bp:hover{border-color:var(--gold);color:var(--text)}
+.bp .ico{font-size:16px}.bp .rk{width:16px;height:16px;border-radius:50%;background:var(--gold-dim);color:var(--gold);font-size:9px;font-family:'Cinzel',serif;display:flex;align-items:center;justify-content:center;margin-left:3px}
 
-  .app {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 1.8rem 3rem;
-    position: relative;
-    z-index: 2;
-  }
+/* CARDS */
+.card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:24px 28px;margin-bottom:14px;position:relative;overflow:hidden;animation:fadeUp .45s ease both}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent 5%,var(--gold) 50%,transparent 95%);opacity:.2}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.slabel{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.slabel::after{content:'';flex:1;height:1px;background:var(--border2)}
 
-  .glass-card {
-    background: rgba(20, 16, 12, 0.55);
-    backdrop-filter: blur(12px);
-    border: 1px solid rgba(201, 151, 58, 0.25);
-    border-radius: 2rem;
-    transition: all 0.2s ease;
-  }
+/* FORM */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.fg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+@media(max-width:560px){.fg,.fg3{grid-template-columns:1fr}}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text3);font-family:'Cinzel',serif}
+.field input,.field select{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--rs);color:var(--text);font-family:'Crimson Pro',serif;font-size:15px;padding:10px 13px;outline:none;width:100%;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+.field input:focus,.field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.1)}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7'%3E%3Cpath d='M0 0l5 7 5-7z' fill='%23928d84'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 13px center;padding-right:34px}
+.hint{font-size:11px;color:var(--text3);font-style:italic;margin-top:-3px}
 
-  .header {
-    text-align: center;
-    padding: 2rem 0.5rem 1.5rem;
-  }
+/* SUNRISE NOTE BOX */
+.night-note{background:rgba(201,168,76,0.07);border:1px solid rgba(201,168,76,0.25);border-radius:var(--rs);padding:10px 14px;font-size:13px;color:var(--gold2);margin-bottom:14px;display:flex;gap:8px;align-items:flex-start}
+.night-note-ico{font-size:16px;flex-shrink:0;margin-top:1px}
 
-  .header h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.6rem, 6vw, 4rem);
-    font-weight: 700;
-    background: linear-gradient(145deg, #f3dc9c, #d9a13b);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    letter-spacing: -0.02em;
-    text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  }
+.pak-toggle{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--border2);border-radius:var(--rs);overflow:hidden}
+.pak-btn{padding:11px 14px;background:var(--bg3);border:none;color:var(--text2);font-family:'Crimson Pro',serif;font-size:14px;cursor:pointer;transition:all .2s;text-align:center;line-height:1.3}
+.pak-btn span{display:block;font-size:11px;font-style:italic;color:var(--text3)}
+.pak-btn.active{background:var(--gold-dim);color:var(--gold2);border:1px solid var(--gold);margin:-1px;z-index:1;position:relative;border-radius:var(--rs)}
+.cbtn{width:100%;padding:14px;background:linear-gradient(135deg,#a8860a,#c9a84c 50%,#a8860a);border:none;border-radius:var(--r);color:#1a1200;font-family:'Cinzel',serif;font-size:14px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;cursor:pointer;margin-top:6px;box-shadow:0 4px 20px rgba(201,168,76,.25);transition:opacity .2s,transform .15s;position:relative;overflow:hidden}
+.cbtn::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.18) 0%,transparent 50%);pointer-events:none}
+.cbtn:hover{opacity:.9;transform:translateY(-1px)}.cbtn:active{transform:scale(.99)}
 
-  .header-ornament {
-    font-size: 1.8rem;
-    letter-spacing: 0.6rem;
-    color: #c9973a;
-    opacity: 0.75;
-    margin-bottom: 0.4rem;
-  }
+/* RESULT HERO */
+.hero{background:var(--bg2);border:1px solid var(--border);border-radius:var(--r);padding:28px;margin-bottom:14px;display:flex;align-items:center;gap:24px;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:radial-gradient(circle at 85% 50%,var(--gold-glow),transparent 55%);pointer-events:none}
+.h-orb{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:40px;flex-shrink:0;position:relative;z-index:1;border:2px solid rgba(201,168,76,.3)}
+.h-orb::after{content:'';position:absolute;inset:-6px;border-radius:50%;border:1px solid rgba(201,168,76,.12)}
+.h-info{flex:1;position:relative;z-index:1}
+.h-lbl{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-family:'Cinzel',serif;margin-bottom:3px}
+.h-name{font-family:'Cinzel',serif;font-size:26px;font-weight:500;color:var(--gold2);margin-bottom:2px}
+.h-skt{font-size:13px;color:var(--text2);font-style:italic;margin-bottom:8px}
+.h-tags{display:flex;gap:7px;flex-wrap:wrap}
+.htag{font-size:11px;padding:3px 10px;border-radius:18px;font-family:'Cinzel',serif;letter-spacing:.04em}
+@media(max-width:580px){.hero{flex-direction:column;text-align:center}.h-tags{justify-content:center}}
 
-  .input-section {
-    background: rgba(22, 18, 14, 0.7);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(201, 151, 58, 0.3);
-    border-radius: 2rem;
-    padding: 1.5rem 2rem;
-    margin-bottom: 2.5rem;
-    transition: box-shadow 0.2s;
-  }
+/* TAGS */
+.t-ruling{background:rgba(39,174,96,.14);color:#2ecc71;border:1px solid rgba(39,174,96,.28)}
+.t-eating{background:rgba(41,128,185,.14);color:#5dade2;border:1px solid rgba(41,128,185,.28)}
+.t-walking{background:rgba(214,137,16,.14);color:#f4a623;border:1px solid rgba(214,137,16,.28)}
+.t-sleeping{background:rgba(142,68,173,.14);color:#af7ac5;border:1px solid rgba(142,68,173,.28)}
+.t-dying{background:rgba(192,57,43,.14);color:#e74c3c;border:1px solid rgba(192,57,43,.28)}
+.t-neutral{background:var(--bg4);color:var(--text2);border:1px solid var(--border2)}
+.t-gold{background:var(--gold-dim);color:var(--gold2);border:1px solid rgba(201,168,76,.25)}
+.t-dead{background:rgba(192,57,43,.14);color:#e74c3c;border:1px solid rgba(192,57,43,.28)}
 
-  .input-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    align-items: flex-end;
-  }
+/* INFO TILES */
+.tile-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:14px}
+.tile{background:var(--bg2);border:1px solid var(--border);border-radius:var(--rs);padding:12px 14px}
+.tile-lbl{font-size:10px;color:var(--text3);letter-spacing:.1em;text-transform:uppercase;font-family:'Cinzel',serif;margin-bottom:4px}
+.tile-val{font-size:16px;font-weight:500;color:var(--text)}
+.tile-val.gold{color:var(--gold2)}.tile-val.sm{font-size:13px}
 
-  .input-group { flex: 2; min-width: 220px; }
+/* TIMELINE */
+.tl-row{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:12px 16px;display:flex;align-items:center;gap:12px;margin-bottom:8px;transition:border-color .2s;position:relative;overflow:hidden}
+.tl-row.birth{border-color:var(--gold);background:var(--bg4)}
+.tl-row.birth::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--gold);border-radius:2px 0 0 2px}
+.tl-num{width:24px;height:24px;border-radius:50%;background:var(--bg);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:11px;color:var(--text3);flex-shrink:0}
+.tl-row.birth .tl-num{background:var(--gold-dim);border-color:var(--gold);color:var(--gold2)}
+.tl-ico{font-size:22px;flex-shrink:0}
+.tl-name{min-width:80px}
+.tl-bname{font-size:15px;font-weight:500}
+.tl-bskt{font-size:11px;color:var(--text3);font-style:italic}
+.tl-time{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--text2);background:var(--bg);padding:3px 9px;border-radius:5px;white-space:nowrap;flex-shrink:0}
+.tl-bar{flex:1;height:5px;background:var(--bg);border-radius:3px;overflow:hidden;min-width:30px;position:relative}
+.tl-fill{position:absolute;left:0;top:0;bottom:0;border-radius:3px;transition:width .8s cubic-bezier(.4,0,.2,1)}
+.tl-marker{position:absolute;top:-4px;width:2px;height:13px;background:var(--gold);border-radius:1px;box-shadow:0 0 5px var(--gold)}
+.tl-right{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex-shrink:0}
+.tl-birth-tag{font-size:10px;font-family:'Cinzel',serif;letter-spacing:.07em;color:var(--gold)}
+.tl-state{font-size:10px;padding:2px 8px;border-radius:10px}
+.tl-dur{font-size:11px;color:var(--text3)}
 
-  .input-group label {
-    font-family: 'Inter', sans-serif;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #e2b567;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
+/* GHATIKA */
+.gh-row{display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:10px 14px;margin-bottom:7px;position:relative}
+.gh-row.cur{border-color:var(--gold);background:var(--bg4)}
+.gh-act{width:85px;flex-shrink:0;font-size:11px;font-family:'Cinzel',serif;text-align:center;padding:4px 7px;border-radius:16px;letter-spacing:.04em}
+.gh-time{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2);background:var(--bg);padding:3px 8px;border-radius:5px;white-space:nowrap;flex-shrink:0}
+.gh-bar{flex:1;height:4px;background:var(--bg);border-radius:2px;overflow:hidden}
+.gh-fill{height:100%;border-radius:2px}
+.gh-dur{font-size:11px;color:var(--text3);flex-shrink:0}
+.gh-cur-tag{position:absolute;right:12px;font-size:10px;font-family:'Cinzel',serif;color:var(--gold)}
 
-  .input-group input {
-    background: rgba(0, 0, 0, 0.65);
-    border: 1px solid rgba(201, 151, 58, 0.5);
-    border-radius: 1.2rem;
-    padding: 0.9rem 1.2rem;
-    width: 100%;
-    color: #f7f0e3;
-    font-family: 'Inter', monospace;
-    font-weight: 500;
-    font-size: 1rem;
-    transition: 0.2s;
-  }
+/* SIGNIFICATIONS TABLE */
+.sig-table{width:100%;border-collapse:collapse}
+.sig-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:8px 10px;border-bottom:1px solid var(--border2);text-align:left;background:var(--bg3)}
+.sig-table td{padding:8px 10px;border-bottom:1px solid var(--border);font-size:13px;vertical-align:top}
+.sig-table tr:last-child td{border-bottom:none}
+.sig-table tr:hover td{background:var(--bg3)}
+.sig-table .row-lbl{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.08em;color:var(--text2);white-space:nowrap}
+.sig-ico{font-size:16px;margin-right:6px}
+.bname-cell{font-weight:500;font-size:14px;display:flex;align-items:center;gap:6px}
 
-  .input-group input:focus {
-    outline: none;
-    border-color: #f0b851;
-    box-shadow: 0 0 10px rgba(201, 151, 58, 0.4);
-  }
+/* PRASNA */
+.prasna-result{background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:20px 24px;margin-top:14px}
+.prow{display:flex;justify-content:space-between;align-items:baseline;padding:7px 0;border-bottom:1px solid var(--border);font-size:14px}
+.prow:last-child{border-bottom:none}
+.p-lbl{color:var(--text2)}
+.p-val{font-weight:500;text-align:right;max-width:60%}
 
-  .btn-generate {
-    background: linear-gradient(115deg, #b47c2e, #e2ae5c);
-    border: none;
-    padding: 0.8rem 2rem;
-    border-radius: 2.5rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    color: #0c0907;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  }
+/* DASHA */
+.dasha-row{display:flex;align-items:center;gap:14px;padding:10px 0;border-bottom:1px solid var(--border)}
+.dasha-row:last-child{border-bottom:none}
+.dasha-bird{display:flex;align-items:center;gap:8px;width:130px;flex-shrink:0}
+.dasha-ico{font-size:20px}
+.dasha-name{font-size:14px;font-weight:500}
+.dasha-dates{font-size:12px;color:var(--text3);font-family:'JetBrains Mono',monospace;flex:1}
+.dasha-bar{width:80px;height:4px;background:var(--bg4);border-radius:2px;overflow:hidden;flex-shrink:0}
+.dasha-fill{height:100%;border-radius:2px}
+.dasha-status{font-size:11px;padding:2px 9px;border-radius:10px;flex-shrink:0}
+.current-dasha{background:var(--gold-dim);border-radius:var(--rs);padding:10px 14px;margin:-2px -10px;border:1px solid rgba(201,168,76,.2)}
 
-  .btn-generate:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 22px rgba(210, 150, 50, 0.5);
-    background: linear-gradient(115deg, #e2ae5c, #f5c16a);
-  }
+/* TIPS OF WINNING */
+.tips-table{width:100%;border-collapse:collapse}
+.tips-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:7px 10px;border-bottom:1px solid var(--border2);background:var(--bg3)}
+.tips-table td{padding:7px 10px;border-bottom:1px solid var(--border);font-size:13px}
+.tips-table tr:last-child td{border-bottom:none}
+.tips-table tr:hover td{background:var(--bg4)}
 
-  /* ── PRINT / PDF BUTTON ── */
-  .btn-print {
-    background: rgba(201, 151, 58, 0.12);
-    border: 1.5px solid rgba(201, 151, 58, 0.6);
-    padding: 0.8rem 1.8rem;
-    border-radius: 2.5rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 700;
-    font-size: 0.9rem;
-    letter-spacing: 0.05em;
-    color: #f3dc9c;
-    cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
+/* WARN BOX */
+.warn{background:rgba(192,57,43,.08);border:1px solid rgba(192,57,43,.22);border-radius:var(--rs);padding:12px 16px;display:flex;align-items:flex-start;gap:10px;font-size:13px;color:#e74c3c;margin-top:10px}
+.warn-ico{font-size:18px;flex-shrink:0;margin-top:1px}
 
-  .btn-print:hover {
-    transform: translateY(-2px);
-    background: rgba(201, 151, 58, 0.25);
-    box-shadow: 0 8px 22px rgba(201, 151, 58, 0.35);
-    border-color: #f3dc9c;
-  }
+/* DIVIDER */
+.divider{display:flex;align-items:center;justify-content:center;gap:12px;color:var(--gold);font-size:12px;margin:8px 0;opacity:.45}
+.divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--border2)}
 
-  .numbers-panel {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.2rem;
-    margin-bottom: 2.5rem;
-  }
+/* MEANING GRID */
+.mg{display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:10px}
+.mc{background:var(--bg3);border:1px solid var(--border);border-radius:var(--rs);padding:14px;text-align:center}
+.mc.hl{border-color:var(--gold);background:var(--gold-dim)}
+.mc .mc-ico{font-size:20px;margin-bottom:5px}
+.mc .mc-nm{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.07em;margin-bottom:3px}
+.mc .mc-ds{font-size:11px;color:var(--text3);line-height:1.4;font-style:italic}
+.mc.hl .mc-nm{color:var(--gold2)}.mc.hl .mc-ds{color:var(--text2)}
 
-  .num-card {
-    background: rgba(0, 0, 0, 0.55);
-    backdrop-filter: blur(8px);
-    border-radius: 1.8rem;
-    padding: 1.2rem;
-    text-align: center;
-    border: 1px solid rgba(201, 151, 58, 0.3);
-    transition: all 0.2s;
-  }
+/* NAKSHATRA MATCHMAKING */
+.nk-table{width:100%;border-collapse:collapse;font-size:12px}
+.nk-table th{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);padding:6px 8px;border-bottom:1px solid var(--border2);background:var(--bg3);text-align:left}
+.nk-table td{padding:6px 8px;border-bottom:1px solid var(--border)}
+.nk-table tr:last-child td{border-bottom:none}
 
-  .num-card:hover { border-color: #e2ad53; background: rgba(30, 25, 18, 0.8); }
+/* SCROLLBAR */
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:3px}
 
-  .num-value {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3rem;
-    font-weight: 800;
-    background: linear-gradient(135deg, #ffdf9c, #dba545);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    line-height: 1;
-  }
+/* COLORS STRIP */
+.color-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}
+.cs-item{border-radius:var(--rs);padding:12px 8px;text-align:center;border:1px solid var(--border)}
+.cs-item .cs-color{width:28px;height:28px;border-radius:50%;margin:0 auto 6px;border:2px solid rgba(255,255,255,.15)}
+.cs-item .cs-nm{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.06em;color:var(--text2)}
+.cs-item .cs-act{font-size:11px;color:var(--text3);font-style:italic;margin-top:2px}
 
-  .tab-nav {
-    display: flex;
-    gap: 0.2rem;
-    border-bottom: 1px solid rgba(201, 151, 58, 0.3);
-    margin-bottom: 2rem;
-    overflow-x: auto;
-    flex-wrap: nowrap;
-    scrollbar-width: thin;
-  }
-
-  .tab-btn {
-    background: transparent;
-    border: none;
-    padding: 0.8rem 1.4rem;
-    font-family: 'Inter', sans-serif;
-    font-weight: 600;
-    font-size: 0.8rem;
-    letter-spacing: 0.05em;
-    color: #ba9a6b;
-    cursor: pointer;
-    border-bottom: 2px solid transparent;
-    transition: 0.2s;
-    white-space: nowrap;
-  }
-
-  .tab-btn.active { color: #f5cf8c; border-bottom-color: #e6b042; text-shadow: 0 0 2px rgba(230,176,66,0.5); }
-
-  .tab-content { display: none; animation: fadeUp 0.3s ease; }
-  .tab-content.active { display: block; }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .vedic-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4px;
-    background: rgba(201, 151, 58, 0.35);
-    width: 280px;
-    height: 280px;
-    border-radius: 1.5rem;
-    overflow: hidden;
-    box-shadow: 0 15px 25px -10px black;
-  }
-
-  .grid-cell {
-    background: #130f0c;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    font-weight: bold;
-    transition: 0.1s;
-  }
-
-  .mini-grid-3x3 {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3px;
-    background: rgba(201, 151, 58, 0.25);
-    margin: 1rem;
-    border-radius: 1.2rem;
-    overflow: hidden;
-    aspect-ratio: 1 / 1;
-    max-width: 240px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .mini-cell {
-    background: #0e0c09;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0.4rem;
-    min-height: 70px;
-    transition: 0.1s;
-  }
-
-  .cell-digit-main { font-size: 1.7rem; font-weight: 800; font-family: 'Cormorant Garamond', serif; line-height: 1; }
-
-  .mini-cell.maha-highlight { background: rgba(194, 74, 30, 0.45); box-shadow: inset 0 0 0 1px #e47a42; }
-  .mini-cell.antar-highlight { background: rgba(26, 107, 74, 0.5); box-shadow: inset 0 0 0 1px #3bc191; }
-  .mini-cell.pratyantar-highlight { background: rgba(212, 90, 158, 0.45); box-shadow: inset 0 0 0 2px #ffa5d0; }
-  .mini-cell.both-highlight { background: linear-gradient(135deg, rgba(194,74,30,0.4), rgba(26,107,74,0.4)); box-shadow: inset 0 0 0 1px #f5c36e; }
-  .base-cell .cell-digit-main { color: rgba(201, 151, 58, 0.55); }
-
-  .planet-chip {
-    background: rgba(30, 25, 20, 0.9);
-    border-radius: 2rem;
-    padding: 0.2rem 0.9rem;
-    font-size: 0.75rem;
-    font-weight: 500;
-    border-left: 2px solid #e2b85c;
-  }
-
-  .year-card {
-    background: rgba(12, 10, 8, 0.85);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(201, 151, 58, 0.25);
-    border-radius: 2rem;
-    overflow: hidden;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .year-card:hover { transform: translateY(-3px); box-shadow: 0 20px 30px -12px black; border-color: #c9973a; }
-
-  .grid-nav-modern {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 3rem;
-    padding: 0.6rem 1.2rem;
-    margin: 1rem 0 2rem;
-    flex-wrap: wrap;
-    gap: 1rem;
-    border: 1px solid rgba(201, 151, 58, 0.4);
-  }
-
-  .nav-btn {
-    background: rgba(201, 151, 58, 0.15);
-    border: 1px solid #c9973a;
-    padding: 0.5rem 1.2rem;
-    border-radius: 2.5rem;
-    color: #f8e2af;
-    cursor: pointer;
-    font-weight: 600;
-    transition: 0.2s;
-    font-size: 0.8rem;
-  }
-
-  .nav-btn:hover { background: #c9973a; color: #080604; border-color: #ffdf9c; }
-
-  .legend {
-    display: flex;
-    gap: 1.5rem;
-    font-size: 0.7rem;
-    background: rgba(0, 0, 0, 0.55);
-    padding: 0.5rem 1.2rem;
-    border-radius: 2rem;
-    flex-wrap: wrap;
-    margin-bottom: 1rem;
-  }
-
-  .legend-dot { width: 14px; height: 14px; display: inline-block; margin-right: 0.4rem; border-radius: 4px; }
-  .legend-dot.maha { background: #c24a1e; box-shadow: 0 0 4px #c24a1e; }
-  .legend-dot.antar { background: #1a6b4a; box-shadow: 0 0 4px #1a6b4a; }
-  .legend-dot.pratyantar { background: #d45a9e; box-shadow: 0 0 5px #ff69b4; }
-  .legend-dot.both { background: linear-gradient(135deg, #c24a1e, #1a6b4a); }
-
-  .sacred-table { width: 100%; border-collapse: collapse; background: rgba(0, 0, 0, 0.35); border-radius: 1.5rem; overflow: hidden; }
-  .sacred-table th, .sacred-table td { padding: 0.8rem 1rem; border-bottom: 1px solid rgba(201, 151, 58, 0.15); text-align: left; }
-
-  .pratyantar-badge { color: #ffb3dd; font-weight: 600; letter-spacing: 0.3px; }
-
-  footer {
-    text-align: center;
-    margin-top: 3rem;
-    opacity: 0.65;
-    border-top: 1px solid rgba(201, 151, 58, 0.2);
-    padding-top: 2rem;
-    font-size: 0.7rem;
-  }
-
-  /* No persistent @media print styles — all print overrides are injected/removed via JS
-     to prevent any post-print style bleed on repeat prints. */
+/* RESPONSIVE */
+@media(max-width:600px){.card{padding:16px 14px}.tl-row{flex-wrap:wrap}.nk-table,.tips-table{font-size:11px}}
 </style>
 </head>
 <body>
-<div class="app">
-  <div class="header">
-    <div class="header-ornament">🜁 🜂 ☉ ☽ ♃ ☿ ♀ ♄ ♂</div>
-    <h1>Śakti Vedic Compass</h1>
-    <p style="font-size: 0.9rem; letter-spacing: 2px;">Moolank · Bhagyank · Complete Dasha Trinity</p>
+<div class="wrap">
+
+<header class="site-header">
+  <div class="hdr-orn">पञ्च पक्षी शास्त्रम्</div>
+  <h1>Panch Pakshi Shastram</h1>
+  <p class="sub">Complete Vedic Five Bird System — PDF-Verified Calculator</p>
+  <div class="birds-row">
+    <div class="bp"><span class="ico">🐦‍⬛</span>Crow<div class="rk">1</div></div>
+    <div class="bp"><span class="ico">🦅</span>Vulture<div class="rk">2</div></div>
+    <div class="bp"><span class="ico">🐓</span>Hen<div class="rk">3</div></div>
+    <div class="bp"><span class="ico">🦉</span>Owl<div class="rk">4</div></div>
+    <div class="bp"><span class="ico">🦚</span>Peacock<div class="rk">5</div></div>
   </div>
+</header>
 
-  <div class="input-section">
-    <div class="input-row">
-      <div class="input-group"><label><i class="fas fa-star-of-life"></i> DATE OF BIRTH</label><input type="date" id="dobInput" value="1994-07-22"></div>
-      <button class="btn-generate" id="calcBtn"><i class="fas fa-moon"></i> REVEAL DHARMA CHART</button>
-      <!-- ── PRINT / PDF BUTTON ── -->
-      <button class="btn-print" id="printBtn" title="Print or Save as PDF — all reports included">
-        <i class="fas fa-file-pdf"></i> Print / Save PDF
-      </button>
-    </div>
-  </div>
-
-  <div class="numbers-panel" id="summaryCards"></div>
-
-  <nav class="tab-nav">
-    <button class="tab-btn active" data-tab="grid"><i class="fas fa-th"></i> BIRTH GRID</button>
-    <button class="tab-btn" data-tab="maha"><i class="fas fa-sun"></i> MAHADASHA (100y)</button>
-    <button class="tab-btn" data-tab="antar"><i class="fas fa-calendar-week"></i> ANTAR BY YEAR</button>
-    <button class="tab-btn" data-tab="pratyantar100"><i class="fas fa-hourglass-half"></i> PRATYANTAR EPICS</button>
-    <button class="tab-btn" data-tab="twentyYearGrid"><i class="fas fa-chart-line"></i> 20‑YEAR HORIZON</button>
-    <button class="tab-btn" data-tab="singleYearGrid"><i class="fas fa-border-all"></i> ✦ YEAR GRID (Tri-Dasha)</button>
-  </nav>
-
-  <!-- GRID TAB -->
-  <div id="tab-grid" class="tab-content active">
-    <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-      <div id="vedicGridContainer"></div>
-      <div id="breakdownInfo" class="glass-card" style="padding: 1.5rem; flex:1;"></div>
-    </div>
-  </div>
-
-  <div id="tab-maha" class="tab-content"><div class="dash-scroll" style="max-height:500px; overflow:auto;"><table class="sacred-table" id="mahaTable"><thead><tr><th>#</th><th>Graha</th><th>Number</th><th>Start</th><th>End</th><th>Years</th></tr></thead><tbody></tbody></table></div></div>
-  <div id="tab-antar" class="tab-content"><div class="dash-scroll"><table class="sacred-table" id="antarTable"><thead><tr><th>Year</th><th>Antardasha Lord</th><th>Seed</th><th>Formula trace</th></tr></thead><tbody></tbody></table></div></div>
-  <div id="tab-pratyantar100" class="tab-content"><div class="grid-nav-modern"><button id="pratyPrev100" class="nav-btn"><i class="fas fa-chevron-left"></i> Prev 20</button><span id="pratyRange100" class="nav-range">—</span><button id="pratyNext100" class="nav-btn">Next 20 <i class="fas fa-chevron-right"></i></button></div><div id="pratyantar100List" class="year-grids" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(360px,1fr)); gap:1.2rem;"></div></div>
-  <div id="tab-twentyYearGrid" class="tab-content"><div class="legend"><span class="legend-item"><span class="legend-dot maha"></span>Mahadasha</span><span class="legend-item"><span class="legend-dot antar"></span>Antardasha</span><span class="legend-item"><span class="legend-dot both"></span>Both</span><span class="legend-item"><span class="legend-dot pratyantar"></span>Pratyantar (current)</span></div><div class="grid-nav-modern"><button id="twentyPrev" class="nav-btn"><i class="fas fa-backward"></i> Prev 20 Years</button><div><span class="nav-range" id="twentyRange">—</span><button id="twentyJumpNow" class="nav-btn" style="margin-left:1rem;"><i class="fas fa-sync-alt"></i> Present Era</button></div><button id="twentyNext" class="nav-btn">Next 20 Years <i class="fas fa-forward"></i></button></div><div id="twentyYearGridsContainer" class="year-grids" style="display:grid; grid-template-columns:repeat(auto-fill,minmax(350px,1fr)); gap:1.8rem;"></div></div>
-  <div id="tab-singleYearGrid" class="tab-content"><div class="legend"><span class="legend-dot maha"></span>Mahadasha Lord</span><span class="legend-dot antar"></span>Antardasha</span><span class="legend-dot pratyantar"></span>Pratyantardasha (active phase)</span><span class="legend-dot both"></span>Double resonance</div><div class="grid-nav-modern"><button id="singleYearPrev" class="nav-btn"><i class="fas fa-arrow-left"></i> Previous Year</button><div><span class="nav-range" id="singleYearLabel">—</span><button id="singleYearJumpNow" class="nav-btn" style="margin-left:1rem;"><i class="fas fa-map-pin"></i> Current Year</button></div><button id="singleYearNext" class="nav-btn">Next Year <i class="fas fa-arrow-right"></i></button></div><div id="singleYearGridContainer" style="margin-top:0.5rem; display:grid; grid-template-columns:repeat(auto-fill,minmax(380px,1fr)); gap:1.8rem;"></div></div>
-  <footer><i class="fas fa-om"></i> Vedic Jyotiṣa · Pratyantardasha fully integrated · interactive grids</footer>
+<!-- NAV TABS -->
+<div class="nav-tabs">
+  <button class="nav-tab active" onclick="showTab('natal',this)">🔮 Natal Chart</button>
+  <button class="nav-tab" onclick="showTab('prasna',this)">❓ Prasna</button>
+  <button class="nav-tab" onclick="showTab('today',this)">⏱ Today's Birds</button>
+  <button class="nav-tab" onclick="showTab('dasha',this)">📅 Dasha</button>
+  <button class="nav-tab" onclick="showTab('signif',this)">📖 Significations</button>
+  <button class="nav-tab" onclick="showTab('match',this)">💞 Matchmaking</button>
 </div>
 
+<!-- ══════════════════ TAB 1: NATAL ══════════════════ -->
+<div id="tab-natal" class="tab-panel active">
+  <div class="card" style="animation-delay:.05s">
+    <div class="slabel">Birth Details</div>
+    <div class="fg" style="margin-bottom:12px">
+      <div class="field"><label>Date of Birth</label><input type="date" id="n-dob"></div>
+      <div class="field"><label>Time of Birth</label><input type="time" id="n-tob" step="1"></div>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>Paksha (Lunar Fortnight)</label>
+      <div class="pak-toggle">
+        <button class="pak-btn active" id="n-sp" onclick="setPaksha('n','shukla')">Shukla Paksha<span>Waxing · Bright Fortnight</span></button>
+        <button class="pak-btn" id="n-kp" onclick="setPaksha('n','krishna')">Krishna Paksha<span>Waning · Dark Fortnight</span></button>
+      </div>
+    </div>
+    <input type="hidden" id="n-paksha" value="shukla">
+  </div>
+
+  <div class="card" style="animation-delay:.08s">
+    <div class="slabel">Sunrise &amp; Sunset on Birth Date</div>
+    <div class="night-note">
+      <span class="night-note-ico">🌙</span>
+      <span>For <strong>night births</strong> (after sunset): enter the sunrise of the <strong>following day</strong> in the "Next Day Sunrise" field. Night = Sunset → Next Sunrise.</span>
+    </div>
+    <div class="fg3">
+      <div class="field"><label>Sunrise</label><input type="time" id="n-sr" value="06:00" step="1"><span class="hint">Birth date sunrise</span></div>
+      <div class="field"><label>Sunset</label><input type="time" id="n-ss" value="18:00" step="1"><span class="hint">Birth date sunset</span></div>
+      <div class="field"><label>Next Day Sunrise</label><input type="time" id="n-nsr" value="06:05" step="1"><span class="hint">For night births only</span></div>
+    </div>
+  </div>
+
+  <button class="cbtn" onclick="calcNatal()">✦ Calculate Birth Bird &amp; Full Reading</button>
+  <div id="natal-result" style="display:none;margin-top:16px"></div>
+</div>
+
+<!-- ══════════════════ TAB 2: PRASNA ══════════════════ -->
+<div id="tab-prasna" class="tab-panel">
+  <div class="card">
+    <div class="slabel">Prasna (Horary) Query</div>
+    <p style="font-size:14px;color:var(--text2);margin-bottom:16px;font-style:italic">Enter the current time to find the ruling bird at the moment of the query.</p>
+    <div class="fg" style="margin-bottom:12px">
+      <div class="field"><label>Query Date</label><input type="date" id="p-date"></div>
+      <div class="field"><label>Query Time</label><input type="time" id="p-time" step="1"></div>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>Current Paksha</label>
+      <div class="pak-toggle">
+        <button class="pak-btn active" id="p-sp" onclick="setPaksha('p','shukla')">Shukla Paksha</button>
+        <button class="pak-btn" id="p-kp" onclick="setPaksha('p','krishna')">Krishna Paksha</button>
+      </div>
+    </div>
+    <input type="hidden" id="p-paksha" value="shukla">
+    <div class="night-note" style="margin-bottom:12px">
+      <span class="night-note-ico">🌙</span>
+      <span>If query is <strong>after sunset</strong>, enter the <strong>next day's sunrise</strong> in the "Next Day Sunrise" field.</span>
+    </div>
+    <div class="fg3" style="margin-bottom:12px">
+      <div class="field"><label>Sunrise</label><input type="time" id="p-sr" value="06:00" step="1"></div>
+      <div class="field"><label>Sunset</label><input type="time" id="p-ss" value="18:00" step="1"></div>
+      <div class="field"><label>Next Day Sunrise</label><input type="time" id="p-nsr" value="06:05" step="1"><span class="hint">For night queries</span></div>
+    </div>
+    <div class="field">
+      <label>Nature of Query</label>
+      <select id="p-query">
+        <option value="general">General / Status</option>
+        <option value="travel">Travel / Missing Person</option>
+        <option value="disease">Disease / Health</option>
+        <option value="war">Conflict / Competition / Yuddha</option>
+        <option value="theft">Theft / Lost Object</option>
+        <option value="food">Food / Bhojana</option>
+      </select>
+    </div>
+  </div>
+  <button class="cbtn" onclick="calcPrasna()">✦ Get Prasna Reading</button>
+  <div id="prasna-result" style="display:none;margin-top:16px"></div>
+</div>
+
+<!-- ══════════════════ TAB 3: TODAY ══════════════════ -->
+<div id="tab-today" class="tab-panel">
+  <div class="card">
+    <div class="slabel">Today's Bird Rulerships</div>
+    <div class="night-note" style="margin-bottom:12px">
+      <span class="night-note-ico">🌙</span>
+      <span>Night schedule runs from <strong>Sunset → Next Day Sunrise</strong>. Enter tomorrow's sunrise in the "Next Day Sunrise" field for an accurate night schedule.</span>
+    </div>
+    <div class="fg3" style="margin-bottom:12px">
+      <div class="field"><label>Sunrise Today</label><input type="time" id="t-sr" value="06:00" step="1"></div>
+      <div class="field"><label>Sunset Today</label><input type="time" id="t-ss" value="18:00" step="1"></div>
+      <div class="field"><label>Tomorrow's Sunrise</label><input type="time" id="t-nsr" value="06:05" step="1"></div>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>Today's Paksha</label>
+      <div class="pak-toggle">
+        <button class="pak-btn active" id="t-sp" onclick="setPaksha('t','shukla')">Shukla Paksha</button>
+        <button class="pak-btn" id="t-kp" onclick="setPaksha('t','krishna')">Krishna Paksha</button>
+      </div>
+    </div>
+    <input type="hidden" id="t-paksha" value="shukla">
+  </div>
+  <button class="cbtn" onclick="calcToday()">✦ Show Full Day Schedule</button>
+  <div id="today-result" style="display:none;margin-top:16px"></div>
+</div>
+
+<!-- ══════════════════ TAB 4: DASHA ══════════════════ -->
+<div id="tab-dasha" class="tab-panel">
+  <div class="card">
+    <div class="slabel">Panch Pakshi Dasha &amp; Antardasha</div>
+    <p style="font-size:14px;color:var(--text2);margin-bottom:16px;font-style:italic">Each bird rules for 6 years. 5-bird cycle = 30 years, repeats 5 times (150 years total).</p>
+    <div class="fg" style="margin-bottom:12px">
+      <div class="field"><label>Date of Birth</label><input type="date" id="d-dob"></div>
+      <div class="field"><label>Time of Birth</label><input type="time" id="d-tob" step="1"></div>
+    </div>
+    <div class="field" style="margin-bottom:12px">
+      <label>Paksha</label>
+      <div class="pak-toggle">
+        <button class="pak-btn active" id="d-sp" onclick="setPaksha('d','shukla')">Shukla Paksha</button>
+        <button class="pak-btn" id="d-kp" onclick="setPaksha('d','krishna')">Krishna Paksha</button>
+      </div>
+    </div>
+    <input type="hidden" id="d-paksha" value="shukla">
+    <div class="fg3">
+      <div class="field"><label>Sunrise</label><input type="time" id="d-sr" value="06:00" step="1"></div>
+      <div class="field"><label>Sunset</label><input type="time" id="d-ss" value="18:00" step="1"></div>
+      <div class="field"><label>Next Day Sunrise</label><input type="time" id="d-nsr" value="06:05" step="1"><span class="hint">For night births</span></div>
+    </div>
+  </div>
+  <button class="cbtn" onclick="calcDasha()">✦ Calculate Dasha Periods</button>
+  <div id="dasha-result" style="display:none;margin-top:16px"></div>
+</div>
+
+<!-- ══════════════════ TAB 5: SIGNIFICATIONS ══════════════════ -->
+<div id="tab-signif" class="tab-panel">
+  <div class="card">
+    <div class="slabel">Bird Significations — Complete Reference</div>
+    <div style="overflow-x:auto">
+    <table class="sig-table">
+      <thead><tr><th>Attribute</th><th>🐦‍⬛ Crow <small style="opacity:.6">#1</small></th><th>🦅 Vulture <small style="opacity:.6">#2</small></th><th>🐓 Hen <small style="opacity:.6">#3</small></th><th>🦉 Owl <small style="opacity:.6">#4</small></th><th>🦚 Peacock <small style="opacity:.6">#5</small></th></tr></thead>
+      <tbody id="sig-tbody"></tbody>
+    </table>
+    </div>
+  </div>
+  <div class="card" style="animation-delay:.05s">
+    <div class="slabel">Activity State Colors &amp; Results</div>
+    <div class="color-strip">
+      <div class="cs-item"><div class="cs-color" style="background:#f5f5f0;border-color:rgba(255,255,255,.3)"></div><div class="cs-nm">Eating</div><div class="cs-act">White · Complete Gain · 5 Days · 1½ Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#c0392b"></div><div class="cs-nm">Walking</div><div class="cs-act">Red · ½ Gain · 4 Days · 1¼ Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#c9a84c"></div><div class="cs-nm">Ruling</div><div class="cs-act">Golden · ⅓ Gain · 3 Days · 2 Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#808080"></div><div class="cs-nm">Sleeping</div><div class="cs-act">Smokey · ¼ Gain · 2 Days · ¾ Ghatika</div></div>
+      <div class="cs-item"><div class="cs-color" style="background:#1a1a1a;border-color:rgba(255,255,255,.15)"></div><div class="cs-nm">Dying</div><div class="cs-act">Black · Losses · 1 Day · ½ Ghatika</div></div>
+    </div>
+  </div>
+  <div class="card" style="animation-delay:.1s">
+    <div class="slabel">Tips of Winning — Name Letter Guide</div>
+    <div style="overflow-x:auto"><table class="tips-table" id="tips-table"></table></div>
+  </div>
+  <div class="card" style="animation-delay:.15s">
+    <div class="slabel">Victorious Birds by Conditions</div>
+    <div id="victorious-grid"></div>
+  </div>
+  <div class="card" style="animation-delay:.2s">
+    <div class="slabel">Dead Bird Reference Table</div>
+    <div style="overflow-x:auto"><table class="tips-table" id="dead-table"></table></div>
+  </div>
+</div>
+
+<!-- ══════════════════ TAB 6: MATCHMAKING ══════════════════ -->
+<div id="tab-match" class="tab-panel">
+  <div class="card">
+    <div class="slabel">Pakshi Kuta — Nakshatra Matchmaking</div>
+    <p style="font-size:14px;color:var(--text2);margin-bottom:16px;font-style:italic">Uses Sages' Nakshatra lordship system (different from general significations). Couple born under the same bird nakshatra is most compatible.</p>
+    <div class="fg" style="margin-bottom:12px">
+      <div class="field"><label>Person 1 — Birth Nakshatra</label><select id="m-nk1" onchange="checkMatch()"></select></div>
+      <div class="field"><label>Person 2 — Birth Nakshatra</label><select id="m-nk2" onchange="checkMatch()"></select></div>
+    </div>
+    <div id="match-result"></div>
+  </div>
+  <div class="card" style="animation-delay:.05s">
+    <div class="slabel">Nakshatra–Bird Assignments (Pakshi Kuta / Sages' System)</div>
+    <div style="overflow-x:auto"><table class="nk-table" id="nk-full-table"></table></div>
+  </div>
+</div>
+
+</div><!-- /wrap -->
+
 <script>
-const PLANET = {1:{name:"Sūrya",sym:"☉"},2:{name:"Chandra",sym:"☽"},3:{name:"Guru",sym:"♃"},4:{name:"Rāhu",sym:"☊"},5:{name:"Budha",sym:"☿"},6:{name:"Śukra",sym:"♀"},7:{name:"Ketu",sym:"☋"},8:{name:"Śani",sym:"♄"},9:{name:"Maṅgala",sym:"♂"}};
-const VEDIC_LAYOUT = [3,1,9,6,7,5,2,8,4];
-const DOW_NUM = {0:1,1:2,2:9,3:5,4:3,5:6,6:8};
-function reduceToSingle(n){ let x = Math.abs(n); while(x>9){ let s=0; while(x>0){ s+=x%10; x=Math.floor(x/10); } x=s; } return x||0; }
-function getRoot(day){ return reduceToSingle(String(day).split('').reduce((a,c)=>a+ +c,0)); }
-function getDestiny(d,m,y){ return reduceToSingle([...String(d),...String(m),...String(y)].reduce((a,c)=>a+ +c,0));}
-function getWeekNum(date){ return DOW_NUM[date.getDay()];}
-function getMahadashaSeq(root,birthDate,maxYrs=100){ let order=[]; for(let i=root;i<=9;i++) order.push(i); for(let i=1;i<root;i++) order.push(i); let seq=[], cur=new Date(birthDate), total=0, idx=0; while(total<maxYrs){ let num=order[idx%order.length]; let dur={1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9}[num]; if(total+dur>maxYrs) dur=maxYrs-total; let start=new Date(cur), end=new Date(cur); end.setFullYear(end.getFullYear()+dur); seq.push({index:seq.length+1,num,name:PLANET[num].name,sym:PLANET[num].sym,start,end,dur}); cur=end; total+=dur; idx++; } return seq; }
-function getMahaByYear(year,root,birthDate){ let order=[]; for(let i=root;i<=9;i++) order.push(i); for(let i=1;i<root;i++) order.push(i); let cur=new Date(birthDate); for(let idx=0;idx<200;idx++){ let num=order[idx%order.length]; let dur={1:1,2:2,3:3,4:4,5:5,6:6,7:7,8:8,9:9}[num]; let next=new Date(cur); next.setFullYear(next.getFullYear()+dur); if(year>=cur.getFullYear() && year<next.getFullYear()) return {num,name:PLANET[num].name,sym:PLANET[num].sym}; cur=next; } return {num:0,name:"?",sym:"?"};}
-function getAntarByYear(calYear,birthDate,root){ let bd=new Date(calYear,birthDate.getMonth(),birthDate.getDate()); if(bd.getMonth()!==birthDate.getMonth()) bd=new Date(calYear,1,28); let dow=getWeekNum(bd); let yy=calYear%100; let raw=yy+root+(birthDate.getMonth()+1)+dow; let red=reduceToSingle(raw); return {num:red,name:PLANET[red]?.name||"?",sym:PLANET[red]?.sym||"",raw};}
-function getPratyantarPeriodsForYear(targetYear,birthDate,root){
-    let yearStart = new Date(targetYear, birthDate.getMonth(), birthDate.getDate());
-    if(yearStart.getMonth() !== birthDate.getMonth()) yearStart = new Date(targetYear, 1, 28);
-    let yearEnd = new Date(yearStart); yearEnd.setFullYear(yearEnd.getFullYear()+1);
-    let antar = getAntarByYear(targetYear,birthDate,root);
-    let antarLord = antar.num;
-    let order = []; for(let i=antarLord;i<=9;i++) order.push(i); for(let i=1;i<antarLord;i++) order.push(i);
-    let segments = [], cursor = new Date(yearStart);
-    for(let idx=0; idx<15 && cursor < yearEnd; idx++){
-        let pLord = order[idx % order.length];
-        let days = antarLord * pLord;
-        let segEnd = new Date(cursor); segEnd.setDate(segEnd.getDate() + days);
-        if(segEnd > yearEnd) segEnd = yearEnd;
-        segments.push({ pratyantarNum: pLord, planet: PLANET[pLord], start: new Date(cursor), end: segEnd });
-        cursor = segEnd;
+// ═══════════════════════════════════════════════════════════
+// DATA LAYER — Fully verified against PDF tables & examples
+// ═══════════════════════════════════════════════════════════
+
+const BIRDS = {
+  vulture:{name:'Vulture',skt:'Shyena',ico:'🦅',strength:2,col:'#c9a84c',
+    planet:'Jupiter',bodyPart:'Head',tattva:'Prithvi (Earth)',deity:'Brahma',
+    dir:'East',dirK:'Middle',taste:'Sweet',gender:'Male',timeOfDay:'Morning',
+    tithi:'1,6,11 (Nanda)',caste:'Brahmin',weapon:'Sword',tense:'Future',
+    friend:'Owl',enemy:'Crow, Hen',
+    rashaS:'Aries, Scorpio, Leo',rashaK:'Taurus, Libra',
+    noTravel:'Thursday, Saturday',
+    prasnaQ:'Tension about Progeny & Profession',
+    prasnaTravel:'At Same Place',prasnaDis:'Healthy & Happy',
+    nakshatras:['Ashwini','Bharani','Krittika','Rohini','Mrigashira'],
+    months:'Shravana, Chaitra, Kartika',
+    wins:'Mountains, Forests, Raised Places, East, Shukla Paksha, Monday, Noon, Bhadraprada & Ashwina Month'
+  },
+  owl:{name:'Owl',skt:'Pingala',ico:'🦉',strength:4,col:'#9b59b6',
+    planet:'Venus',bodyPart:'Hands',tattva:'Jala (Water)',deity:'Vishnu',
+    dir:'South',dirK:'North',taste:'Bitter',gender:'Female',timeOfDay:'Before Noon',
+    tithi:'2,7,12 (Bhadra)',caste:'Vaishya',weapon:'Bow',tense:'Past',
+    friend:'Vulture, Peacock',enemy:'Crow',
+    rashaS:'Cancer, Gemini, Virgo',rashaK:'Sagittarius, Pisces',
+    noTravel:'Sunday, Friday',
+    prasnaQ:'Tension about Expansion & Growth',
+    prasnaTravel:'Will Come Shortly',prasnaDis:'Discharged, Coming',
+    nakshatras:['Ardra','Punarvasu','Pushya','Ashlesha','Magha','Purva Phalguni'],
+    months:'Jyestha, Asadha, Bhadraprad',
+    wins:'Pond, Water Bodies, Temples, Even Lands, Evening/Night, Wednesday, Magha & Phalguna Month'
+  },
+  crow:{name:'Crow',skt:'Kaak',ico:'🐦‍⬛',strength:1,col:'#1abc9c',
+    planet:'Mars',bodyPart:'Chest',tattva:'Agni (Fire)',deity:'Rudra',
+    dir:'West',dirK:'East',taste:'Spicy',gender:'Male',timeOfDay:'Noon',
+    tithi:'3,8,13 (Jaya)',caste:'Kshatriya',weapon:'Knife',tense:'Present',
+    friend:'None',enemy:'Hen, Owl, Vulture',
+    rashaS:'Sagittarius, Pisces',rashaK:'Virgo, Gemini',
+    noTravel:'Monday',
+    prasnaQ:'Tension about Happiness, Health & Enjoyment',
+    prasnaTravel:'Sleeping',prasnaDis:'Diseased',
+    nakshatras:['Uttara Phalguni','Hasta','Chitra','Swati','Vishakha','Anuradha'],
+    months:'Phalguna, Mrigashira',
+    wins:'River Banks, Hidden Places, Even Lands, After Noon, Tuesday, all 12 Months'
+  },
+  hen:{name:'Hen',skt:'Kukkuta',ico:'🐓',strength:3,col:'#e67e22',
+    planet:'Mercury',bodyPart:'Stomach',tattva:'Vayu (Air)',deity:'Ishvara',
+    dir:'South',dirK:'South',taste:'Sour',gender:'Female',timeOfDay:'Evening',
+    tithi:'4,9,14 (Rikta)',caste:'Shudra',weapon:'Spear',tense:'Present',
+    friend:'Peacock',enemy:'Crow, Vulture',
+    rashaS:'Taurus, Libra',rashaK:'Aries, Leo, Scorpio',
+    noTravel:'Tuesday',
+    prasnaQ:'Multiple Tensions',
+    prasnaTravel:'Travelling (Walking)',prasnaDis:'Change Hospital / Go Elsewhere',
+    nakshatras:['Jyestha','Mula','Purva Asadha','Uttara Asadha','Shravana','Dhanistha'],
+    months:'Vaishakha, Ashwina',
+    wins:'Middle of House, Royal Palaces, North, Friday, Early Morning (48 min), Paush–Chaitra months'
+  },
+  peacock:{name:'Peacock',skt:'Mayura',ico:'🦚',strength:5,col:'#3498db',
+    planet:'Saturn',bodyPart:'Below Navel',tattva:'Akasa (Ether)',deity:'SadaShiva',
+    dir:'All (Centre)',dirK:'West',taste:'Mixed',gender:'Eunuch',timeOfDay:'After Noon',
+    tithi:'5,10,15/30 (Poorna)',caste:'Chandala',weapon:'Mace',tense:'Past',
+    friend:'Hen, Owl',enemy:'None',
+    rashaS:'Capricorn, Aquarius',rashaK:'Capricorn, Aquarius, Cancer',
+    noTravel:'Wednesday',
+    prasnaQ:'Tension about Losses',
+    prasnaTravel:'Thinking',prasnaDis:'Dead',
+    nakshatras:['Shatabhisa','Purva Bhadra','Uttara Bhadra','Revati'],
+    months:'Paush, Magha',
+    wins:'Near Trees, Forest, Cowshed, Before Noon, South, Saturday, Asadha Month'
+  }
+};
+
+// ── BIRD ORDER TABLES — Verified against PDF "Birds Rising Tables" section ──
+// These are the AUTHORITATIVE table headers (examples confirm tables over text)
+const ORDERS = {
+  shukla:{
+    day:{
+      '0,2':['vulture','owl','crow','hen','peacock'],   // SP Day Sun/Tue
+      '1,3':['owl','crow','hen','peacock','vulture'],   // SP Day Mon/Wed
+      '4':  ['hen','peacock','vulture','owl','crow'],   // SP Day Thu
+      '5':  ['crow','hen','peacock','vulture','owl'],   // SP Day Fri
+      '6':  ['peacock','vulture','owl','crow','hen']    // SP Day Sat
+    },
+    night:{
+      '0,2':['vulture','owl','crow','hen','peacock'],   // SP Night Sun/Tue (confirmed: Ex1,Ex5)
+      '1,3':['owl','crow','hen','peacock','vulture'],   // SP Night Mon/Wed
+      '4':  ['crow','hen','peacock','vulture','owl'],   // SP Night Thu
+      '5':  ['hen','peacock','vulture','owl','crow'],   // SP Night Fri (confirmed: Ex1)
+      '6':  ['peacock','vulture','owl','crow','hen']    // SP Night Sat
     }
-    return { antarLord, antarName: PLANET[antarLord].name, antarSym: PLANET[antarLord].sym, segments };
-}
-function baseFrequency(dob,root,destiny){
-    let freq=Array(10).fill(0);
-    let day=dob.getDate(), month=dob.getMonth()+1, year=dob.getFullYear();
-    let digits=[...String(day),...String(month),...String(year).slice(-2),root,destiny].map(Number).filter(d=>d>=1&&d<=9);
-    digits.forEach(d=>freq[d]++);
-    return freq;
-}
-let globalDob, globalRoot, globalDestiny, currentSingleYear=null, pratyAllEvents=[], pratyOffset=0, twentyStartYear=null;
-
-function renderSingleYearGrid(year, dob, root, destiny){
-    currentSingleYear = year;
-    document.getElementById('singleYearLabel').innerHTML = `<i class="fas fa-calendar-alt"></i> ${year}`;
-    let container = document.getElementById('singleYearGridContainer'); container.innerHTML = '';
-    let maha = getMahaByYear(year, root, dob);
-    let pratyData = getPratyantarPeriodsForYear(year, dob, root);
-    let baseFreq = baseFrequency(dob, root, destiny);
-    let currYearFlag = (year === new Date().getFullYear());
-    for(let segIdx=0; segIdx<pratyData.segments.length; segIdx++){
-        let seg = pratyData.segments[segIdx];
-        let yearFreq = [...baseFreq];
-        if(maha.num>=1 && maha.num<=9) yearFreq[maha.num]++;
-        if(pratyData.antarLord>=1) yearFreq[pratyData.antarLord]++;
-        if(seg.pratyantarNum>=1) yearFreq[seg.pratyantarNum]++;
-        let card = document.createElement('div'); card.className = `year-card ${currYearFlag && segIdx===0 ? 'current-year' : ''}`;
-        let dateRange = `${seg.start.toLocaleDateString()} – ${seg.end.toLocaleDateString()}`;
-        let daysDur = Math.round((seg.end - seg.start)/(1000*3600*24));
-        card.innerHTML = `<div class="year-header" style="display:flex; justify-content:space-between; padding:1rem;"><div class="year-num" style="font-size:1.4rem;">${seg.planet.sym} ${seg.planet.name}</div><div class="pratyantar-badge">Pratyantar ${seg.pratyantarNum}</div></div><div style="padding:0 0.5rem; text-align:center; font-size:0.7rem; color:#ffc0e0;">${dateRange} (${daysDur} days)</div><div class="mini-grid-3x3" id="grid-${year}-${segIdx}"></div><div class="dasha-details-card" style="padding:0.7rem 1rem;"><span class="planet-chip"><i class="fas fa-sun"></i> Maha: ${maha.sym} ${maha.name} (${maha.num})</span> <span class="planet-chip"><i class="fas fa-moon"></i> Antar: ${pratyData.antarSym} ${pratyData.antarName}</span><div class="pratyantar-badge" style="margin-top:6px;">✨ Pratyantar: ${seg.planet.sym} ${seg.planet.name} (${seg.pratyantarNum})</div><div class="formula-sm" style="font-size:0.6rem; margin-top:6px;">💠 Antar × Praty = ${pratyData.antarLord*seg.pratyantarNum} days</div></div>`;
-        container.appendChild(card);
-        let gridDiv = card.querySelector(`.mini-grid-3x3`);
-        VEDIC_LAYOUT.forEach(digit => {
-            let count = yearFreq[digit] || 0;
-            let isMaha = (maha.num === digit), isAntar = (pratyData.antarLord === digit), isPraty = (seg.pratyantarNum === digit);
-            let cell = document.createElement('div'); cell.className = 'mini-cell';
-            if(isPraty) cell.classList.add('pratyantar-highlight');
-            else if(isMaha && isAntar) cell.classList.add('both-highlight');
-            else if(isMaha) cell.classList.add('maha-highlight');
-            else if(isAntar) cell.classList.add('antar-highlight');
-            else cell.classList.add('base-cell');
-            let rep = count>0 ? '✦'.repeat(Math.min(count,4)) : '';
-            cell.innerHTML = `<div class="cell-digit-main" style="color:${isPraty?'#ffb7dc':(isMaha||isAntar)?'#f7d98c':'#c9973a80'}">${digit}</div><div class="cell-rep" style="font-size:0.7rem;">${rep}</div>`;
-            gridDiv.appendChild(cell);
-        });
+  },
+  krishna:{
+    day:{
+      '0,2':['vulture','crow','peacock','owl','hen'],   // KP Day Sun/Tue
+      '1,3':['hen','vulture','crow','peacock','owl'],   // KP Day Mon/Wed
+      '4':  ['owl','hen','vulture','crow','peacock'],   // KP Day Thu
+      '5':  ['vulture','crow','peacock','owl','hen'],   // KP Day Fri (Ex6: vulture rules start)
+      '6':  ['crow','peacock','owl','hen','vulture']    // KP Day Sat
+    },
+    night:{
+      '0,2':['vulture','crow','peacock','owl','hen'],   // KP Night Sun/Tue
+      '1,3':['hen','vulture','crow','peacock','owl'],   // KP Night Mon/Wed
+      '4':  ['owl','hen','vulture','crow','peacock'],   // KP Night Thu
+      '5':  ['crow','peacock','owl','hen','vulture'],   // KP Night Fri (confirmed: Mukesh Ambani)
+      '6':  ['peacock','owl','hen','vulture','crow']    // KP Night Sat
     }
+  }
+};
+
+// ── ACTIVITY ORDER per bird position ──
+// Read from PDF TABLE COLUMNS (each column = sequence of activities for that bird over time)
+// VERIFIED against 6+ worked examples in the PDF:
+//   Pos1: Eat→Die→Sleep→Rule→Walk  (Vulture SP Tue Day; Crow KP Fri Night examples)
+//   Pos2: Walk→Eat→Die→Sleep→Rule  (Owl SP Sun Day Ex3; Owl SP Tue Night Ex5; Hen SP Fri Night Ex1; Hen KP Thu Night Ex2)
+//   Pos4: Sleep→Rule→Walk→Eat→Die  (Hen SP Tue Night BigBoss Ex2)
+// PDF text states: "Eat for 2G; Walk for 1G+1Pada; Rule for 1G+2Pada; Sleep for 3Pada; Die for 2Pada"
+// But EXAMPLES show: Ruling=2G (largest), Eating=1.5G, Walking=1.25G — Eating & Ruling were swapped in text
+const ACT_START_BY_POS = [
+  ['Eating','Dying','Sleeping','Ruling','Walking'],   // Position 1 (first bird in sequence)
+  ['Walking','Eating','Dying','Sleeping','Ruling'],   // Position 2
+  ['Ruling','Walking','Eating','Dying','Sleeping'],   // Position 3
+  ['Sleeping','Ruling','Walking','Eating','Dying'],   // Position 4
+  ['Dying','Sleeping','Ruling','Walking','Eating']    // Position 5 (last bird in sequence)
+];
+
+// ── GHATIKA DURATIONS — Verified from PDF worked examples ──
+// PDF text says: Eat=2G, Walk=1G+1Pada(=1.25G), Rule=1G+2Pada(=1.5G), Sleep=3Pada(=0.75G), Die=2Pada(=0.5G)
+// But EXAMPLES consistently show Ruling takes the LARGEST slot (2G) and Eating takes 1.5G:
+//   Ex3 Owl pos2: Walk=28.68min≈1.25G, Eat=34.42min≈1.5G, Die=11.47min≈0.5G, Sleep=17.20min≈0.75G, Rule=remaining≈2G ✓
+//   Ex5 Owl pos2: Walk=33min≈1.25G, Eat=39min≈1.44G≈1.5G ✓
+//   Ex6 Crow pos2: Walk=26min≈1.25G, Eat=31min≈1.48G≈1.5G ✓
+//   Ex2 Hen pos2: Walk=26min≈1.19G≈1.25G, Eat=31min≈1.42G≈1.5G ✓
+// Total: 1.5+1.25+2+0.75+0.5 = 6G ✓
+const ACT_GHATIKAS = {Eating:1.5, Walking:1.25, Ruling:2, Sleeping:0.75, Dying:0.5};
+
+// Dead birds — per PDF
+const DEAD = {
+  shukla: {0:'owl',  1:'crow',   2:'peacock', 3:'hen',     4:'vulture', 5:'owl',     6:'vulture'},
+  krishna:{0:'crow', 1:'owl',    2:'vulture', 3:'peacock', 4:'hen',     5:'peacock', 6:'hen'}
+};
+
+const ACT_INFO = {
+  Eating:  {cls:'t-eating', col:'#5dade2', icon:'🍽', colorName:'White',
+    natMeaning:'Successful in fierce undertakings — battle, politics. Gains wealth.',
+    prasMeaning:'Interest in gain but less result. Disease stays long. Losses in travel.',
+    result:'Gets Kingdom, Good Health, Victory, Income of Wealth, Great Gains.'},
+  Walking: {cls:'t-walking',col:'#f4a623', icon:'🚶', colorName:'Red',
+    natMeaning:'Unsuccessful if not guided properly. Movement & change of status.',
+    prasMeaning:'Great Gains, Destruction of Diseases, Wins in Wars, Travels.',
+    result:'Cheap Prices of Grains, Saving of Wealth, Coming from Far Lands.'},
+  Ruling:  {cls:'t-ruling', col:'#2ecc71', icon:'👑', colorName:'Golden',
+    natMeaning:'Most auspicious. Thrives in endeavours. Super powerful.',
+    prasMeaning:'Gets Kingdom, Loss of Miseries, Wins in Wars, Accomplishment in Travels.',
+    result:'Good Viability, Good Health, Gain of Progeny & Friends, Desired Objects.'},
+  Sleeping:{cls:'t-sleeping',col:'#af7ac5',icon:'💤', colorName:'Smokey',
+    natMeaning:'Ignorant. Passive state. Requires effort to succeed.',
+    prasMeaning:'No Gains, Increase of Diseases, Loss of Limbs in Fight, No Return of Traveler.',
+    result:'No Travel or Losses, No Rains, Loss of Work, Not meeting loved ones.'},
+  Dying:   {cls:'t-dying',  col:'#e74c3c', icon:'☁️', colorName:'Black',
+    natMeaning:'Bad Luck. Weakest condition. Obstacles and delays.',
+    prasMeaning:'Losses, Calamities in Travel, Loss of All Undertakings, Death in Fights.',
+    result:'Untimely Death, Great Fear, Disturbance in Undertakings, Miseries.'}
+};
+
+const DAY_NAMES = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+// ── MATCHMAKING NAKSHATRAS ──
+const NK_BIRDS_MATCH = {
+  'Ashwini':'vulture','Ardra':'vulture','Purva Phalguni':'vulture','Vishakha':'vulture','Uttara Asadha':'vulture',
+  'Bharani':'owl','Punarvasu':'owl','Uttara Phalguni':'owl','Anuradha':'owl','Shravana':'owl',
+  'Krittika':'crow','Pushya':'crow','Hasta':'crow','Jyestha':'crow','Dhanistha':'crow',
+  'Rohini':'hen','Ashlesha':'hen','Chitra':'hen','Mula':'hen','Shatabhisa':'hen',
+  'Mrigashira':'peacock','Magha':'peacock','Swati':'peacock','Purva Asadha':'peacock',
+  'Purva Bhadra':'peacock','Uttara Bhadra':'peacock','Revati':'peacock'
+};
+
+const MATCH_NAKSHATRAS = [
+  'Ashwini','Bharani','Krittika','Rohini','Mrigashira',
+  'Ardra','Punarvasu','Pushya','Ashlesha',
+  'Magha','Purva Phalguni','Uttara Phalguni','Hasta','Chitra','Swati',
+  'Vishakha','Anuradha','Jyestha',
+  'Mula','Purva Asadha','Uttara Asadha','Shravana','Dhanistha',
+  'Shatabhisa','Purva Bhadra','Uttara Bhadra','Revati'
+];
+
+const TIPS_WINNING = [
+  {letter:"'Aa' अ", sd:'Sunday, Tuesday', sn:'Friday', kd:'Friday', kn:'Sunday, Tuesday'},
+  {letter:"'Ee' इ", sd:'Monday, Wednesday', sn:'Saturday', kd:'Thursday', kn:'Wednesday'},
+  {letter:"'Uu' उ", sd:'Thursday', sn:'Sunday, Tuesday', kd:'Wednesday', kn:'Thursday'},
+  {letter:"'Ae' ए", sd:'Friday', sn:'Wednesday, Monday', kd:'Sunday, Tuesday', kn:'Saturday, Monday'},
+  {letter:"'Oo' ओ", sd:'Saturday', sn:'Thursday', kd:'Saturday, Monday', kn:'Friday'}
+];
+
+// ═══════════════════════════════════════════
+// UTILITY FUNCTIONS
+// ═══════════════════════════════════════════
+let pak = {n:'shukla', p:'shukla', t:'shukla', d:'shukla'};
+
+function setPaksha(prefix, val){
+  pak[prefix] = val;
+  document.getElementById(prefix+'-paksha').value = val;
+  document.getElementById(prefix+'-sp').classList.toggle('active', val==='shukla');
+  document.getElementById(prefix+'-kp').classList.toggle('active', val==='krishna');
 }
-function getAllPratyantarList(birthDate,root,maxYrs=100){
-    let mahaSeq=getMahadashaSeq(root,birthDate,maxYrs); let events=[];
-    for(let m of mahaSeq){ let mStart=m.start, mEnd=m.end; let antarOrder=[]; for(let i=m.num;i<=9;i++) antarOrder.push(i); for(let i=1;i<m.num;i++) antarOrder.push(i); let antarCursor=new Date(mStart); let aIdx=0;
-        while(antarCursor<mEnd && aIdx<100){ let antarLord=antarOrder[aIdx%antarOrder.length]; let antarDays=m.num * antarLord; let antarEnd=new Date(antarCursor); antarEnd.setDate(antarEnd.getDate()+antarDays); if(antarEnd>mEnd) antarEnd=mEnd; let pOrder=[]; for(let i=antarLord;i<=9;i++) pOrder.push(i); for(let i=1;i<antarLord;i++) pOrder.push(i); let pCursor=new Date(antarCursor);
-            for(let pIdx=0; pCursor<antarEnd && pIdx<20; pIdx++){ let pLord=pOrder[pIdx%pOrder.length]; let pDays=antarLord * pLord; let pEnd=new Date(pCursor); pEnd.setDate(pEnd.getDate()+pDays); if(pEnd>antarEnd) pEnd=antarEnd; events.push({ mahaNum:m.num, mahaName:m.name, antarNum:antarLord, antarName:PLANET[antarLord].name, pratyantarNum:pLord, pratyantarName:PLANET[pLord].name, start:new Date(pCursor), end:pEnd }); pCursor=pEnd; }
-            antarCursor=antarEnd; aIdx++;
-        }
-    } return events;
+
+function showTab(name, btn){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  btn.classList.add('active');
 }
-function renderPratyantar100(offset){ if(!pratyAllEvents.length) return; let start=offset*20, end=Math.min(pratyAllEvents.length, start+20); let cont=document.getElementById('pratyantar100List'); cont.innerHTML=''; for(let i=start;i<end;i++){ let e=pratyAllEvents[i]; let card=document.createElement('div'); card.className='year-card'; card.innerHTML=`<div class="year-header" style="padding:0.8rem;"><span class="year-num">🌸 ${e.pratyantarName} (${e.pratyantarNum})</span><span style="font-size:0.7rem;">${e.start.toLocaleDateString()} – ${e.end.toLocaleDateString()}</span></div><div style="padding:0.8rem;">Mahadasha: ${e.mahaName}(${e.mahaNum}) | Antar: ${e.antarName}(${e.antarNum})<div style="margin-top:6px; color:#ffbc6e;">✨ Pratyantardasha lord: ${e.pratyantarName} (${e.pratyantarNum})</div></div>`; cont.appendChild(card); } let page=Math.floor(start/20)+1, total=Math.ceil(pratyAllEvents.length/20); document.getElementById('pratyRange100').innerHTML=`Page ${page}/${total} (${start+1}-${Math.min(end,pratyAllEvents.length)})`; }
-function renderTwentyYearGrids(centerYear, dob, root, destiny){ let startYear=centerYear-10, endYear=centerYear+9; document.getElementById('twentyRange').innerHTML=`${startYear} – ${endYear}`; let container=document.getElementById('twentyYearGridsContainer'); container.innerHTML=''; let baseFreq=baseFrequency(dob,root,destiny); let currY=new Date().getFullYear(); for(let yr=startYear; yr<=endYear; yr++){ let maha=getMahaByYear(yr,root,dob); let antar=getAntarByYear(yr,dob,root); let freq=[...baseFreq]; if(maha.num>=1) freq[maha.num]++; if(antar.num>=1) freq[antar.num]++; let card=document.createElement('div'); card.className=`year-card ${yr===currY?'current-year':''}`; card.innerHTML=`<div class="year-header" style="padding:0.8rem;"><div class="year-num">✨ ${yr}</div><div class="year-badge">Year ${yr%100}</div></div><div class="mini-grid-3x3" id="tempgrid${yr}"></div><div class="dasha-details-card" style="padding:0.7rem;"><span class="planet-chip">Maha: ${maha.sym} ${maha.name}</span> <span class="planet-chip">Antar: ${antar.sym} ${antar.name}</span></div>`; container.appendChild(card); let gridDiv=card.querySelector(`.mini-grid-3x3`); VEDIC_LAYOUT.forEach(d=>{ let count=freq[d]||0; let isM=maha.num===d, isA=antar.num===d; let cell=document.createElement('div'); cell.className='mini-cell'; if(isM&&isA) cell.classList.add('both-highlight'); else if(isM) cell.classList.add('maha-highlight'); else if(isA) cell.classList.add('antar-highlight'); else cell.classList.add('base-cell'); cell.innerHTML=`<div class="cell-digit-main">${d}</div><div class="cell-rep">${count>0?'◉'.repeat(Math.min(count,3)):''}</div>`; gridDiv.appendChild(cell); }); } twentyStartYear=centerYear; }
-function computeAll(dateStr){ globalDob=new Date(dateStr); if(isNaN(globalDob)) return; globalRoot=getRoot(globalDob.getDate()); globalDestiny=getDestiny(globalDob.getDate(), globalDob.getMonth()+1, globalDob.getFullYear()); let currY=new Date().getFullYear(); let currMaha=getMahaByYear(currY,globalRoot,globalDob); let currAntar=getAntarByYear(currY,globalDob,globalRoot); document.getElementById('summaryCards').innerHTML=`<div class="num-card"><div>MOOLANK</div><div class="num-value">${globalRoot}</div><div>${PLANET[globalRoot].sym} ${PLANET[globalRoot].name}</div></div><div class="num-card"><div>BHAGYANK</div><div class="num-value">${globalDestiny}</div><div>${PLANET[globalDestiny].sym} ${PLANET[globalDestiny].name}</div></div><div class="num-card"><div>MAHA ACTIVE</div><div class="num-value">${currMaha.num}</div><div>${currMaha.sym} ${currMaha.name}</div></div><div class="num-card"><div>ANTAR ACTIVE</div><div class="num-value">${currAntar.num}</div><div>${currAntar.sym} ${currAntar.name}</div></div>`; let freq=baseFrequency(globalDob,globalRoot,globalDestiny); let gridDiv=document.getElementById('vedicGridContainer'); gridDiv.innerHTML='<div class="vedic-grid" id="dynamicGrid"></div>'; let grid=document.getElementById('dynamicGrid'); VEDIC_LAYOUT.forEach(d=>{ let count=freq[d]||0; let cell=document.createElement('div'); cell.className='grid-cell'; cell.innerHTML=`<div style="font-size:1.5rem; font-weight:bold;">${d}</div><div style="font-size:0.7rem;">${count>0?'✦'.repeat(count):''}</div>`; grid.appendChild(cell); }); document.getElementById('breakdownInfo').innerHTML=`<h3 style="font-family:'Cormorant Garamond';">🕉 Birth Resonance</h3><p>Day ${globalDob.getDate()} | Month ${globalDob.getMonth()+1} | Year ${globalDob.getFullYear()}<br>Moolank ${globalRoot} | Bhagyank ${globalDestiny}</p><div class="formula-sm" style="margin-top:8px;">Vedic 3x3 frequency mapping</div>`; let mahaSeq=getMahadashaSeq(globalRoot,globalDob,100); let mbody=document.querySelector('#mahaTable tbody'); mbody.innerHTML=''; mahaSeq.forEach(m=>{ let tr=document.createElement('tr'); tr.innerHTML=`<td style="color:#e7bd72;">${m.index}</td><td><span class="planet-chip">${m.sym} ${m.name}</span></td><td>${m.num}</td><td>${m.start.toLocaleDateString()}</td><td>${m.end.toLocaleDateString()}</td><td>${m.dur}</td>`; mbody.appendChild(tr); }); let antarBody=document.querySelector('#antarTable tbody'); antarBody.innerHTML=''; for(let i=0;i<70;i++){ let y=globalDob.getFullYear()+i; let a=getAntarByYear(y,globalDob,globalRoot); let tr=document.createElement('tr'); tr.innerHTML=`<td>${y}</td><td><span class="planet-chip">${a.sym} ${a.name}</span></td><td>${a.num}</td><td>(${y%100}+${globalRoot}+${globalDob.getMonth()+1}+dow) → ${a.raw}</td>`; antarBody.appendChild(tr); } pratyAllEvents=getAllPratyantarList(globalDob,globalRoot,100); pratyOffset=0; renderPratyantar100(0); renderTwentyYearGrids(currY,globalDob,globalRoot,globalDestiny); renderSingleYearGrid(currY,globalDob,globalRoot,globalDestiny); }
 
-/* ── PRINT HANDLER ──
-   Uses beforeprint / afterprint events so the injected print-style tag
-   is fully removed after the dialog closes — prevents any dark-screen bleed
-   on repeat prints.
-*/
-const PRINT_CSS = `
-  @page { size: A4; margin: 12mm 10mm; }
-  * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
-  body { background: #0b0907 !important; background-image: none !important; color: #f5efe3 !important; }
-  .tab-content { display: block !important; animation: none !important; }
-  #tab-grid::before    { content: "── BIRTH GRID ──"; display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #c9973a; text-align: center; margin: 1.5rem 0 0.8rem; border-top: 1px solid rgba(201,151,58,0.4); padding-top: 1.2rem; }
-  #tab-maha::before    { content: "── MAHADASHA (100 Years) ──"; display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #c9973a; text-align: center; margin: 1.5rem 0 0.8rem; border-top: 1px solid rgba(201,151,58,0.4); padding-top: 1.2rem; }
-  #tab-antar::before   { content: "── ANTARDASHA BY YEAR ──"; display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #c9973a; text-align: center; margin: 1.5rem 0 0.8rem; border-top: 1px solid rgba(201,151,58,0.4); padding-top: 1.2rem; }
-  #tab-pratyantar100::before { content: "── PRATYANTAR EPICS ──"; display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #c9973a; text-align: center; margin: 1.5rem 0 0.8rem; border-top: 1px solid rgba(201,151,58,0.4); padding-top: 1.2rem; }
-  #tab-twentyYearGrid::before { content: "── 20-YEAR HORIZON ──"; display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #c9973a; text-align: center; margin: 1.5rem 0 0.8rem; border-top: 1px solid rgba(201,151,58,0.4); padding-top: 1.2rem; }
-  #tab-singleYearGrid::before { content: "── YEAR GRID (Tri-Dasha) ──"; display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: #c9973a; text-align: center; margin: 1.5rem 0 0.8rem; border-top: 1px solid rgba(201,151,58,0.4); padding-top: 1.2rem; }
-  .tab-nav, .grid-nav-modern, .btn-generate, .btn-print, .input-section { display: none !important; }
-  .dash-scroll { max-height: none !important; overflow: visible !important; }
-  .year-card, .num-card, tr { break-inside: avoid; }
-  .year-grids, #twentyYearGridsContainer, #singleYearGridContainer, #pratyantar100List { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)) !important; }
-  .vedic-grid { width: 220px !important; height: 220px !important; }
-`;
+function toMins(t){
+  const p = t.split(':').map(Number);
+  return p[0]*60 + p[1] + (p[2]||0)/60;
+}
 
-let printStyleTag = null;
-let savedPratyHTML = null;
-let savedPratyOffset = 0;
+function toHMS(m){
+  m = ((m % 1440) + 1440) % 1440;
+  const h = Math.floor(m/60), mm = Math.floor(m%60), ss = Math.round((m%1)*60);
+  const ap = h>=12?'PM':'AM', h12 = h%12||12;
+  return `${h12}:${String(mm).padStart(2,'0')}:${String(ss).padStart(2,'0')} ${ap}`;
+}
 
-function beforePrint() {
-  if (!globalDob) return;
+function toHM(m){
+  m = ((m % 1440) + 1440) % 1440;
+  const h = Math.floor(m/60), mm = Math.floor(m%60);
+  const ap = h>=12?'PM':'AM', h12 = h%12||12;
+  return `${h12}:${String(mm).padStart(2,'0')} ${ap}`;
+}
 
-  // Inject print styles
-  printStyleTag = document.createElement('style');
-  printStyleTag.id = 'dynamic-print-style';
-  printStyleTag.textContent = PRINT_CSS;
-  document.head.appendChild(printStyleTag);
+function fmtDur(mins){
+  const h = Math.floor(mins/60), m = Math.floor(mins%60), s = Math.round((mins%1)*60);
+  if(h>0) return `${h}h ${m}m ${s}s`;
+  return `${m}m ${s}s`;
+}
 
-  // Expand ALL pratyantar events
-  savedPratyOffset = pratyOffset;
-  const cont = document.getElementById('pratyantar100List');
-  savedPratyHTML = cont.innerHTML;
-  cont.innerHTML = '';
-  pratyAllEvents.forEach(e => {
-    const card = document.createElement('div');
-    card.className = 'year-card';
-    card.innerHTML = `<div class="year-header" style="padding:0.8rem;"><span class="year-num">🌸 ${e.pratyantarName} (${e.pratyantarNum})</span><span style="font-size:0.7rem;">${e.start.toLocaleDateString()} – ${e.end.toLocaleDateString()}</span></div><div style="padding:0.8rem;">Mahadasha: ${e.mahaName}(${e.mahaNum}) | Antar: ${e.antarName}(${e.antarNum})<div style="margin-top:6px; color:#ffbc6e;">✨ Pratyantardasha lord: ${e.pratyantarName} (${e.pratyantarNum})</div></div>`;
-    cont.appendChild(card);
+function getOrder(paksha, isNight, dow){
+  const map = ORDERS[paksha][isNight?'night':'day'];
+  for(const key of Object.keys(map)){
+    if(key.split(',').map(Number).includes(dow)) return map[key];
+  }
+  return Object.values(map)[0];
+}
+
+function buildSlots(order, periodStart, birdDur){
+  // Total ghatika units per bird = sum of all ACT_GHATIKAS = 1.5+1.25+2+0.75+0.5 = 6
+  const totalG = Object.values(ACT_GHATIKAS).reduce((a,b)=>a+b, 0); // = 6
+  return order.map((bird, i) => {
+    const start = periodStart + i * birdDur;
+    const end = start + birdDur;
+    const actOrder = ACT_START_BY_POS[i];
+    const ghats = [];
+    let aStart = start;
+    for(let j=0;j<5;j++){
+      const actName = actOrder[j];
+      // Duration = (ghatika_count / 6) * birdDur
+      const dur = (birdDur / totalG) * ACT_GHATIKAS[actName];
+      ghats.push({activity:actName, start:aStart, end:aStart+dur, dur});
+      aStart += dur;
+    }
+    return {bird, start, end, ghats, pos:i};
   });
 }
 
-function afterPrint() {
-  // Remove injected print styles completely
-  const tag = document.getElementById('dynamic-print-style');
-  if (tag) tag.parentNode.removeChild(tag);
-  printStyleTag = null;
-
-  // Restore paginated pratyantar view
-  const cont = document.getElementById('pratyantar100List');
-  if (savedPratyHTML !== null) {
-    cont.innerHTML = savedPratyHTML;
-    savedPratyHTML = null;
+function findCurrentSlot(slots, timeAdj){
+  for(let i=0;i<5;i++){
+    if(timeAdj >= slots[i].start && timeAdj < slots[i].end){
+      const g = slots[i].ghats.find(g => timeAdj >= g.start && timeAdj < g.end)
+             || slots[i].ghats[slots[i].ghats.length-1];
+      return {slotIdx:i, ghat:g};
+    }
   }
-  renderPratyantar100(savedPratyOffset);
-
-  // Force re-apply active tab visibility (belt-and-suspenders)
-  document.querySelectorAll('.tab-content').forEach(c => { c.style.display = ''; });
-  const activeTab = document.querySelector('.tab-btn.active');
-  if (activeTab) {
-    const id = 'tab-' + activeTab.dataset.tab;
-    document.getElementById(id).style.display = 'block';
-  }
+  return {slotIdx:4, ghat:slots[4].ghats[slots[4].ghats.length-1]};
 }
 
-window.addEventListener('beforeprint', beforePrint);
-window.addEventListener('afterprint', afterPrint);
+function computePeriod(timeMins, sunriseMins, sunsetMins, nextSunriseMins){
+  let nextSrAbs = nextSunriseMins;
+  if(nextSrAbs < sunsetMins) nextSrAbs += 1440;
 
-document.getElementById('printBtn').addEventListener('click', () => {
-  if (!globalDob) { alert('Please reveal your Dharma Chart first.'); return; }
-  window.print();
+  let isNight, periodStart, periodEnd, label;
+
+  if(timeMins >= sunriseMins && timeMins < sunsetMins){
+    isNight = false;
+    periodStart = sunriseMins;
+    periodEnd = sunsetMins;
+    label = 'Daytime (Dinamana)';
+  } else {
+    isNight = true;
+    periodStart = sunsetMins;
+    periodEnd = nextSrAbs;
+    label = 'Night (Ratrimana)';
+  }
+
+  return {isNight, periodStart, periodEnd, label, nextSrAbs};
+}
+
+function adjustTime(timeMins, isNight, sunsetMins){
+  if(!isNight) return timeMins;
+  if(timeMins < sunsetMins) return timeMins + 1440;
+  return timeMins;
+}
+
+// ═══════════════════════════════════════════
+// NATAL CALCULATION
+// ═══════════════════════════════════════════
+function calcNatal(){
+  const dobVal = document.getElementById('n-dob').value;
+  const tobVal = document.getElementById('n-tob').value;
+  const paksha = pak.n;
+  const srVal  = document.getElementById('n-sr').value;
+  const ssVal  = document.getElementById('n-ss').value;
+  const nsrVal = document.getElementById('n-nsr').value;
+  if(!dobVal||!tobVal||!srVal||!ssVal||!nsrVal){alert('Please fill all fields.');return;}
+
+  const dow = new Date(dobVal).getDay();
+  const birthMins = toMins(tobVal);
+  const srMins    = toMins(srVal);
+  const ssMins    = toMins(ssVal);
+  const nsrMins   = toMins(nsrVal);
+
+  const {isNight, periodStart, periodEnd, label} = computePeriod(birthMins, srMins, ssMins, nsrMins);
+  const birthAdj = adjustTime(birthMins, isNight, ssMins);
+
+  const totalDur  = periodEnd - periodStart;
+  const birdDur   = totalDur / 5;
+  const totalG    = Object.values(ACT_GHATIKAS).reduce((a,b)=>a+b,0); // 6
+  const ghatikaV  = birdDur / totalG;
+  const padaV     = ghatikaV / 4;
+
+  const order  = getOrder(paksha, isNight, dow);
+  const slots  = buildSlots(order, periodStart, birdDur);
+  const {slotIdx, ghat} = findCurrentSlot(slots, birthAdj);
+  const birdKey = order[slotIdx];
+  const bInfo   = BIRDS[birdKey];
+  const deadKey = DEAD[paksha][dow];
+  const isDead  = birdKey === deadKey;
+  const ai      = ACT_INFO[ghat.activity];
+
+  const el = document.getElementById('natal-result');
+  el.style.display = 'block';
+
+  const tiles = [
+    {l:'Day of Week',    v:DAY_NAMES[dow]},
+    {l:'Paksha',         v:paksha==='shukla'?'Shukla Paksha':'Krishna Paksha'},
+    {l:'Period',         v:label},
+    {l:'Total Duration', v:fmtDur(totalDur)},
+    {l:'Per Bird',       v:fmtDur(birdDur)},
+    {l:'One Ghatika',    v:fmtDur(ghatikaV)},
+    {l:'One Pada',       v:fmtDur(padaV)},
+    {l:'Dead Bird Today',v:BIRDS[deadKey].ico+' '+BIRDS[deadKey].name}
+  ];
+
+  let html = `<div class="tile-grid">${tiles.map((t,i)=>`<div class="tile" style="animation-delay:${.04*i}s"><div class="tile-lbl">${t.l}</div><div class="tile-val sm">${t.v}</div></div>`).join('')}</div>`;
+
+  html += `<div class="hero">
+    <div class="h-orb" style="background:${bInfo.col}18;border-color:${bInfo.col}55">${bInfo.ico}</div>
+    <div class="h-info">
+      <div class="h-lbl">Your Birth Bird</div>
+      <div class="h-name">${bInfo.name}</div>
+      <div class="h-skt">${bInfo.skt} · Strength Rank ${bInfo.strength} of 5 · Position ${slotIdx+1} in sequence</div>
+      <div class="h-tags">
+        <span class="htag ${ai.cls}">${ai.icon} ${ghat.activity} at birth</span>
+        <span class="htag t-neutral">${bInfo.planet} · ${bInfo.bodyPart}</span>
+        <span class="htag t-neutral">${bInfo.tattva}</span>
+        ${isDead?`<span class="htag t-dead">⚠ Mrita Pakshi (Dead Bird)</span>`:''}
+      </div>
+      ${isDead?`<div class="warn"><span class="warn-ico">⚠</span><span>${bInfo.name} is the Dead Bird (Mrita Pakshi) for ${paksha==='shukla'?'Shukla':'Krishna'} Paksha ${DAY_NAMES[dow]}. This weakens positive qualities and indicates challenges.</span></div>`:''}
+    </div>
+  </div>`;
+
+  html += `<div class="card">
+    <div class="slabel">Interpretation</div>
+    <div class="prow"><span class="p-lbl">Bird Strength</span><span class="p-val">${bInfo.name} — Rank ${bInfo.strength}/5 ${bInfo.strength===1?'(Most Powerful – Crow)':bInfo.strength===2?'(2nd – Vulture)':bInfo.strength===3?'(3rd – Hen)':bInfo.strength===4?'(4th – Owl)':'(Weakest – Peacock)'}</span></div>
+    <div class="prow"><span class="p-lbl">Activity at Birth</span><span class="p-val"><span class="htag ${ai.cls}">${ai.icon} ${ghat.activity}</span></span></div>
+    <div class="prow"><span class="p-lbl">Natal Meaning</span><span class="p-val">${ai.natMeaning}</span></div>
+    <div class="prow"><span class="p-lbl">Specific to ${bInfo.name}</span><span class="p-val">${getBirdStateMeaning(birdKey, ghat.activity)}</span></div>
+    <div class="prow"><span class="p-lbl">Activity Color</span><span class="p-val">${ai.colorName}</span></div>
+    <div class="prow"><span class="p-lbl">Planet</span><span class="p-val">${bInfo.planet}</span></div>
+    <div class="prow"><span class="p-lbl">Body Part</span><span class="p-val">${bInfo.bodyPart}</span></div>
+    <div class="prow"><span class="p-lbl">Element</span><span class="p-val">${bInfo.tattva}</span></div>
+    <div class="prow"><span class="p-lbl">Deity</span><span class="p-val">${bInfo.deity}</span></div>
+    <div class="prow"><span class="p-lbl">Nakshatra Group</span><span class="p-val">${bInfo.nakshatras.join(', ')}</span></div>
+  </div>`;
+
+  html += `<div class="card"><div class="slabel">Five Bird Rulership Timeline — ${isNight?'Night':'Day'}</div>`;
+  for(let i=0;i<5;i++){
+    const s = slots[i], b = BIRDS[s.bird], isBirth = i===slotIdx;
+    const pct = isBirth ? Math.min(98, Math.max(3, (birthAdj-s.start)/birdDur*100)) : 100;
+    const curG = isBirth ? ghat : null;
+    html += `<div class="tl-row${isBirth?' birth':''}">
+      <div class="tl-num">${i+1}</div>
+      <div class="tl-ico">${b.ico}</div>
+      <div class="tl-name"><div class="tl-bname">${b.name}</div><div class="tl-bskt">${b.skt}</div></div>
+      <div class="tl-time">${toHM(s.start)} → ${toHM(s.end)}</div>
+      <div class="tl-bar">
+        <div class="tl-fill" style="width:${isBirth?pct:100}%;background:${b.col};opacity:${isBirth?1:.3}"></div>
+        ${isBirth?`<div class="tl-marker" style="left:${pct}%"></div>`:''}
+      </div>
+      <div class="tl-right">
+        ${isBirth?`<span class="tl-birth-tag">✦ YOUR BIRD</span>`:''}
+        ${curG?`<span class="tl-state ${ACT_INFO[curG.activity].cls}">${curG.activity}</span>`:''}
+        <span class="tl-dur">${fmtDur(birdDur)}</span>
+      </div>
+    </div>`;
+  }
+  html += `</div>`;
+
+  html += `<div class="card">
+    <div class="slabel">Birth Bird Activity Phases — ${bInfo.ico} ${bInfo.name}</div>
+    <div style="font-size:13px;color:var(--text2);margin-bottom:12px">Position ${slotIdx+1} → first activity: <strong style="color:var(--text)">${ACT_START_BY_POS[slotIdx][0]}</strong> · Rules ${toHM(slots[slotIdx].start)} → ${toHM(slots[slotIdx].end)}</div>`;
+  const maxDur = Math.max(...slots[slotIdx].ghats.map(g=>g.dur));
+  for(const g of slots[slotIdx].ghats){
+    const isCur = g.activity === ghat.activity;
+    const pct = (g.dur/maxDur*100).toFixed(1);
+    const ai2 = ACT_INFO[g.activity];
+    html += `<div class="gh-row${isCur?' cur':''}">
+      <div class="gh-act ${ai2.cls}">${ai2.icon} ${g.activity}</div>
+      <div class="gh-time">${toHMS(g.start)} → ${toHMS(g.end)}</div>
+      <div class="gh-bar"><div class="gh-fill" style="width:${pct}%;background:${bInfo.col};opacity:${isCur?1:.35}"></div></div>
+      <div class="gh-dur">${fmtDur(g.dur)}</div>
+      ${isCur?`<div class="gh-cur-tag">← birth</div>`:''}
+    </div>`;
+  }
+  html += `</div>`;
+
+  html += `<div class="card"><div class="slabel">Five Activity States</div><div class="mg">`;
+  for(const [act, info] of Object.entries(ACT_INFO)){
+    const isCur = act === ghat.activity;
+    html += `<div class="mc${isCur?' hl':''}"><div class="mc-ico">${info.icon}</div><div class="mc-nm ${info.cls}">${act}</div><div class="mc-ds">${info.natMeaning}</div></div>`;
+  }
+  html += `</div></div>`;
+
+  el.innerHTML = html;
+  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}), 80);
+}
+
+function getBirdStateMeaning(birdKey, activity){
+  const meanings = {
+    vulture:{Eating:'Good Fortune',Walking:'Fulfilment of Wishes & Desires',Ruling:'Gets Wealth & Resources',Sleeping:'Loss',Dying:'Fear'},
+    owl:    {Eating:'Success in all Undertakings',Walking:'Company of Kinsmen',Ruling:'Gets Kingdom',Sleeping:'Miseries',Dying:'Fear'},
+    crow:   {Eating:'Gains',Walking:'Happiness',Ruling:'Gain of Land',Sleeping:'Miseries',Dying:'Fear'},
+    hen:    {Eating:'Gain of Kingdom',Walking:'Gains',Ruling:'Enjoyment',Sleeping:'Loss of Progeny & Friends',Dying:'Miseries'},
+    peacock:{Eating:'Gains',Walking:'Success in Undertakings',Ruling:'Good Fortune',Sleeping:'Death',Dying:'Death'}
+  };
+  return meanings[birdKey]?.[activity] || '—';
+}
+
+// ═══════════════════════════════════════════
+// PRASNA CALCULATION
+// ═══════════════════════════════════════════
+const PRASNA_RESULTS = {
+  general:{
+    Eating:'Interest in gain but less result. Disease stays long. Losses in travel.',
+    Walking:'Great Gains, Destruction of Diseases, Wins in Wars, Travels.',
+    Ruling:'Gets Kingdom, Loss of Miseries, Wins in Wars. Full accomplishment.',
+    Sleeping:'No Gains. Increase of Diseases. No Return of Traveler.',
+    Dying:'Losses, Calamities. Loss of All Undertakings. Death in Fights.'
+  },
+  travel:{
+    vulture:'At Same Place. The person is stationary.',
+    owl:'Will Come Shortly. Return is imminent.',
+    crow:'Sleeping. The person may be resting.',
+    hen:'Travelling / Walking. The person is on the move.',
+    peacock:'Thinking. Undecided, may change direction.'
+  },
+  disease:{
+    vulture:'Healthy & Happy. Recovery is good.',
+    owl:'Discharged, Coming home. Recovery soon.',
+    crow:'Diseased. Illness persists.',
+    hen:'Change Hospital or seek other treatment.',
+    peacock:'Extremely serious. Dire prognosis.'
+  },
+  war:{
+    Eating:'Wins. Victory assured.',
+    Walking:'Losses. Retreat or delay.',
+    Ruling:'Wins. Most powerful — certain victory.',
+    Sleeping:'Loss of Kingdom. Do not fight.',
+    Dying:'Great Loss. Never fight when bird is dying.'
+  },
+  theft:{
+    vulture:'Object kept at home nearby. East or South-East direction. ~10 hands distance.',
+    owl:'In muddy lands or near water. East direction. ~1.5 km away.',
+    crow:'Hidden under grass/spades. West or North-West direction. ~3 km away.',
+    hen:'Kept inside ashes. North direction. ~6 km away.',
+    peacock:'Shifted to another city/country. Middle direction. ~12 km away.'
+  },
+  food:{
+    Eating:'Salt, Vegetables & Grains. Salty food.',
+    Walking:'Dry Grains, Tasteless, Stale, Fruits, Water with Sweets.',
+    Ruling:'Clarified Butter, Pulses, Milk Products, Sweets, Curd.',
+    Sleeping:'Heavy Grains, Low quality food causing indigestion.',
+    Dying:'Food one is not interested in eating. Bitter and Spicy.'
+  }
+};
+
+function calcPrasna(){
+  const dateVal = document.getElementById('p-date').value;
+  const timeVal = document.getElementById('p-time').value;
+  const paksha  = pak.p;
+  const srVal   = document.getElementById('p-sr').value;
+  const ssVal   = document.getElementById('p-ss').value;
+  const nsrVal  = document.getElementById('p-nsr').value;
+  const qType   = document.getElementById('p-query').value;
+  if(!dateVal||!timeVal||!srVal||!ssVal||!nsrVal){alert('Please fill all fields.');return;}
+
+  const dow     = new Date(dateVal).getDay();
+  const qMins   = toMins(timeVal);
+  const srMins  = toMins(srVal);
+  const ssMins  = toMins(ssVal);
+  const nsrMins = toMins(nsrVal);
+
+  const {isNight, periodStart, periodEnd, label} = computePeriod(qMins, srMins, ssMins, nsrMins);
+  const qAdj    = adjustTime(qMins, isNight, ssMins);
+  const totalDur = periodEnd - periodStart;
+  const birdDur  = totalDur / 5;
+  const order    = getOrder(paksha, isNight, dow);
+  const slots    = buildSlots(order, periodStart, birdDur);
+  const {slotIdx, ghat} = findCurrentSlot(slots, qAdj);
+  const birdKey  = order[slotIdx];
+  const bInfo    = BIRDS[birdKey];
+  const deadKey  = DEAD[paksha][dow];
+  const isDead   = birdKey === deadKey;
+  const ai       = ACT_INFO[ghat.activity];
+
+  let queryAnswer = (qType==='travel'||qType==='disease'||qType==='theft')
+    ? PRASNA_RESULTS[qType][birdKey]
+    : PRASNA_RESULTS[qType][ghat.activity];
+
+  const chestagain = {Eating:'Complete Gain in 5 Days',Walking:'½ Gain in 4 Days',Ruling:'⅓ Gain in 3 Days',Sleeping:'¼ Gain in 2 Days',Dying:'Losses · 1 Day'};
+
+  const el = document.getElementById('prasna-result');
+  el.style.display = 'block';
+  el.innerHTML = `
+    <div class="hero">
+      <div class="h-orb" style="background:${bInfo.col}18;border-color:${bInfo.col}55">${bInfo.ico}</div>
+      <div class="h-info">
+        <div class="h-lbl">Ruling Bird at Query Time</div>
+        <div class="h-name">${bInfo.name}</div>
+        <div class="h-skt">${bInfo.skt} · Position ${slotIdx+1} · ${DAY_NAMES[dow]}, ${paksha==='shukla'?'Shukla':'Krishna'} Paksha</div>
+        <div class="h-tags">
+          <span class="htag ${ai.cls}">${ai.icon} ${ghat.activity}</span>
+          <span class="htag t-neutral">${label}</span>
+          ${isDead?`<span class="htag t-dead">⚠ Mrita Pakshi</span>`:''}
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="slabel">Prasna Reading</div>
+      <div class="prow"><span class="p-lbl">Ruling Bird</span><span class="p-val">${bInfo.ico} ${bInfo.name} (${bInfo.skt})</span></div>
+      <div class="prow"><span class="p-lbl">Activity State</span><span class="p-val"><span class="htag ${ai.cls}">${ai.icon} ${ghat.activity}</span></span></div>
+      <div class="prow"><span class="p-lbl">Bird Query Signif.</span><span class="p-val">${bInfo.prasnaQ}</span></div>
+      <div class="prow"><span class="p-lbl">Answer to Query</span><span class="p-val" style="color:var(--gold2)">${queryAnswer}</span></div>
+      <div class="prow"><span class="p-lbl">Chesta &amp; Gain</span><span class="p-val">${chestagain[ghat.activity]}</span></div>
+      <div class="prow"><span class="p-lbl">State Results</span><span class="p-val">${ai.result}</span></div>
+      <div class="prow"><span class="p-lbl">Activity Color</span><span class="p-val">${ai.colorName}</span></div>
+      ${isDead?`<div class="prow"><span class="p-lbl" style="color:#e74c3c">⚠ Dead Bird</span><span class="p-val" style="color:#e74c3c">${bInfo.name} is dead today. Query results weakened.</span></div>`:''}
+    </div>
+    <div class="card">
+      <div class="slabel">Full Timeline — ${DAY_NAMES[dow]} ${paksha==='shukla'?'Shukla':'Krishna'} ${isNight?'Night':'Day'}</div>
+      ${slots.map((s,i)=>{
+        const b=BIRDS[s.bird], isCur=i===slotIdx;
+        return `<div class="tl-row${isCur?' birth':''}">
+          <div class="tl-num">${i+1}</div>
+          <div class="tl-ico">${b.ico}</div>
+          <div class="tl-name"><div class="tl-bname">${b.name}</div><div class="tl-bskt">${b.skt}</div></div>
+          <div class="tl-time">${toHM(s.start)} → ${toHM(s.end)}</div>
+          <div class="tl-bar"><div class="tl-fill" style="width:100%;background:${b.col};opacity:${isCur?1:.3}"></div></div>
+          ${isCur?`<div class="tl-right"><span class="tl-birth-tag">✦ NOW</span></div>`:''}
+        </div>`;
+      }).join('')}
+    </div>`;
+  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}), 80);
+}
+
+// ═══════════════════════════════════════════
+// TODAY'S BIRDS
+// ═══════════════════════════════════════════
+function calcToday(){
+  const srVal  = document.getElementById('t-sr').value;
+  const ssVal  = document.getElementById('t-ss').value;
+  const nsrVal = document.getElementById('t-nsr').value;
+  const paksha = pak.t;
+  if(!srVal||!ssVal||!nsrVal){alert('Please enter sunrise, sunset, and tomorrow\'s sunrise.');return;}
+
+  const now    = new Date();
+  const dow    = now.getDay();
+  const nowM   = now.getHours()*60 + now.getMinutes() + now.getSeconds()/60;
+  const srMins  = toMins(srVal);
+  const ssMins  = toMins(ssVal);
+  const nsrMins = toMins(nsrVal);
+
+  let nsrAbs = nsrMins;
+  if(nsrAbs < ssMins) nsrAbs += 1440;
+
+  const dayDur   = ssMins - srMins;
+  const dayBird  = dayDur / 5;
+  const dayOrder = getOrder(paksha, false, dow);
+  const daySlots = buildSlots(dayOrder, srMins, dayBird);
+
+  const nightDur   = nsrAbs - ssMins;
+  const nightBird  = nightDur / 5;
+  const nightOrder = getOrder(paksha, true, dow);
+  const nightSlots = buildSlots(nightOrder, ssMins, nightBird);
+
+  const deadKey = DEAD[paksha][dow];
+
+  const el = document.getElementById('today-result');
+  el.style.display = 'block';
+
+  let html = `<div class="tile-grid">
+    <div class="tile"><div class="tile-lbl">Today</div><div class="tile-val">${DAY_NAMES[dow]}</div></div>
+    <div class="tile"><div class="tile-lbl">Paksha</div><div class="tile-val sm">${paksha==='shukla'?'Shukla':'Krishna'}</div></div>
+    <div class="tile"><div class="tile-lbl">Dead Bird Today</div><div class="tile-val sm">${BIRDS[deadKey].ico} ${BIRDS[deadKey].name}</div></div>
+    <div class="tile"><div class="tile-lbl">Current Time</div><div class="tile-val sm">${now.toLocaleTimeString()}</div></div>
+  </div>`;
+
+  const renderSchedule = (slots, isNight, lbl, birdDur) => {
+    let out = `<div class="card"><div class="slabel">${lbl} · Per Bird: ${fmtDur(birdDur)}</div>`;
+    for(let i=0;i<5;i++){
+      const s = slots[i], b = BIRDS[s.bird];
+      let nowAdj = nowM;
+      if(isNight && nowM < ssMins) nowAdj = nowM + 1440;
+      const isCurrentPeriod = isNight
+        ? (nowM >= ssMins || nowM < srMins)
+        : (nowM >= srMins && nowM < ssMins);
+      const isCurBird = isCurrentPeriod && nowAdj >= s.start && nowAdj < s.end;
+      const curGhat   = isCurBird ? (s.ghats.find(g=>nowAdj>=g.start&&nowAdj<g.end)||s.ghats[4]) : null;
+
+      out += `<div class="tl-row${isCurBird?' birth':''}">
+        <div class="tl-num">${i+1}</div>
+        <div class="tl-ico">${b.ico}</div>
+        <div class="tl-name"><div class="tl-bname">${b.name}</div><div class="tl-bskt">${b.skt}</div></div>
+        <div class="tl-time">${toHM(s.start)} → ${toHM(s.end)}</div>
+        <div class="tl-bar"><div class="tl-fill" style="width:100%;background:${b.col};opacity:${isCurBird?1:.3}"></div></div>
+        <div class="tl-right">
+          ${isCurBird?`<span class="tl-birth-tag">✦ NOW</span>`:''}
+          ${curGhat?`<span class="tl-state ${ACT_INFO[curGhat.activity].cls}">${curGhat.activity}</span>`:''}
+        </div>
+      </div>`;
+      if(isCurBird && curGhat){
+        const nextAct = s.ghats[s.ghats.indexOf(curGhat)+1];
+        out += `<div style="margin:-4px 0 8px;background:var(--gold-dim);border-radius:0 0 var(--rs) var(--rs);padding:8px 16px 8px 60px;font-size:13px;color:var(--gold2)">Current: <strong>${curGhat.activity}</strong> until ${toHMS(curGhat.end)} · Next: ${nextAct?nextAct.activity:'Period ends'}</div>`;
+      }
+    }
+    out += `</div>`;
+    return out;
+  };
+
+  html += renderSchedule(daySlots,   false, `Daytime Schedule (${toHM(srMins)} → ${toHM(ssMins)})`, dayBird);
+  html += renderSchedule(nightSlots, true,  `Night Schedule (${toHM(ssMins)} → ${toHM(nsrMins)} next day)`, nightBird);
+
+  el.innerHTML = html;
+  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}), 80);
+}
+
+// ═══════════════════════════════════════════
+// DASHA CALCULATION
+// ═══════════════════════════════════════════
+function calcDasha(){
+  const dobVal = document.getElementById('d-dob').value;
+  const tobVal = document.getElementById('d-tob').value;
+  const paksha = pak.d;
+  const srVal  = document.getElementById('d-sr').value;
+  const ssVal  = document.getElementById('d-ss').value;
+  const nsrVal = document.getElementById('d-nsr').value;
+  if(!dobVal||!tobVal||!srVal||!ssVal||!nsrVal){alert('Please fill all fields.');return;}
+
+  const dow       = new Date(dobVal).getDay();
+  const birthMins = toMins(tobVal);
+  const srMins    = toMins(srVal);
+  const ssMins    = toMins(ssVal);
+  const nsrMins   = toMins(nsrVal);
+
+  const {isNight, periodStart, periodEnd} = computePeriod(birthMins, srMins, ssMins, nsrMins);
+  const birthAdj = adjustTime(birthMins, isNight, ssMins);
+  const birdDur  = (periodEnd - periodStart) / 5;
+  const order    = getOrder(paksha, isNight, dow);
+  const slots    = buildSlots(order, periodStart, birdDur);
+  const {slotIdx} = findCurrentSlot(slots, birthAdj);
+
+  const birdKey  = order[slotIdx];
+  const bInfo    = BIRDS[birdKey];
+
+  const birdSeq = [];
+  for(let i=slotIdx; i<5; i++) birdSeq.push(order[i]);
+  for(let i=0; i<slotIdx; i++) birdSeq.push(order[i]);
+
+  const dob     = new Date(dobVal);
+  const today   = new Date();
+  const YEAR_MS = 365.25 * 24 * 3600 * 1000;
+  let cursor    = new Date(dob);
+
+  // Antardasha proportions based on ghatika durations (total=6G)
+  const totalG = Object.values(ACT_GHATIKAS).reduce((a,b)=>a+b,0);
+
+  let html = `<div class="card">
+    <div class="slabel">Birth Bird: ${bInfo.ico} ${bInfo.name} (Rank ${bInfo.strength}) · Dasha from Birth</div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:16px">Each bird rules 6 years. 5-bird × 5 cycles = 150 years total.<br>Antardasha durations: Ruling=2yr, Eating=1.5yr, Walking=1.25yr, Sleeping=0.75yr, Dying=0.5yr (proportional to ghatika sizes).</p>`;
+
+  for(let rep=0; rep<5; rep++){
+    for(let bi=0; bi<5; bi++){
+      const bk   = birdSeq[bi];
+      const b    = BIRDS[bk];
+      const mStart = new Date(cursor);
+      const mEnd   = new Date(cursor.getTime() + 6*YEAR_MS);
+      const isCurrent = today >= mStart && today < mEnd;
+      const pct  = isCurrent ? Math.min(100,(today-mStart)/(mEnd-mStart)*100) : (today>mEnd?100:0);
+
+      html += `<div class="dasha-row${isCurrent?' current-dasha':''}">
+        <div class="dasha-bird"><div class="dasha-ico">${b.ico}</div><div><div class="dasha-name">${b.name}</div><div style="font-size:10px;color:var(--text3)">${b.skt}</div></div></div>
+        <div class="dasha-dates">${mStart.getFullYear()}–${mEnd.getFullYear()}</div>
+        <div class="dasha-bar"><div class="dasha-fill" style="width:${pct}%;background:${b.col}"></div></div>
+        ${isCurrent?`<span class="dasha-status t-gold">Current</span>`:`<span class="dasha-status t-neutral">${today<mStart?'Upcoming':'Past'}</span>`}
+      </div>`;
+
+      if(isCurrent){
+        // Antardasha: activities in order per position in cycle
+        html += `<div style="background:var(--bg4);border-radius:var(--rs);padding:12px 16px;margin:4px 0 4px 130px">
+          <div style="font-size:11px;color:var(--gold);font-family:'Cinzel',serif;letter-spacing:.1em;margin-bottom:8px">ANTARDASHA (proportional to ghatika sizes — Ruling=2yr, Eating=1.5yr, Walking=1.25yr, Sleeping=0.75yr, Dying=0.5yr)</div>`;
+        let aCursor = new Date(mStart);
+        const actOrder = ACT_START_BY_POS[bi]; // position in current cycle
+        for(const act of actOrder){
+          const totalYears = 6 * ACT_GHATIKAS[act] / totalG;
+          const aEnd = new Date(aCursor.getTime() + totalYears*YEAR_MS);
+          const isCA = today >= aCursor && today < aEnd;
+          const ai2  = ACT_INFO[act];
+          html += `<div style="display:flex;align-items:center;gap:10px;padding:5px 0;border-bottom:1px solid var(--border);font-size:12px">
+            <span class="htag ${ai2.cls}" style="font-size:10px;flex-shrink:0">${ai2.icon} ${act}</span>
+            <span style="font-family:'JetBrains Mono',monospace;color:var(--text2)">${aCursor.getFullYear()}–${aEnd.getFullYear()}</span>
+            <span style="color:var(--text3);flex:1">${totalYears.toFixed(2)} yrs</span>
+            ${isCA?`<span style="color:var(--gold);font-family:'Cinzel',serif;font-size:10px">← current</span>`:''}
+          </div>`;
+          aCursor = aEnd;
+        }
+        html += `</div>`;
+      }
+      cursor = mEnd;
+    }
+    if(rep < 4) html += `<div class="divider">— Cycle ${rep+2} of 5 —</div>`;
+  }
+  html += `</div>`;
+
+  const el = document.getElementById('dasha-result');
+  el.style.display = 'block';
+  el.innerHTML = html;
+  setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}), 80);
+}
+
+// ═══════════════════════════════════════════
+// SIGNIFICATIONS TAB
+// ═══════════════════════════════════════════
+function buildSignif(){
+  const bkeys = ['crow','vulture','hen','owl','peacock'];
+  const rows = [
+    {l:'Sanskrit Name',  f:b=>BIRDS[b].skt},
+    {l:'Strength Rank',  f:b=>`#${BIRDS[b].strength}`},
+    {l:'Planet',         f:b=>BIRDS[b].planet},
+    {l:'Body Part',      f:b=>BIRDS[b].bodyPart},
+    {l:'Element (Tattva)',f:b=>BIRDS[b].tattva},
+    {l:'Deity',          f:b=>BIRDS[b].deity},
+    {l:'Direction (Shukla)',f:b=>BIRDS[b].dir},
+    {l:'Direction (Krishna)',f:b=>BIRDS[b].dirK},
+    {l:'Taste',          f:b=>BIRDS[b].taste},
+    {l:'Gender',         f:b=>BIRDS[b].gender},
+    {l:'Time of Day',    f:b=>BIRDS[b].timeOfDay},
+    {l:'Tithi',          f:b=>BIRDS[b].tithi},
+    {l:'Nakshatra (General)',f:b=>BIRDS[b].nakshatras.join('<br>')},
+    {l:'Caste',          f:b=>BIRDS[b].caste},
+    {l:'Weapon',         f:b=>BIRDS[b].weapon},
+    {l:'Tense',          f:b=>BIRDS[b].tense},
+    {l:'Friend',         f:b=>BIRDS[b].friend},
+    {l:'Enemy',          f:b=>BIRDS[b].enemy},
+    {l:'Rashi (Shukla)', f:b=>BIRDS[b].rashaS},
+    {l:'Rashi (Krishna)',f:b=>BIRDS[b].rashaK},
+    {l:'No Travel Day',  f:b=>BIRDS[b].noTravel},
+    {l:'Months',         f:b=>BIRDS[b].months},
+    {l:'Prasna Query',   f:b=>BIRDS[b].prasnaQ},
+    {l:'Travel Prasna',  f:b=>BIRDS[b].prasnaTravel},
+    {l:'Disease Prasna', f:b=>BIRDS[b].prasnaDis},
+  ];
+  document.getElementById('sig-tbody').innerHTML =
+    rows.map(r=>`<tr><td class="row-lbl">${r.l}</td>${bkeys.map(b=>`<td>${r.f(b)}</td>`).join('')}</tr>`).join('');
+
+  const tTbl = document.getElementById('tips-table');
+  tTbl.innerHTML = `<thead><tr><th>Name Letter</th><th>Shukla Day</th><th>Shukla Night</th><th>Krishna Day</th><th>Krishna Night</th></tr></thead>
+  <tbody>${TIPS_WINNING.map(t=>`<tr><td style="font-weight:500">${t.letter}</td><td>${t.sd}</td><td>${t.sn}</td><td>${t.kd}</td><td>${t.kn}</td></tr>`).join('')}</tbody>`;
+
+  document.getElementById('victorious-grid').innerHTML =
+    Object.entries(BIRDS).map(([k,b])=>`
+      <div style="display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)">
+        <div style="font-size:24px;flex-shrink:0">${b.ico}</div>
+        <div><div style="font-size:14px;font-weight:500;margin-bottom:3px">${b.name} wins in:</div>
+        <div style="font-size:13px;color:var(--text2)">${b.wins}</div></div>
+      </div>`).join('');
+
+  document.getElementById('dead-table').innerHTML =
+    `<thead><tr><th>Day</th><th>Shukla Dead Bird</th><th>Krishna Dead Bird</th></tr></thead>
+    <tbody>${DAY_NAMES.map((d,i)=>`<tr><td style="font-weight:500">${d}</td><td>${BIRDS[DEAD.shukla[i]].ico} ${BIRDS[DEAD.shukla[i]].name}</td><td>${BIRDS[DEAD.krishna[i]].ico} ${BIRDS[DEAD.krishna[i]].name}</td></tr>`).join('')}</tbody>`;
+}
+
+// ═══════════════════════════════════════════
+// MATCHMAKING
+// ═══════════════════════════════════════════
+function buildMatchmaking(){
+  const sel1 = document.getElementById('m-nk1');
+  const sel2 = document.getElementById('m-nk2');
+  MATCH_NAKSHATRAS.forEach(n=>{
+    const bird = NK_BIRDS_MATCH[n];
+    const bName = bird ? BIRDS[bird].name : '?';
+    [sel1,sel2].forEach(s=>{
+      const o = document.createElement('option');
+      o.value = n;
+      o.textContent = `${n} (${bName})`;
+      s.appendChild(o);
+    });
+  });
+  sel2.value = MATCH_NAKSHATRAS[1];
+
+  const bkeys = ['vulture','owl','crow','hen','peacock'];
+  const nkByBird = {};
+  bkeys.forEach(b=>{nkByBird[b]=[];});
+  MATCH_NAKSHATRAS.forEach(n=>{
+    const b = NK_BIRDS_MATCH[n];
+    if(b && nkByBird[b]) nkByBird[b].push(n);
+  });
+
+  document.getElementById('nk-full-table').innerHTML =
+    `<thead><tr><th>Bird (Strength)</th><th>Nakshatras (Pakshi Kuta / Sages' System)</th></tr></thead>
+    <tbody>${bkeys.map(b=>`<tr><td><div class="bname-cell">${BIRDS[b].ico} ${BIRDS[b].name} <span style="font-size:10px;color:var(--text3)">#${BIRDS[b].strength}</span></div></td><td>${nkByBird[b].join(' · ')}</td></tr>`).join('')}</tbody>`;
+
+  checkMatch();
+}
+
+function checkMatch(){
+  const nk1 = document.getElementById('m-nk1').value;
+  const nk2 = document.getElementById('m-nk2').value;
+  if(!nk1||!nk2) return;
+  const b1 = NK_BIRDS_MATCH[nk1], b2 = NK_BIRDS_MATCH[nk2];
+  if(!b1||!b2) return;
+  const bird1 = BIRDS[b1], bird2 = BIRDS[b2];
+  const same = b1===b2;
+  const friendly = bird1.friend.includes(bird2.name) || bird2.friend.includes(bird1.name);
+  const enemy    = bird1.enemy.includes(bird2.name) || bird2.enemy.includes(bird1.name);
+
+  let status, statusCls, desc;
+  if(same){
+    status='Excellent — Same Bird'; statusCls='t-ruling';
+    desc='Couple born under same bird nakshatra is considered most auspicious and compatible according to the Sages.';
+  } else if(friendly && !enemy){
+    status='Good — Friendly Birds'; statusCls='t-eating';
+    desc='Birds are friends. Generally positive compatibility.';
+  } else if(enemy){
+    status='Challenging — Enemy Birds'; statusCls='t-dying';
+    desc='Birds are enemies. Significant challenges in the relationship.';
+  } else {
+    status='Neutral — No Special Bond'; statusCls='t-walking';
+    desc='Birds have no particular friendship or enmity. Neutral compatibility.';
+  }
+
+  document.getElementById('match-result').innerHTML = `
+    <div style="background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);padding:18px 22px">
+      <div style="display:flex;align-items:center;justify-content:center;gap:20px;margin-bottom:14px">
+        <div style="text-align:center"><div style="font-size:32px">${bird1.ico}</div><div style="font-size:13px;font-weight:500">${bird1.name} #${bird1.strength}</div><div style="font-size:11px;color:var(--text3)">${nk1}</div></div>
+        <div style="font-size:22px;color:var(--gold)">↔</div>
+        <div style="text-align:center"><div style="font-size:32px">${bird2.ico}</div><div style="font-size:13px;font-weight:500">${bird2.name} #${bird2.strength}</div><div style="font-size:11px;color:var(--text3)">${nk2}</div></div>
+      </div>
+      <div style="text-align:center"><span class="htag ${statusCls}" style="font-size:13px">${status}</span></div>
+      <div style="font-size:13px;color:var(--text2);text-align:center;margin-top:10px">${desc}</div>
+    </div>`;
+}
+
+// ═══════════════════════════════════════════
+// INIT
+// ═══════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', ()=>{
+  const today = new Date().toISOString().split('T')[0];
+  const pDate = document.getElementById('p-date');
+  if(pDate) pDate.value = today;
+  buildSignif();
+  buildMatchmaking();
 });
-
-document.getElementById('calcBtn').addEventListener('click',()=>{ let v=document.getElementById('dobInput').value; if(v) computeAll(v); }); document.getElementById('dobInput').addEventListener('change',e=>computeAll(e.target.value)); document.querySelectorAll('.tab-btn').forEach(btn=>{ btn.addEventListener('click',()=>{ document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active')); document.querySelectorAll('.tab-content').forEach(c=>c.classList.remove('active')); btn.classList.add('active'); document.getElementById('tab-'+btn.dataset.tab).classList.add('active'); }); }); document.getElementById('pratyPrev100').addEventListener('click',()=>{ if(pratyOffset>0){ pratyOffset--; renderPratyantar100(pratyOffset); } }); document.getElementById('pratyNext100').addEventListener('click',()=>{ if((pratyOffset+1)*20 < pratyAllEvents.length){ pratyOffset++; renderPratyantar100(pratyOffset); } }); document.getElementById('twentyPrev').addEventListener('click',()=>{ if(twentyStartYear) renderTwentyYearGrids(twentyStartYear-20, globalDob, globalRoot, globalDestiny); }); document.getElementById('twentyNext').addEventListener('click',()=>{ if(twentyStartYear) renderTwentyYearGrids(twentyStartYear+20, globalDob, globalRoot, globalDestiny); }); document.getElementById('twentyJumpNow').addEventListener('click',()=>{ renderTwentyYearGrids(new Date().getFullYear(), globalDob, globalRoot, globalDestiny); }); document.getElementById('singleYearPrev').addEventListener('click',()=>{ if(currentSingleYear) renderSingleYearGrid(currentSingleYear-1, globalDob, globalRoot, globalDestiny); }); document.getElementById('singleYearNext').addEventListener('click',()=>{ if(currentSingleYear) renderSingleYearGrid(currentSingleYear+1, globalDob, globalRoot, globalDestiny); }); document.getElementById('singleYearJumpNow').addEventListener('click',()=>{ renderSingleYearGrid(new Date().getFullYear(), globalDob, globalRoot, globalDestiny); }); window.addEventListener('DOMContentLoaded',()=>{ let def=document.getElementById('dobInput').value; if(def) computeAll(def); });
 </script>
 </body>
 </html>
