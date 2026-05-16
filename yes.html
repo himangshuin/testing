@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yes or No Tarot | Astro Himu – Free Quick Reading</title>
+  <meta name="description" content="Get a quick Yes or No answer through Tarot cards by Himu, the best tarot reader in Guwahati. Free one-card tarot reading online. For deeper guidance, book a personal session." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://astrohimu.com/yes.html" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<a href="https://wa.me/916901529861?text=Hello%20Himu,%20I%20would%20like%20to%20book%20a%20session"
+   class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+</a>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-brand">✦ Astro Himu</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#contact" class="nav-cta">Book Session</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<main style="
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:8rem 2rem 4rem;
+  text-align:center;
+">
+
+  <div style="max-width:600px; width:100%;">
+    <div class="section-label" style="justify-content:center; margin-bottom:1.5rem;">Free Quick Reading</div>
+    <h1 class="section-title" style="font-size:clamp(1.8rem, 4vw, 3rem); margin-bottom:1rem;">
+      Yes or No Tarot
+    </h1>
+    <p style="font-size:1rem; color:var(--text-muted); margin-bottom:3rem; line-height:1.8;">
+      Hold your question clearly in your mind. Take a breath. 
+      Click the card when you feel ready.
+    </p>
+
+    <!-- Card Area -->
+    <div id="cardContainer" style="
+      perspective: 1000px;
+      margin-bottom:2.5rem;
+    ">
+      <div id="tarotCard" style="
+        width:200px;
+        height:320px;
+        margin:0 auto;
+        position:relative;
+        transform-style:preserve-3d;
+        transition:transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1);
+        cursor:pointer;
+      " onclick="flipCard()">
+
+        <!-- Card Back -->
+        <div id="cardBack" style="
+          position:absolute; inset:0;
+          background: linear-gradient(145deg, var(--violet), var(--deep2));
+          border:2px solid var(--gold);
+          backface-visibility:hidden;
+          display:flex; align-items:center; justify-content:center;
+          flex-direction:column;
+          gap:1rem;
+        ">
+          <div style="font-size:4rem; animation:float 3s ease-in-out infinite;">🌙</div>
+          <div style="
+            font-family:'Cinzel',serif;
+            font-size:0.7rem;
+            letter-spacing:0.2em;
+            color:var(--gold);
+            text-transform:uppercase;
+          ">Tap to Reveal</div>
+        </div>
+
+        <!-- Card Front -->
+        <div id="cardFront" style="
+          position:absolute; inset:0;
+          background: linear-gradient(145deg, var(--violet-light), var(--violet));
+          border:2px solid var(--gold);
+          backface-visibility:hidden;
+          transform:rotateY(180deg);
+          display:flex; align-items:center; justify-content:center;
+          flex-direction:column;
+          gap:1rem;
+          padding:1.5rem;
+        ">
+          <div id="cardEmoji" style="font-size:4rem;"></div>
+          <div id="cardName" style="font-family:'Cinzel',serif; font-size:0.8rem; letter-spacing:0.1em; color:var(--gold-light); text-align:center;"></div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Result Area -->
+    <div id="result" style="display:none; animation:fadeInUp 0.6s ease forwards;">
+      <div id="resultAnswer" style="
+        font-family:'Cinzel Decorative',serif;
+        font-size:3rem;
+        margin-bottom:0.5rem;
+      "></div>
+      <div id="resultMessage" style="
+        font-size:0.95rem;
+        color:var(--text-muted);
+        line-height:1.8;
+        max-width:450px;
+        margin:0 auto 2rem;
+      "></div>
+      <button onclick="resetCard()" style="
+        background:none;
+        border:1px solid var(--border);
+        color:var(--text-muted);
+        font-family:'Cinzel',serif;
+        font-size:0.75rem;
+        letter-spacing:0.15em;
+        padding:0.7rem 1.5rem;
+        cursor:pointer;
+        transition:all 0.3s;
+        text-transform:uppercase;
+        margin-bottom:2rem;
+      "
+      onmouseover="this.style.borderColor='var(--gold)'; this.style.color='var(--gold)'"
+      onmouseout="this.style.borderColor='var(--border)'; this.style.color='var(--text-muted)'"
+      >↺ Ask Again</button>
+    </div>
+
+    <div class="divider"><div class="divider-line"></div><div class="divider-star">✦</div><div class="divider-line"></div></div>
+
+    <p style="font-size:0.9rem; color:var(--text-muted); margin:2rem 0 1.5rem; line-height:1.8;">
+      For a deep, personalized reading on your specific question — book a session with Himu.
+    </p>
+    <a href="https://wa.me/916901529861?text=I%20used%20the%20Yes/No%20tarot%20and%20want%20a%20deeper%20reading"
+       class="btn btn-primary" target="_blank" rel="noopener">
+      ✦ Book a Full Reading
+    </a>
+  </div>
+</main>
+
+<footer style="padding:2rem 0; border-top:1px solid var(--border);">
+  <div class="container" style="text-align:center;">
+    <a href="index.html" style="font-family:'Cinzel Decorative',serif; font-size:1rem; color:var(--gold); text-decoration:none;">✦ Astro Himu</a>
+    <p style="font-size:0.8rem; color:var(--text-muted); margin-top:0.8rem;">
+      Best Tarot Reader in Guwahati, Assam · <a href="tel:+916901529861" style="color:var(--text-muted);">+91 6901529861</a>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+<script src="yes-script.js"></script>
+</body>
+</html>
